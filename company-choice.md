@@ -1,11 +1,47 @@
-TrackFlow
-He escogido esta empresa porque me dedico al marketing digital y me especializo en grandes ecommerces con almacén propio y que gestionan varios miles de SKUs diferentes y que trabajan con varios tipos de clientes, tanto grandes clientes B2B como pequeños consumidores B2C, por lo que veo especialmente útil ser capaz de crear soluciones a problemas relacionados con: gestión del inventario, alertas de stocks, parseo de sus email para automatizar tareas rutinarias e identificar lo prioritario, unificar fuentes de datos de sus clientes para crear una especie de CRM que pueda ayudar a los responsables de cuentas a gestionar sus clientes y puedan interactuar directamente con la plataforma para entender lo que está pasando con sus clientes y cómo eso se relaciona con roturas de stock, subidas de precio, falta de visitas comerciales, etc, me parece muy interesante. 
-Trackflow es la empresa que más se acerca a esto porque, aunque el cliente de ellos son los propios ecommerces que les subcontratan el almacén y no se dedican a la venta como tal, creo que tendrá bastante portabilidad a mis clientes reales.
-Aunque lo ideal para mi sería desarrollar soluciones para todos los departamentos, encuentro especialmente interesante aprender a solventar los problemas de los siguientes departamentos:
-- Operaciones de almacén: me parece muy útil ser capaz de dar solución a información de stock en tiempo real y crear alertas de stock para que pueda reponerse y no dar roturas de stock, así como la parte del parseo de emails.
-- Comercial y relación con clientes: me encantaría ser capaz de crear una solución de CRM unificado para cada cliente en una empresa en la que funcionan sin esto, de manera que se centralice toda la información sobre el cliente y se le pueda meter un sistema de alertas de no renovación según parámetros definidos.
-- Experiencia del cliente: al ser la parte más de cara al cliente, me parece que, un agente conversacional que dé solución a problemas que muchas veces se pueden responder sin necesidad de agente y que se base en documentación de la empresa y conexiones con diversas herramientas para solicitarles información según la pida el usuario, daría un valor añadido a la empresa de cara a sus clientes, ya que dejan de depender de atender en horario laborable y la empresa se libera de gran cantidad de consultas.
-##My AI Agent Idea
-Tengo 2 retos que son los que más me apetecería poder llevar a cabo:
-- Un sistema de alertas de stock que tenga en cuenta el histórico del producto (no es lo mismo un producto que tiene una rotación de 1 venta semanal que uno que salen varias decenas de unidades todas las semanas) que pueda avisar en función de la demanda actual y el histórico de ese producto.
-- Un sistema con capa de IA al que los comerciales puedan preguntar sobre sus clientes y les devuelva información sobre estos, con alertas ante caídas en el volumen de facturación, identificación de oportunidades por tipo de cliente...
+# Elección de empresa: TrackFlow
+
+He elegido TrackFlow porque sus retos están muy relacionados con mi experiencia en marketing digital y con el tipo de empresas con las que trabajo: grandes comercios electrónicos, con almacén propio o externalizado, miles de referencias y clientes B2B y B2C.
+
+Aunque TrackFlow no vende productos directamente, presta servicios de almacenamiento, preparación de pedidos, envío y gestión de devoluciones a marcas de comercio electrónico. Por eso, muchos de los problemas que afronta están conectados con los de mis clientes: controlar el inventario, anticipar necesidades, automatizar tareas y disponer de información útil para gestionar mejor las cuentas. Considero que las soluciones desarrolladas para TrackFlow podrían adaptarse también a empresas de comercio electrónico con operaciones propias.
+
+Me interesa, además, que TrackFlow opera en dos países y utiliza sistemas distintos que no ofrecen una visión unificada. Esto hace que sus desafíos sean concretos y medibles, y permite explorar cómo integrar datos y automatizar procesos con impacto directo en el trabajo diario.
+
+## Departamentos que me interesa explorar
+
+### Operaciones de almacén
+
+Me interesa ayudar a mejorar la visibilidad del inventario y reducir las discrepancias entre almacenes. TrackFlow necesita consultar el stock de sus productos de forma fiable, detectar cuándo se acerca a niveles críticos y avisar a tiempo para que sus clientes puedan reponerlos.
+
+También me parece valioso automatizar la recepción y clasificación de pedidos que llegan por correo electrónico en formatos diferentes. El parseo de esos emails podría reducir la transcripción manual, agilizar el trabajo operativo e identificar los pedidos que requieren atención prioritaria.
+
+### Comercial y relación con clientes
+
+TrackFlow no dispone de un CRM unificado: los responsables de cuenta gestionan la información en hojas de cálculo e hilos de correo, y preparan manualmente los informes para sus clientes. Me gustaría explorar una solución que reúna la información relevante de cada cuenta y ayude a los comerciales a entender su evolución.
+
+Una vista común de los datos operativos y comerciales podría facilitar la detección de cambios importantes, como una caída en la actividad o en la facturación, y ayudar a identificar oportunidades para cada tipo de cliente. También permitiría anticipar riesgos de renovación y avisar a los responsables con tiempo suficiente para actuar.
+
+### Experiencia del cliente
+
+También me interesa la posibilidad de crear un agente conversacional que responda consultas frecuentes usando la documentación de TrackFlow y, cuando sea necesario, consulte herramientas de seguimiento u otras fuentes internas. Esto podría resolver preguntas repetitivas sin intervención de un agente, ofrecer atención fuera del horario laboral y dejar que el equipo humano se concentre en los casos más complejos.
+
+## Ideas de agente de IA que me gustaría desarrollar
+
+### 1. Alertas de inventario basadas en la demanda
+
+Me gustaría desarrollar un sistema de alertas que tenga en cuenta tanto el inventario disponible como la evolución de los pedidos de cada producto. Un umbral fijo no siempre es suficiente: un producto con pocas salidas semanales necesita un seguimiento distinto al de otro con una demanda alta o creciente.
+
+El sistema podría utilizar el histórico de pedidos procesados y las salidas de cada referencia para estimar su ritmo de consumo. A partir de esa estimación, calcularía cuándo conviene emitir una alerta para que el cliente pueda reponer existencias antes de quedarse sin stock. También sería útil considerar los cambios recientes en la demanda y, si se dispone de esos datos, los plazos de reposición.
+
+Este agente ayudaría a prevenir roturas de stock y daría a los equipos de operaciones y a los clientes una señal más útil que una notificación basada únicamente en una cantidad mínima predeterminada.
+
+### 2. CRM unificado con un asistente comercial de IA
+
+La segunda idea es crear un CRM unificado para TrackFlow que reúna en un solo lugar la información relevante de cada cliente y permita a los responsables de cuenta consultar su situación sin tener que buscar datos dispersos en hojas de cálculo, correos y sistemas distintos. El CRM incorporaría un asistente de IA para hacer consultas en lenguaje natural y obtener respuestas basadas en la información disponible.
+
+Por ejemplo, el asistente podría resumir desde el CRM la evolución de un cliente, señalar caídas en el volumen de actividad o facturación, destacar cambios relevantes en sus operaciones y ayudar a identificar oportunidades según el tipo de cuenta. El CRM también podría generar alertas sobre riesgos de renovación, combinando la fecha de vencimiento del contrato con indicadores disponibles sobre la relación y el servicio.
+
+Para que la información del CRM y las respuestas del asistente sean fiables, la solución tendría que integrar las fuentes pertinentes, como los datos de clientes, contratos y actividad operativa; y, cuando exista, la facturación. De este modo, el CRM centralizaría la información y el asistente ayudaría al equipo comercial a interpretarla, priorizar acciones y prepararse mejor para sus conversaciones con los clientes.
+
+## Prioridad
+
+De las posibilidades anteriores, las dos que más me gustaría llevar a cabo son el sistema de alertas de inventario y un CRM unificado con un asistente comercial de IA integrado. Ambas se apoyan en necesidades explícitas de TrackFlow y conectan con problemas que conozco de cerca en el comercio electrónico: anticipar la demanda y comprender mejor la situación de cada cliente para actuar a tiempo.
