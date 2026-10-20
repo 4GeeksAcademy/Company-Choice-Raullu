@@ -31,19 +31,10 @@ No crear un árbol paralelo para aplicaciones: respetar las ubicaciones de la pl
 
 ## Instrucciones y skills
 
-- Aplicar cualquier instrucción más específica que exista para los archivos o el área afectados. Actualmente no hay `.agents/` ni reglas locales adicionales verificadas; si se añaden, consultar solo las que correspondan al alcance de la tarea.
+- Las reglas de `.agents/rules/` no se cargan automáticamente: en cualquier tarea de desarrollo, consultar explícitamente [development.md](.agents/rules/development.md), que contiene las reglas transversales y el flujo SDD; en tareas de frontend, consultar además [frontend.md](.agents/rules/frontend.md); en tareas de backend, consultar además [backend.md](.agents/rules/backend.md). Si una tarea afecta a frontend y backend, consultar las tres reglas.
+- `frontend.md` y `backend.md` son plantillas pendientes de definición y aprobación; hasta entonces no deben interpretarse como convenciones técnicas existentes. Aplicar también cualquier otra instrucción específica que exista para los archivos o el área afectados.
 - Las skills del repositorio se buscan en `skills/`, no en `.agents/skills/`. Usar una skill solo si existe un `SKILL.md` con instrucciones aplicables; no tratar plantillas vacías o carpetas de recursos como skills listas para ejecutar.
 - Para pruebas de agentes, consultar [agents/\_template/tests/README.md](agents/_template/tests/README.md) y la documentación del agente concreto.
-
-## Desarrollo guiado por especificaciones (SDD)
-
-Antes de implementar una funcionalidad, buscar sus `spec.md`, `plan.md` y `tasks.md` en la documentación del componente o del proyecto.
-
-- No considerar aprobado un documento por el hecho de que exista.
-- Obtener aprobación explícita de la especificación antes de elaborar o aprobar el plan.
-- Obtener aprobación explícita del plan antes de cerrar o ejecutar las tareas.
-- Obtener aprobación explícita de las tareas antes de implementar.
-- No saltar etapas. Si falta un artefacto o una aprobación, señalarlo y solicitar autorización antes de continuar con la etapa siguiente.
 
 ## Forma de trabajo y entrega
 

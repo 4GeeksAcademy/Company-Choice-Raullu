@@ -48,7 +48,7 @@ Este documento separa el entorno técnico existente de las necesidades del negoc
 
 1. Antes de modificar cualquier parte del repositorio, leer `memory-bank/projectBrief.md`, `memory-bank/techContext.md` y `memory-bank/progress.md`.
 2. Usar conjuntamente el contexto de negocio y el técnico; no implementar a partir de uno solo.
-3. Seguir las instrucciones aplicables de `AGENTS.md` y `.agents/`, y completar el proceso de entrega previo a un commit. Ambos recursos aún están pendientes de crear, por lo que esta regla todavía no está aplicada técnicamente.
+3. Seguir `AGENTS.md` y consultar explícitamente las reglas aplicables de `.agents/rules/`. `development.md` contiene reglas transversales; `frontend.md` y `backend.md` son plantillas pendientes de definición y aprobación, no convenciones técnicas vigentes.
 4. No convertir necesidades en decisiones. Si falta una tecnología, ruta, contrato o criterio, registrarlo como pendiente y no asumirlo.
 
 ## Decisiones y datos técnicos no especificados
