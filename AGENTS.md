@@ -15,17 +15,18 @@ Después, identificar el área afectada y consultar su README y documentación e
 
 ## Mapa del repositorio
 
-| Área                            | Ubicación                                                                    | Consultar                                                                                                            |
-| ------------------------------- | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Interfaces                      | `uis/`; web pública en `uis/website`, aplicación interna en `uis/backoffice` | [uis/README.md](uis/README.md)                                                                                       |
-| APIs y workers                  | `services/`                                                                  | [services/README.md](services/README.md)                                                                             |
-| Datos                           | `data/raw/`, `data/pipelines/`, `data/process/`, `data/eval/`                | Guía raíz y documentación de la subcarpeta, si existe                                                                |
-| Agentes y herramientas          | `agents/`, `agents/tools/`                                                   | [agents/README.md](agents/README.md), README de herramientas y [plantilla](agents/_template/README.md)               |
-| Skills                          | `skills/`                                                                    | [skills/README.md](skills/README.md) y el `SKILL.md` de la skill aplicable                                           |
-| Servidores MCP y automatización | `mcps/`, `workflows/`                                                        | [mcps/README.md](mcps/README.md), [workflows/README.md](workflows/README.md)                                         |
-| Reutilización                   | `packages/`, `shared/`                                                       | [packages/README.md](packages/README.md), [shared/README.md](shared/README.md)                                       |
-| Documentación transversal       | `docs/`                                                                      | [docs/README.md](docs/README.md)                                                                                     |
-| Infraestructura y herramientas  | `infra/`, `scripts/`, `internal/`                                            | [infra/README.md](infra/README.md), [scripts/README.md](scripts/README.md), [internal/README.md](internal/README.md) |
+| Área                                   | Ubicación                                                                    | Consultar                                                                                                            |
+| -------------------------------------- | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Interfaces                             | `uis/`; web pública en `uis/website`, aplicación interna en `uis/backoffice` | [uis/README.md](uis/README.md)                                                                                       |
+| APIs y workers                         | `services/`                                                                  | [services/README.md](services/README.md)                                                                             |
+| Datos                                  | `data/raw/`, `data/pipelines/`, `data/process/`, `data/eval/`                | Guía raíz y documentación de la subcarpeta, si existe                                                                |
+| Configuración del agente de desarrollo | `.agents/rules/`, `.agents/skills/`                                          | Reglas aplicables y [skill-creator](.agents/skills/skill-creator/SKILL.md)                                           |
+| Agentes y herramientas de producto     | `agents/`, `agents/tools/`                                                   | [agents/README.md](agents/README.md), README de herramientas y [plantilla](agents/_template/README.md)               |
+| Skills de producto                     | `skills/`                                                                    | [skills/README.md](skills/README.md) y el `SKILL.md` de la capacidad aplicable                                       |
+| Servidores MCP y automatización        | `mcps/`, `workflows/`                                                        | [mcps/README.md](mcps/README.md), [workflows/README.md](workflows/README.md)                                         |
+| Reutilización                          | `packages/`, `shared/`                                                       | [packages/README.md](packages/README.md), [shared/README.md](shared/README.md)                                       |
+| Documentación transversal              | `docs/`                                                                      | [docs/README.md](docs/README.md)                                                                                     |
+| Infraestructura y herramientas         | `infra/`, `scripts/`, `internal/`                                            | [infra/README.md](infra/README.md), [scripts/README.md](scripts/README.md), [internal/README.md](internal/README.md) |
 
 No crear un árbol paralelo para aplicaciones: respetar las ubicaciones de la plantilla y leer el README del destino antes de añadir archivos.
 
@@ -33,7 +34,7 @@ No crear un árbol paralelo para aplicaciones: respetar las ubicaciones de la pl
 
 - Las reglas de `.agents/rules/` no se cargan automáticamente: en cualquier tarea de desarrollo, consultar explícitamente [development.md](.agents/rules/development.md), que contiene las reglas transversales y el flujo SDD; en tareas de frontend, consultar además [frontend.md](.agents/rules/frontend.md); en tareas de backend, consultar además [backend.md](.agents/rules/backend.md). Si una tarea afecta a frontend y backend, consultar las tres reglas.
 - `frontend.md` y `backend.md` son plantillas pendientes de definición y aprobación; hasta entonces no deben interpretarse como convenciones técnicas existentes. Aplicar también cualquier otra instrucción específica que exista para los archivos o el área afectados.
-- Las skills del repositorio se buscan en `skills/`, no en `.agents/skills/`. Usar una skill solo si existe un `SKILL.md` con instrucciones aplicables; no tratar plantillas vacías o carpetas de recursos como skills listas para ejecutar.
+- Las skills de configuración del agente de desarrollo se buscan en `.agents/skills/`; las capacidades de producto de TrackFlow se buscan en `skills/`, no en `.agents/skills/`. Consultar explícitamente el `SKILL.md` correspondiente, pues estas rutas no se cargan automáticamente. Para crear o actualizar una skill del agente de desarrollo, seguir [skill-creator](.agents/skills/skill-creator/SKILL.md). No tratar plantillas vacías o carpetas de recursos como skills listas para ejecutar.
 - Para pruebas de agentes, consultar [agents/\_template/tests/README.md](agents/_template/tests/README.md) y la documentación del agente concreto.
 
 ## Forma de trabajo y entrega

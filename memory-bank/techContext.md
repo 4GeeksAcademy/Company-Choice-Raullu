@@ -25,7 +25,7 @@ Este documento separa el entorno técnico existente de las necesidades del negoc
 ## Convenciones estructurales del repositorio
 
 - `packages/` contiene código reutilizable empaquetado, versionable y con API propia; `shared/` contiene recursos comunes no empaquetados, como esquemas, plantillas, assets o configuración.
-- `agents/` contiene agentes concretos; `agents/tools/` agrupa herramientas reutilizables para agentes; `skills/` contiene capacidades empaquetadas con instrucciones y recursos; `mcps/` contiene servidores MCP.
+- `.agents/rules/` y `.agents/skills/` configuran el agente de desarrollo del repositorio. En cambio, `agents/`, `agents/tools/` y `skills/` contienen agentes, herramientas y capacidades de producto de TrackFlow; `mcps/` contiene servidores MCP.
 - `workflows/` contiene automatizaciones y orquestaciones entre sistemas. No sustituye una API o worker de `services/` ni el código de transformación de `data/pipelines/`.
 - `scripts/` es para utilidades pequeñas y repetibles. `internal/` es para herramientas del equipo con estructura, dependencias, pruebas e instalación propias.
 - `infra/` contiene definiciones de infraestructura y despliegue. El README raíz reserva la raíz para `docker-compose.yml`, aunque ese archivo todavía no existe.
