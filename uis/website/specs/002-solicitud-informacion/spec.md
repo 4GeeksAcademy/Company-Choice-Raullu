@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 | --- | --- |
-| **Estado** | Aprobada para planificación |
+| **Estado** | Cambio propuesto; pendiente de aprobación |
 | **Proyecto / área** | TrackFlow · `uis/website/` |
 | **Tipo de cambio** | Completar la página de solicitud comercial del Hito 1 |
 | **Documento** | `spec.md` · requisitos y criterios de aceptación; no es un plan de implementación |
@@ -31,7 +31,8 @@ La iniciativa comprende:
 2. Incorporar los campos y opciones definidos en el briefing, sin añadir campos.
 3. Implementar en `uis/website/validation.js` la validación, los estados de interacción, el contador, la advertencia aprobada y la simulación de envío.
 4. Conservar Tailwind CDN, los tokens existentes, los recursos oficiales y la navegación de vuelta a la landing.
-5. Verificar el flujo de formulario, accesibilidad aplicable, responsive y metadatos de la página.
+5. Organizar el formulario en cuatro pasos consecutivos con validación por paso y navegación accesible.
+6. Verificar el flujo completo, accesibilidad aplicable, responsive y metadatos de la página.
 
 La implementación se realizará únicamente después de aprobar esta especificación, el plan y las tareas en sus respectivas etapas.
 
@@ -54,7 +55,14 @@ Se deben incluir exactamente estos campos. Los identificadores y valores técnic
 | Comentarios o necesidades específicas | `textarea` | No | Máximo 500 caracteres |
 | Aviso provisional de privacidad | `checkbox` | Sí | Debe marcarse para poder ejecutar la simulación local; no constituye aceptación de una política vigente |
 
-Cada control tendrá una etiqueta asociada mediante `for`/`id`. Se usará `fieldset` y `legend` para los grupos de checkbox y radio, y para otros grupos cuando ayude a entender la estructura. Los campos obligatorios se identificarán visual y programáticamente. No se añadirán campos de datos ni pasos al formulario.
+Cada control tendrá una etiqueta asociada mediante `for`/`id`. Se usará `fieldset` y `legend` para los grupos de checkbox y radio, y para otros grupos cuando ayude a entender la estructura. Los campos obligatorios se identificarán visual y programáticamente. El formulario tendrá exactamente los cuatro pasos descritos en la sección 6; no se añadirán campos ni pasos.
+
+Los campos se distribuirán así:
+
+1. **Datos de empresa y contacto:** nombre de la empresa, persona de contacto, email corporativo, teléfono y sitio web.
+2. **Operación logística:** país de operación principal, tipo de producto, volumen mensual estimado y servicios de interés.
+3. **Relación con proveedores 3PL:** pregunta sobre si actualmente trabaja con otro 3PL.
+4. **Comentarios y privacidad:** comentarios o necesidades específicas y aviso provisional de privacidad.
 
 ## 5. Requisitos funcionales
 
@@ -89,7 +97,9 @@ Los errores aparecerán junto al control o grupo correspondiente, explicarán la
 - Validar al perder el foco cuando sea apropiado.
 - Al corregir un campo que ya mostró error, actualizar su estado sin esperar un nuevo envío.
 - Validar `select`, checkbox y radio al cambiar su selección.
-- Al intentar enviar, validar el formulario completo, impedir el envío simulado mientras existan errores y facilitar el foco o identificación del primer error.
+- Al avanzar a otro paso, validar los campos del paso actual, impedir el avance mientras existan errores y facilitar el foco o identificación del primer error de ese paso.
+- Al intentar el envío final, validar todos los campos del paso actual; los pasos anteriores ya deben haber superado la validación para poder llegar al último. No mostrar éxito si hay errores.
+- Los datos introducidos se conservarán al volver a pasos anteriores y al navegar entre pasos.
 
 ### 5.3. Contador y advertencia
 
@@ -98,12 +108,24 @@ Los errores aparecerán junto al control o grupo correspondiente, explicarán la
 - Conservar el mensaje de error del briefing como validación defensiva para un valor inválido excepcional: `Los comentarios no pueden exceder 500 caracteres (quedan X)`. `X` representa la cantidad de caracteres que excede 500 y que habría que eliminar; el límite preventivo evita este error durante la interacción normal.
 - La advertencia comercial literal será: `Para volúmenes menores a 100 envíos mensuales, nuestros servicios podrían no ser la solución más eficiente. ¿Seguro que quieres continuar?`
 - La advertencia se mostrará cuando el volumen sea `0-100 envíos/mes`, independientemente del tipo de producto. Es informativa: no es un error de validación y no requiere confirmación para continuar.
+- La advertencia aparecerá inmediatamente debajo del selector de volumen, manteniendo una relación visual y programática clara con ese control.
 
-### 5.4. Botones, reinicio y envío simulado
+### 5.4. Navegación por pasos
+
+- Presentar exactamente cuatro pasos, en el orden y con los campos definidos en la sección 4.
+- Incluir una indicación accesible del paso actual y de los pasos restantes; el paso actual debe identificarse visual y programáticamente.
+- Cada paso tendrá un encabezado descriptivo. Al cambiar de paso, mover el foco al encabezado del nuevo paso para que el cambio se anuncie y el teclado continúe en un lugar predecible.
+- Ofrecer navegación **Siguiente** y **Anterior** según corresponda. El primer paso no tendrá botón **Anterior** y el último ofrecerá la acción de envío.
+- **Siguiente** validará el paso actual antes de avanzar. **Anterior** permitirá regresar sin perder ningún dato introducido.
+- No permitir saltar a pasos posteriores sin completar la validación de los pasos precedentes.
+- Mantener la orientación y el contexto del paso sin depender únicamente del color ni de iconos.
+
+### 5.5. Botones, reinicio y envío simulado
 
 - Incluir el botón principal **Enviar solicitud**, que valida antes de mostrar éxito.
-- Incluir el botón secundario **Limpiar formulario**, que restablece valores, errores, contador, advertencias y confirmación.
+- Incluir el botón secundario **Limpiar formulario**, que restablece valores, errores, contador, advertencias, paso actual y confirmación, y vuelve al primer paso.
 - Si hay errores, impedir el éxito y llevar la atención al primer error.
+- Si el envío es válido, ocultar el formulario completo y mostrar únicamente la confirmación de éxito y su aclaración de demostración/no envío. La confirmación debe ocupar el área principal de la experiencia, estar disponible para tecnologías de asistencia y no dejar controles del formulario visibles o alcanzables por teclado.
 - Si el formulario es válido y la advertencia no requiere una decisión adicional, mostrar de forma visible y accesible:
 
   **¡Gracias por tu interés en TrackFlow!**
@@ -125,7 +147,9 @@ Los errores aparecerán junto al control o grupo correspondiente, explicarán la
 - Usar Tailwind mediante el CDN ya utilizado por el sitio y priorizar clases utilitarias. No añadir estilos inline. El CSS personalizado solo podrá proponerse en el plan si existe una necesidad concreta que Tailwind no resuelva razonablemente.
 - Usar los recursos oficiales existentes; conservar los originales y el favicon. Los iconos funcionales, si se necesitan, serán SVG estáticos Lucide ya disponibles. No son obligatorios en cada campo.
 - Incluir logo oficial, enlace claro para volver a la landing, título de página que indique la solicitud comercial e introducción breve dirigida a empresas de e-commerce.
-- Agrupar el contenido en bloques comprensibles —por ejemplo, datos de empresa, operación y servicios— sin convertir el formulario en un flujo por pasos.
+- Organizar el contenido como un flujo de cuatro pasos, con estos títulos y agrupación: **Datos de empresa y contacto**; **Operación logística**; **Relación con proveedores 3PL**; **Comentarios y privacidad**.
+- Dar espacio suficiente entre la flecha de cada selector desplegable y el borde derecho del control, de acuerdo con el sistema visual y sin comprometer la indicación nativa de apertura.
+- Mostrar la advertencia de volumen `0-100` inmediatamente debajo del selector correspondiente.
 - Adaptar progresivamente el formulario a móvil, tablet y escritorio; en móvil, usar disposición vertical, controles legibles y botones cómodos de accionar. No debe haber desbordamiento horizontal.
 
 ## 7. Accesibilidad y SEO
@@ -164,21 +188,24 @@ No se prevén cambios en `index.html`, `design-system.md`, assets ni configuraci
 
 1. `application.html` presenta una página en español con estructura HTML5, navegación de vuelta a la landing, favicon oficial, título y meta description adecuados.
 2. El formulario incluye todos y solo los doce campos definidos en la sección 4, con los tipos, opciones y carácter obligatorio indicados.
-3. Cada control tiene label asociado; los grupos de checkbox y radio están agrupados con `fieldset` y `legend`; los requeridos se identifican visual y programáticamente.
+3. Cada control tiene label asociado; los grupos de checkbox y radio están agrupados con `fieldset` y `legend`; los requeridos se identifican visual y programáticamente. Los campos aparecen en los cuatro pasos definidos y no se añaden otros campos ni pasos.
 4. Las doce reglas de validación y sus mensajes literales de la sección 5.1 se aplican correctamente, sin restricciones extra no documentadas.
 5. Los errores se muestran junto al control, son accesibles, se actualizan al interactuar y no aparecen prematuramente en campos no visitados.
-6. El envío valida el formulario completo, impide mostrar éxito si hay errores y permite identificar el primer campo inválido.
-7. El contador se actualiza en vivo, bloquea la entrada al alcanzar 500 caracteres y muestra los caracteres disponibles; la validación defensiva conserva el mensaje del briefing e informa cuántos caracteres exceden el máximo.
-8. La advertencia se muestra con el texto exacto al elegir `0-100 envíos/mes`, independientemente del producto; no bloquea ni pausa el envío.
-9. El envío válido muestra el título, cuerpo y contacto del mensaje de éxito definidos en la sección 5.4, de forma accesible, junto con una aclaración de que la solicitud no se envió al equipo comercial y sin llamadas HTTP ni persistencia.
-10. **Limpiar formulario** restablece valores y elimina errores, contador alterado, advertencias y confirmación.
-11. Diseño y estados reutilizan Tailwind CDN y tokens aprobados, y mantienen continuidad visual con la landing.
-12. La página funciona a anchos móviles, tablet y escritorio verificados; controles, mensajes y botones son legibles y no existe scroll horizontal.
-13. Teclado, foco, labels, grupos, mensajes, estados ARIA y contraste cumplen los requisitos WCAG AA aplicables.
-14. Las imágenes tienen `alt` apropiado; no se modifican los originales oficiales ni se añaden dependencias.
-15. El marcado Organization de `index.html` permanece intacto y no se duplica sin una necesidad aprobada.
-16. No hay backend, persistencia, envío de correo, integración externa ni envío de datos fuera del navegador; la experiencia advierte que no se recibió ninguna solicitud.
-17. El aviso ficticio de privacidad está identificado como no vigente, no tiene enlace, advierte contra el uso de datos reales y no se presenta como consentimiento legal ni como listo para producción.
+6. La experiencia muestra cuatro pasos consecutivos con títulos claros, indicador accesible del paso actual y los restantes, botones **Siguiente**/**Anterior** y foco en el encabezado al cambiar de paso.
+7. **Siguiente** valida el paso actual y bloquea el avance ante errores; **Anterior** conserva los datos y no permite saltar validaciones de pasos anteriores.
+8. El envío final valida y, si hay errores, no muestra éxito y facilita la identificación del primer error.
+9. El contador se actualiza en vivo, bloquea la entrada al alcanzar 500 caracteres y muestra los caracteres disponibles; la validación defensiva conserva el mensaje del briefing e informa cuántos caracteres exceden el máximo.
+10. La advertencia se muestra inmediatamente debajo del selector, con el texto exacto al elegir `0-100 envíos/mes`, independientemente del producto; no bloquea ni pausa el envío.
+11. El envío válido oculta todos los controles del formulario y muestra únicamente el título, cuerpo y contacto del mensaje de éxito definidos en la sección 5.5, de forma accesible, junto con una aclaración de que la solicitud no se envió al equipo comercial y sin llamadas HTTP ni persistencia.
+12. **Limpiar formulario** restablece valores y elimina errores, contador alterado, advertencias y confirmación, y devuelve al primer paso.
+13. La flecha de cada selector tiene espacio suficiente respecto del borde derecho sin alterar la indicación nativa de apertura.
+14. Diseño y estados reutilizan Tailwind CDN y tokens aprobados, y mantienen continuidad visual con la landing.
+15. La página funciona a anchos móviles, tablet y escritorio verificados; controles, mensajes y botones son legibles y no existe scroll horizontal.
+16. Teclado, foco, labels, grupos, mensajes, estados ARIA y contraste cumplen los requisitos WCAG AA aplicables.
+17. Las imágenes tienen `alt` apropiado; no se modifican los originales oficiales ni se añaden dependencias.
+18. El marcado Organization de `index.html` permanece intacto y no se duplica sin una necesidad aprobada.
+19. No hay backend, persistencia, envío de correo, integración externa ni envío de datos fuera del navegador; la experiencia advierte que no se recibió ninguna solicitud.
+20. El aviso ficticio de privacidad está identificado como no vigente, no tiene enlace, advierte contra el uso de datos reales y no se presenta como consentimiento legal ni como listo para producción.
 
 ## 11. Decisiones pendientes para aprobación
 
@@ -194,19 +221,15 @@ Decisiones ya confirmadas por el usuario:
 - El mensaje defensivo de comentarios se conserva para valores inválidos excepcionales; `X` es el número de caracteres por encima del límite.
 - Se utiliza temporalmente el aviso ficticio y el texto de checkbox especificados arriba; ambos dejan claro que no existe una política vigente.
 - La página debe advertir que la simulación no envía la solicitud al equipo comercial.
-
-Decisiones ya confirmadas por el usuario:
-
-- La advertencia aplica a todos los tipos de producto cuando el volumen es `0-100 envíos/mes`.
-- La advertencia es informativa; no exige confirmación ni bloquea el envío.
-- El control de comentarios bloquea la entrada al alcanzar 500 caracteres.
+- El usuario autorizó modificar esta especificación con una propuesta de cuatro pasos. Esta revisión describe el cambio solicitado, pero queda pendiente de aprobación explícita antes de actualizar el plan, las tareas o el código.
 
 ## 12. Verificación prevista
 
-Una vez aprobadas especificación, plan y tareas, verificar:
+Una vez aprobadas esta especificación revisada, el plan y las tareas, verificar:
 
 - El renderizado con Tailwind CDN, la navegación y los recursos locales en vista real.
 - El flujo de cada validación, sus mensajes exactos, estados al corregir, primer error y comportamiento teclado/lector de pantalla.
+- Validación independiente de cada paso, navegación adelante/atrás con datos preservados, indicador y foco del encabezado, bloqueo de avance inválido y reinicio al primer paso.
 - Contador, límite de 500, mensaje defensivo para valores inválidos excepcionales, advertencia, reinicio y envío simulado válido e inválido.
 - Viewports de referencia 320, 375, 768, 1280 y 1440 px; overflow, legibilidad y dimensiones táctiles.
 - Contraste WCAG AA de los estados normales, error, advertencia y éxito.
@@ -218,6 +241,6 @@ Se documentarán resultados reales y limitaciones; no se dará por verificada un
 
 ## 13. Aprobaciones
 
-- El usuario aprobó explícitamente esta especificación para continuar con la etapa de planificación.
+- La versión anterior de esta especificación fue aprobada para planificación. Esta revisión propone sustituir el formulario de un solo bloque por los cuatro pasos solicitados y aún requiere aprobación explícita del usuario antes de continuar con cambios en el plan, las tareas o el código.
 - El usuario autoriza el uso del aviso ficticio de demostración, dejando pendiente la política real. La aprobación no convierte el aviso ficticio en política vigente ni autoriza su uso productivo.
 - Tras aprobar `plan.md`, se podrá elaborar `tasks.md`; se solicitará aprobación explícita de las tareas antes de implementar, siguiendo `.agents/rules/development.md`.
