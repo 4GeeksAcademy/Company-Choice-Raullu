@@ -7,10 +7,10 @@ Este documento separa el entorno técnico existente de las necesidades del negoc
 - El sitio público está ubicado en `uis/website/`; consultar allí su briefing antes de implementar.
 - Para este hito, la interfaz y el formulario serán en español. No se implementará el segundo idioma todavía.
 - Tailwind CSS es obligatorio y se incorporará mediante CDN por ahora. Esto requiere conectividad a Internet en el navegador. No se ha aprobado un proceso de build ni dependencias locales de frontend.
-- Para previsualizar en Codespaces desde la raíz del repositorio: `npx --yes http-server ./uis/website -p 3000 -a 0.0.0.0`. El comando sirve estáticos y no compila Tailwind ni proporciona backend.
+- Para previsualizar en Codespaces desde la raíz del repositorio: `npx --yes http-server ./uis/website -p 3000 -a 0.0.0.0`. El comando sirve estáticos y no compila Tailwind ni proporciona backend. Se verificó el sitio en el puerto 3001 porque el 3000 ya estaba ocupado.
 - El envío del formulario es simulado en el cliente. No se ha aprobado persistencia, API, correo transaccional ni integración con CRM.
 - [`uis/website/design-system.md`](../uis/website/design-system.md) es la fuente canónica de identidad visual y tokens para las interfaces de TrackFlow. Se debe consultar antes de cambios visuales; toda modificación o excepción de identidad necesita aprobación explícita previa y debe documentarse primero allí.
-- Los originales de marca deben residir en `uis/website/assets/brand/`, pero esa carpeta y los archivos oficiales todavía no existen en el repositorio. No crear ni referenciar recursos gráficos hasta recibirlos y verificar nombres y extensiones.
+- Los originales oficiales están en `uis/website/assets/brand/`: `logo-trackflow.png`, `logo-trackflow-oscuro.png`, `ico-trackflow.png` y `favicon.ico`. Se verificaron como PNG/ICO y sus proporciones; no recrearlos ni modificarlos.
 - No hay configuración `.github/instructions/` en el repositorio. `.agents/rules/` no se carga automáticamente; `AGENTS.md` ordena consultar manualmente `.agents/rules/frontend.md` y el Design System. Por decisión del desarrollador, no se añadirá una instrucción Copilot paralela.
 
 ## Tecnologías por capa

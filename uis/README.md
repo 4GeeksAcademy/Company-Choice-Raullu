@@ -14,7 +14,7 @@ Organize `uis/` by **different concerns** — each subfolder covers a distinct a
 
 ## TrackFlow visual identity and website preview
 
-For any TrackFlow interface, consult the canonical visual identity and tokens in [`website/design-system.md`](./website/design-system.md) and follow [`.agents/rules/frontend.md`](../.agents/rules/frontend.md). Website-specific functional requirements are in [`website/BRIEFING.md`](./website/BRIEFING.md). Official logo and favicon originals belong in `website/assets/brand/`; the originals are not currently present, so verify delivered filenames and formats before referencing them. Visual identity changes require explicit prior approval.
+For any TrackFlow interface, consult the canonical visual identity and tokens in [`website/design-system.md`](./website/design-system.md) and follow [`.agents/rules/frontend.md`](../.agents/rules/frontend.md). Website-specific functional requirements are in [`website/BRIEFING.md`](./website/BRIEFING.md). Official originals are in `website/assets/brand/`: `logo-trackflow.png`, `logo-trackflow-oscuro.png`, `ico-trackflow.png`, and `favicon.ico`. Preserve the originals and follow the usage rules in the Design System. Visual identity changes require explicit prior approval.
 
 The public website in [`website/`](./website/) uses Spanish, loads Tailwind CSS via CDN, and simulates lead-form submission without persistence or a backend.
 

@@ -1,0 +1,39 @@
+:root {
+	--color-primary: #102838;
+	--color-secondary: #007b76;
+	--color-secondary-hover: #006963;
+	--color-mint: #6ee7d2;
+	--color-accent: #d4f27a;
+	--color-background: #ffffff;
+	--color-surface: #f4f8fa;
+	--color-surface-accent: #e9f8f5;
+	--color-heading: #102838;
+	--color-text: #344a5a;
+	--color-text-muted: #556978;
+	--color-input-border: #708b99;
+	--color-border: #d8e3e8;
+	--color-success: #176b48;
+	--color-warning: #986000;
+	--color-error: #b42318;
+	--color-info: #215f9a;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background-color: var(--color-background);
+	color: var(--color-text);
+	font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+:focus-visible {
+	outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}

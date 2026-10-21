@@ -14,7 +14,7 @@ Organiza `uis/` por **distintas áreas de la compañía** — cada subcarpeta ag
 
 ## Identidad visual de TrackFlow y previsualización del sitio
 
-Para cualquier interfaz de TrackFlow, consulta la identidad visual y los tokens canónicos en [`website/design-system.md`](./website/design-system.md) y sigue [`.agents/rules/frontend.md`](../.agents/rules/frontend.md). Los requisitos funcionales específicos del sitio están en [`website/BRIEFING.md`](./website/BRIEFING.md). Los originales de logotipo y favicon deben ubicarse en `website/assets/brand/`; todavía no están presentes, así que verifica los nombres y formatos de los archivos recibidos antes de referenciarlos. Los cambios de identidad visual requieren aprobación explícita previa.
+Para cualquier interfaz de TrackFlow, consulta la identidad visual y los tokens canónicos en [`website/design-system.md`](./website/design-system.md) y sigue [`.agents/rules/frontend.md`](../.agents/rules/frontend.md). Los requisitos funcionales específicos del sitio están en [`website/BRIEFING.md`](./website/BRIEFING.md). Los originales oficiales están en `website/assets/brand/`: `logo-trackflow.png`, `logo-trackflow-oscuro.png`, `ico-trackflow.png` y `favicon.ico`. Conserva los originales y respeta sus usos según el Design System. Los cambios de identidad visual requieren aprobación explícita previa.
 
 El sitio público en [`website/`](./website/) se desarrolla en español, carga Tailwind CSS mediante CDN y simula el envío del formulario sin persistencia ni backend.
 
