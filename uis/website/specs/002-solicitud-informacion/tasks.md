@@ -1,10 +1,10 @@
 # Tareas — Formulario de solicitud de información de TrackFlow
 
-| Campo              | Valor                                      |
-| ------------------ | ------------------------------------------ |
-| **Estado**         | Tareas revisadas; pendientes de aprobación |
-| **Especificación** | [`spec.md`](./spec.md)                     |
-| **Plan**           | [`plan.md`](./plan.md)                     |
+| Campo              | Valor                               |
+| ------------------ | ----------------------------------- |
+| **Estado**         | Aprobadas para ejecución secuencial |
+| **Especificación** | [`spec.md`](./spec.md)              |
+| **Plan**           | [`plan.md`](./plan.md)              |
 
 ## Secuencia de ejecución
 
@@ -28,16 +28,16 @@ Completar y verificar cada tarea antes de empezar la siguiente. No iniciar traba
 
 ### Tareas para la revisión aprobada del flujo por pasos
 
-Estas tareas describen el cambio pendiente; no implican que se haya implementado. Se ejecutarán una por una, solo después de la aprobación explícita de esta lista.
+Estas tareas corresponden al flujo por pasos aprobado y se ejecutan una por una, verificando cada una antes de iniciar la siguiente.
 
-16. [ ] **Actualizar estructura de cuatro pasos:** reorganizar los campos existentes en `application.html` como Datos de empresa y contacto, Operación logística, Relación con proveedores 3PL, y Comentarios y privacidad. Añadir indicador accesible de progreso, controles Anterior/Siguiente y encabezados enfocables. Verificar que no se agreguen ni se pierdan campos y que los pasos no visibles no sean alcanzables por teclado.
-17. [ ] **Implementar navegación validada:** en `validation.js`, validar el paso actual al avanzar, impedir avances con errores o saltos a pasos futuros, volver al paso anterior preservando valores y mover el foco al encabezado de cada paso. Probar pasos válidos e inválidos, teclado y estados del indicador.
-18. [ ] **Ajustar selector y advertencia:** mostrar la advertencia exacta de volumen `0-100` inmediatamente debajo del selector y aumentar el espacio de la flecha de cada desplegable respecto del borde derecho, preservando el comportamiento nativo. Comprobar cada opción de volumen y la presentación responsive.
-19. [ ] **Ajustar éxito y reinicio:** después de un envío válido, ocultar el formulario completo y dejar únicamente la confirmación accesible y la aclaración de que no se envió nada; al limpiar, restablecer todo y volver al primer paso. Probar envío válido, inválido y reinicio.
+16. [x] **Actualizar estructura de cuatro pasos:** reorganizar los campos existentes en `application.html` como Datos de empresa y contacto, Operación logística, Relación con proveedores 3PL, y Comentarios y privacidad. Añadir indicador accesible de progreso, controles Anterior/Siguiente y encabezados enfocables. Verificar que no se agreguen ni se pierdan campos y que los pasos no visibles no sean alcanzables por teclado. **Verificación:** comprobación estática confirma cuatro paneles, los 12 campos conceptuales (empresa/contacto, operación, servicios, 3PL, comentarios y privacidad), IDs existentes sin duplicados y `hidden` en paneles inactivos; `get_errors` informa sin errores para HTML y JS, `node --check` y `git diff --check` pasan. La interacción real de navegación se valida en la tarea 17.
+17. [x] **Implementar navegación validada:** en `validation.js`, validar el paso actual al avanzar, impedir avances con errores o saltos a pasos futuros, volver al paso anterior preservando valores y mover el foco al encabezado de cada paso. Probar pasos válidos e inválidos, teclado y estados del indicador. **Verificación:** revisión de flujo confirma cuatro conjuntos de claves de validación, control Anterior/Siguiente no interactivo del indicador, validación antes de avanzar, foco en primer error/encabezado y retención de los valores al ocultar/mostrar secciones. `node --check`, `get_errors` y `git diff --check` limpios. No hay paquete DOM/browser disponible para automatizar la navegación; la prueba interactiva queda pendiente de previsualización manual.
+18. [x] **Ajustar selector y advertencia:** mostrar la advertencia exacta de volumen `0-100` inmediatamente debajo del selector y aumentar el espacio de la flecha de cada desplegable respecto del borde derecho, preservando el comportamiento nativo. Comprobar cada opción de volumen y la presentación responsive. **Verificación:** el warning está dentro del bloque de volumen inmediatamente después del `select`; los tres `select` conservan estilo nativo y llevan `pr-10`; el listener muestra warning solo en `0-100`. Verificación estática de markup/JS; responsive real queda pendiente de navegador.
+19. [x] **Ajustar éxito y reinicio:** después de un envío válido, ocultar el formulario completo y dejar únicamente la confirmación accesible y la aclaración de que no se envió nada; al limpiar, restablecer todo y volver al primer paso. Probar envío válido, inválido y reinicio. **Verificación:** submit limita validación al paso actual, oculta el formulario completo solo si es válido y enfoca la confirmación externa; error mantiene el formulario y enfoca el primer campo inválido. Reset nativo y limpieza de estado restauran paso 1, controles, errores, ARIA, contador y advertencia. Sin DOM de prueba disponible, validado por inspección y chequeos estáticos; la interacción navegador permanece pendiente.
 20. [ ] **Verificar el flujo actualizado:** revisar navegación, validación por paso, foco, preservación de valores, indicador, advertencia, éxito, accesibilidad y viewports definidos; ejecutar diagnósticos disponibles y `git diff --check`, y documentar límites. No dar por realizadas verificaciones manuales no ejecutadas.
 
 ## Aprobación y bloqueo
 
-- Esta revisión añade las tareas 16–20 para implementar el flujo de cuatro pasos, con base en la especificación y el plan actualizados. El usuario debe aprobar explícitamente esta lista antes de ejecutar cualquiera de ellas.
+- El usuario aprobó explícitamente la lista revisada de tareas y autorizó comenzar la implementación secuencial de las tareas 16–20.
 - Ejecutar estrictamente una tarea a la vez: cerrar y verificar la tarea actual antes de comenzar la siguiente.
 - El aviso ficticio solo puede usarse para demostración local. Antes de producción, completar y aprobar la política real, sustituir el aviso y revisar el flujo de consentimiento.

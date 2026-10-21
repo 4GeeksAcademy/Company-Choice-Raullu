@@ -119,13 +119,64 @@ if (typeof document !== "undefined") {
 
 	if (form) {
 		const touched = new Set();
+		const attemptedSteps = new Set();
 		const errorSummary = form.querySelector("#form-error-summary");
-		const successMessage = form.querySelector("#form-success");
+		const successMessage = document.querySelector("#form-success");
 		const comments = form.querySelector("#comments");
 		const commentsCounter = form.querySelector("#comments-counter");
 		const volumeSelect = form.querySelector("#monthly-volume");
 		const lowVolumeWarning = form.querySelector("#low-volume-warning");
-		let submitted = false;
+		const steps = Array.from(form.querySelectorAll("[data-step]"));
+		const indicators = Array.from(form.querySelectorAll("[data-step-indicator]"));
+		const stepCount = form.querySelector("#step-count");
+		const previousButton = form.querySelector("#previous-step");
+		const nextButton = form.querySelector("#next-step");
+		const submitButton = form.querySelector("#submit-application");
+		const stepKeys = [
+			["companyName", "contactName", "email", "phone", "website"],
+			["operatingCountry", "productType", "monthlyVolume", "services"],
+			["current3pl"],
+			["comments", "privacyAcknowledgement"]
+		];
+		let currentStep = 0;
+
+		function keysForCurrentStep() {
+			return stepKeys[currentStep];
+		}
+
+		function updateStepIndicator() {
+			stepCount.textContent = `Paso ${currentStep + 1} de ${steps.length}`;
+			indicators.forEach((indicator, index) => {
+				const isCurrent = index === currentStep;
+				indicator.toggleAttribute("aria-current", isCurrent);
+				if (isCurrent) indicator.setAttribute("aria-current", "step");
+				indicator.className = isCurrent
+					? "rounded-card border border-secondary bg-surface-accent px-3 py-2 text-sm font-semibold text-heading"
+					: "rounded-card border border-border bg-white px-3 py-2 text-sm text-text-muted";
+			});
+			previousButton.hidden = currentStep === 0;
+			nextButton.hidden = currentStep === steps.length - 1;
+			submitButton.hidden = currentStep !== steps.length - 1;
+		}
+
+		function showStep(index, moveFocus = true) {
+			currentStep = index;
+			steps.forEach((step, stepIndex) => {
+				step.hidden = stepIndex !== currentStep;
+			});
+			updateStepIndicator();
+			errorSummary.hidden = true;
+			errorSummary.textContent = "";
+			if (moveFocus) steps[currentStep].querySelector("h2").focus();
+		}
+
+		function showStepErrors(result, moveFocus = true) {
+			errorSummary.hidden = result.invalidCount === 0;
+			errorSummary.textContent = result.invalidCount
+				? "No se pudo continuar. Revisa los errores indicados en este paso."
+				: "";
+			if (moveFocus && result.firstInvalid) result.firstInvalid.focus();
+		}
 
 		function updateCommentsCounter() {
 			const remaining = Math.max(0, 500 - comments.value.length);
@@ -140,12 +191,15 @@ if (typeof document !== "undefined") {
 		volumeSelect.addEventListener("change", updateLowVolumeWarning);
 		updateCommentsCounter();
 		updateLowVolumeWarning();
+		updateStepIndicator();
 
 		function refreshValidation(key) {
-			const result = renderValidation(form, submitted ? undefined : [key]);
-			if (submitted) {
-				errorSummary.hidden = result.invalidCount === 0;
-				errorSummary.textContent = result.invalidCount ? "No se pudo completar la demostración. Revisa los errores indicados junto a los campos." : "";
+			if (touched.has(key) || attemptedSteps.has(currentStep)) {
+				renderValidation(form, [key]);
+			}
+			if (attemptedSteps.has(currentStep)) {
+				const result = renderValidation(form, keysForCurrentStep());
+				showStepErrors(result, false);
 			}
 		}
 
@@ -153,42 +207,59 @@ if (typeof document !== "undefined") {
 			for (const control of item.controls) {
 				control.addEventListener("blur", () => {
 					touched.add(item.key);
-					refreshValidation(item.key);
+					if (keysForCurrentStep().includes(item.key)) refreshValidation(item.key);
 				});
 
 				if (control.tagName === "SELECT" || control.type === "checkbox" || control.type === "radio") {
 					control.addEventListener("change", () => {
-						successMessage.hidden = true;
 						touched.add(item.key);
-						refreshValidation(item.key);
+						if (keysForCurrentStep().includes(item.key)) refreshValidation(item.key);
 					});
 				} else {
 					control.addEventListener("input", () => {
-						successMessage.hidden = true;
-						if (touched.has(item.key) || submitted) refreshValidation(item.key);
+						if (keysForCurrentStep().includes(item.key) && (touched.has(item.key) || attemptedSteps.has(currentStep))) refreshValidation(item.key);
 					});
 				}
 			}
 		}
 
+		nextButton.addEventListener("click", () => {
+			attemptedSteps.add(currentStep);
+			const result = renderValidation(form, keysForCurrentStep());
+			if (result.invalidCount) {
+				showStepErrors(result);
+				return;
+			}
+			showStep(currentStep + 1);
+		});
+
+		previousButton.addEventListener("click", () => {
+			if (currentStep > 0) showStep(currentStep - 1);
+		});
+
 		form.addEventListener("submit", (event) => {
 			event.preventDefault();
-			submitted = true;
-			const result = renderValidation(form);
-			errorSummary.hidden = result.invalidCount === 0;
-			errorSummary.textContent = result.invalidCount ? "No se pudo completar la demostración. Revisa los errores indicados junto a los campos." : "";
-			successMessage.hidden = result.invalidCount > 0;
-			if (result.firstInvalid) {
-				result.firstInvalid.focus();
-			} else {
-				successMessage.focus();
+			attemptedSteps.add(currentStep);
+			const result = renderValidation(form, keysForCurrentStep());
+			if (result.invalidCount) {
+				showStepErrors(result);
+				return;
 			}
+			if (currentStep < steps.length - 1) {
+				showStep(currentStep + 1);
+				return;
+			}
+			form.hidden = true;
+			successMessage.hidden = false;
+			successMessage.focus();
 		});
 
 		form.addEventListener("reset", () => {
 			setTimeout(() => {
 				touched.clear();
-				submitted = false;
+				attemptedSteps.clear();
+				currentStep = 0;
+				form.hidden = false;
 				errorSummary.hidden = true;
 				errorSummary.textContent = "";
 				successMessage.hidden = true;
@@ -199,6 +270,8 @@ if (typeof document !== "undefined") {
 				}
 				updateCommentsCounter();
 				updateLowVolumeWarning();
+				showStep(0, false);
+				steps[0].querySelector("h2").focus();
 			}, 0);
 		});
 	}
