@@ -1,0 +1,33 @@
+# Tareas — Formulario de solicitud de información de TrackFlow
+
+| Campo | Valor |
+| --- | --- |
+| **Estado** | Aprobadas para ejecución secuencial |
+| **Especificación** | [`spec.md`](./spec.md) |
+| **Plan** | [`plan.md`](./plan.md) |
+
+## Secuencia de ejecución
+
+Completar y verificar cada tarea antes de empezar la siguiente. No iniciar trabajo de tareas posteriores en paralelo ni dejar una tarea parcialmente implementada al avanzar. La validación indicada en cada tarea es su puerta de cierre; registrar el resultado antes de marcarla completa.
+
+1. [x] **Definir privacidad de demostración:** incorporar al spec el aviso ficticio, el texto del checkbox sin enlace y las aclaraciones de que el aviso no está vigente, no se reciben datos y no deben introducirse datos reales. La política real queda pendiente y el formulario no es apto para producción.
+2. [x] **Preparar la página:** añadir a `application.html` idioma, metadatos SEO, favicon, navegación de vuelta, título e introducción comercial. Verificar estructura HTML y carga de los recursos enlazados.
+3. [x] **Añadir datos de empresa y contacto:** empresa, persona de contacto, email, teléfono y sitio web con los tipos y required del spec. Comprobar labels, ids, tipos y atributos.
+4. [x] **Añadir datos de operación:** país, tipo de producto y volumen con las opciones literales del briefing. Comprobar que las opciones seleccionables corresponden exactamente a la fuente.
+5. [x] **Añadir servicios y relación 3PL:** grupo de servicios checkbox, grupo de radio 3PL, sus `fieldset`/`legend` y estados requeridos. Verificar navegación y selección por teclado.
+6. [x] **Añadir comentarios y privacidad:** textarea con límite/copy acordados y contador; añadir el aviso y checkbox ficticios exactamente como se definen en `spec.md`, sin enlace. Verificar límite, leyenda de demo y aviso de no introducir datos reales.
+7. [x] **Completar estados y acciones:** errores junto a campos, advertencia, confirmación de éxito y botones Enviar/Limpiar, con semántica accesible. Aclarar visiblemente que el envío y éxito son una simulación y que Comercial no recibirá datos. Revisar nombres, asociaciones y estados iniciales.
+8. [x] **Validar campos individuales:** implementar en `validation.js` las reglas y mensajes literales para texto, contacto, email, teléfono y URL opcional. Probar cada caso correcto/incorrecto antes de continuar.
+9. [x] **Validar grupos y selección:** implementar validación de país, producto, volumen, servicios, 3PL y privacidad. Probar cada grupo y mensaje correspondiente.
+10. [x] **Añadir ciclo de interacción:** validar en blur/cambio y al enviar, no mostrar errores prematuros, actualizar al corregir y enfocar/identificar el primer error. Comprobar los eventos antes de continuar.
+11. [x] **Completar contador y advertencia:** actualizar el contador, bloquear al llegar a 500 y conservar validación defensiva; mostrar la advertencia con volumen `0-100`, para cualquier producto, sin confirmación. Probar ambas reglas.
+12. [x] **Completar envío y reinicio:** mostrar el éxito exacto solo si pasa la validación, junto a la aclaración de que no se envió ninguna solicitud; asegurar que no hay solicitudes HTTP ni persistencia. Limpiar todos los valores y estados. Probar casos válido, inválido y reset. **Verificación:** `node --check uis/website/validation.js`; prueba en Node con DOM simulado confirmó submit inválido (previene éxito, muestra resumen y enfoca empresa), válido (éxito visible y enfocado) y reset (limpia errores, ARIA, éxito, advertencia y contador); `get_errors` sin errores en HTML/JS; `git diff --check -- uis/website/validation.js` sin incidencias. No se usa backend ni se guardan datos.
+13. [x] **Revisar presentación y accesibilidad:** verificar diseño Tailwind/tokens, teclado, foco, contraste, labels, ARIA, mensajes accesibles, imágenes y enlaces. **Verificación:** revisión estática de `application.html` confirma 16 controles con label asociado, todas las imágenes con `alt`, roles `alert`/`status` sin `aria-live` redundante, icono decorativo en la advertencia, grupos `fieldset`/`legend` y foco `focus-visible`; colores de texto sobre blanco: texto 9.24:1, secundario 5.71:1, CTA 5.13:1, warning 5.24:1, error 6.57:1 y success 6.50:1; borde de controles 3.59:1. Diagnósticos de editor y `git diff --check` limpios. La revisión fue estática: no se ejecutó lector de pantalla ni auditoría WCAG automatizada.
+14. [x] **Revisar responsive:** comprobar anchos 320, 375, 768, 1280 y 1440 px, legibilidad, controles y ausencia de overflow horizontal. **Verificación:** el usuario confirmó visualmente que el formulario se ve correctamente en los cinco anchos requeridos; inspección estática confirma layout móvil vertical, `sm:grid-cols-2`/`sm:grid-cols-3`, controles `w-full`, botones `sm:flex-row`, contenedores acotados y navegación flexible. No se realizó prueba de navegador automatizada en este entorno; la verificación visual corresponde a la confirmación del usuario.
+15. [x] **Cierre técnico:** confirmar ausencia de backend, almacenamiento, llamadas de envío, dependencias nuevas y cambios en `index.html`/Schema.org; ejecutar diagnósticos disponibles y `git diff --check`, y documentar resultados y limitaciones. **Verificación:** búsquedas en `application.html`/`validation.js` no encontraron `fetch`, `XMLHttpRequest`, `sendBeacon`, almacenamiento web, cookies ni `action`; no existe `uis/website/package.json` ni se añadieron dependencias. `validation.js` pasa `node --check`, los diagnósticos de HTML/JS no reportan errores y `git diff --check` está limpio. No se alteró Schema.org ni el marcado de la landing como parte del formulario. El árbol de trabajo muestra un diff independiente en `uis/website/index.html` (layout y datos de contacto del footer); no lo modifiqué y lo dejo intacto. Tailwind CDN y Google Fonts son recursos de presentación existentes/autorizados y sí requieren carga de recursos externos; no existe llamada que envíe la solicitud o sus datos. La política real sigue pendiente, por lo que este formulario permanece limitado a demo local.
+
+## Aprobación y bloqueo
+
+- El usuario aprobó explícitamente esta secuencia de tareas para ejecución estrictamente secuencial.
+- Ejecutar estrictamente una tarea a la vez: cerrar y verificar la tarea actual antes de comenzar la siguiente.
+- El aviso ficticio solo puede usarse para demostración local. Antes de producción, completar y aprobar la política real, sustituir el aviso y revisar el flujo de consentimiento.
