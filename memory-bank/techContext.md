@@ -35,6 +35,7 @@ Este documento separa el entorno técnico existente de las necesidades del negoc
 
 ## Convenciones estructurales del repositorio
 
+- Cada iniciativa SDD guarda `spec.md`, `plan.md` y `tasks.md` juntos en `<proyecto>/specs/NNN-nombre-spec/`. La numeración de tres dígitos es incremental y única dentro de cada proyecto; el slug usa kebab-case. `.agents/rules/development.md` define la ubicación y las aprobaciones secuenciales.
 - `packages/` contiene código reutilizable empaquetado, versionable y con API propia; `shared/` contiene recursos comunes no empaquetados, como esquemas, plantillas, assets o configuración.
 - `.agents/rules/` y `.agents/skills/` configuran el agente de desarrollo del repositorio. En cambio, `agents/`, `agents/tools/` y `skills/` contienen agentes, herramientas y capacidades de producto de TrackFlow; `mcps/` contiene servidores MCP.
 - `workflows/` contiene automatizaciones y orquestaciones entre sistemas. No sustituye una API o worker de `services/` ni el código de transformación de `data/pipelines/`.

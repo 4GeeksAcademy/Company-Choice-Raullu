@@ -182,6 +182,22 @@ La marca debe sentirse técnica y organizada, sin perder el vínculo con almacen
 | **Fotografía**       | Procesos reales: almacén, _picking_, _packing_ y entrega.               |
 | **Movimiento**       | Microinteracciones breves; evitar la animación ornamental.              |
 
+### Iconografía Lucide
+
+- **Biblioteca oficial:** SVG estáticos de Lucide Icons `lucide-static` **v1.61.0**. No mezclar con otras bibliotecas ni añadir dependencias de ejecución.
+- **Estilo:** conservar los trazados oficiales, `viewBox` 24 × 24, relleno vacío, trazo de 2 px y terminaciones/uniones redondeadas.
+- **Tamaño:** 24 × 24 px en tarjetas y elementos de contacto; 20 × 20 px solo en espacios compactos. Mantener dimensiones estables.
+- **Color:** turquesa `#007B76` sobre superficies claras y menta `#6EE7D2` sobre azul petróleo, siguiendo los roles existentes.
+- **Accesibilidad:** los iconos junto a texto son decorativos y se ocultan a tecnologías de asistencia. Un control representado solo por un icono debe tener nombre accesible.
+- **Licencia:** conservar la licencia ISC distribuida con la fuente en `assets/icons/LICENSE` y registrar la versión utilizada junto a los recursos.
+
+### Organización y conservación de recursos
+
+- `assets/brand/`: logotipos, monograma y favicon oficiales. Son originales inmutables; no recrear, recolorear, recortar ni deformar.
+- `assets/illustrations/`: ilustraciones aprobadas originales. Preservar transparencia, colores y proporción; no recortar partes relevantes ni sustituirlas por recursos externos.
+- `assets/icons/`: SVG Lucide usados por la interfaz y el aviso de licencia/versionado. No almacenar aquí logotipos o ilustraciones.
+- Toda imagen debe tener atributo `alt`: las informativas reciben descripción breve y contextual; las estrictamente decorativas usan `alt=""`; los logotipos identifican a TrackFlow.
+
 ---
 
 ## 7. Uso de logotipos y favicon

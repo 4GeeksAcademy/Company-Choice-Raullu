@@ -13,10 +13,21 @@ Las reglas generales de enrutamiento, protección de archivos y entrega se centr
 
 ## Desarrollo guiado por especificaciones (SDD)
 
-Antes de implementar una funcionalidad, buscar sus `spec.md`, `plan.md` y `tasks.md` en la documentación del componente o del proyecto.
+Cada iniciativa SDD debe guardar sus tres artefactos juntos bajo la carpeta del proyecto responsable, con esta estructura:
+
+```text
+<proyecto>/specs/NNN-nombre-spec/spec.md
+<proyecto>/specs/NNN-nombre-spec/plan.md
+<proyecto>/specs/NNN-nombre-spec/tasks.md
+```
+
+Asignar `NNN` como número secuencial de tres dígitos, único e incremental dentro de cada proyecto; usar un nombre breve en kebab-case. Antes de crear una especificación, revisar las carpetas existentes del proyecto para elegir el siguiente número disponible. No guardar artefactos SDD sueltos directamente en la raíz del proyecto. Para iniciativas existentes, conservar su contenido y moverlas a la estructura canónica al trabajar en ellas.
+
+Antes de implementar una funcionalidad, buscar su carpeta `specs/NNN-nombre-spec/` en el proyecto responsable y consultar allí `spec.md`, `plan.md` y `tasks.md`.
 
 - No considerar aprobado un documento por el hecho de que exista.
 - Obtener aprobación explícita de la especificación antes de elaborar o aprobar el plan.
 - Obtener aprobación explícita del plan antes de cerrar o ejecutar las tareas.
 - Obtener aprobación explícita de las tareas antes de implementar.
 - No saltar etapas. Si falta un artefacto o una aprobación, señalarlo y solicitar autorización antes de continuar con la etapa siguiente.
+- La aprobación debe corresponder al contenido de cada artefacto; crear o ubicar los tres archivos no implica que estén aprobados.

@@ -6,10 +6,11 @@ Este documento separa el soporte ya preparado, las limitaciones comprobables y l
 
 - Alcance confirmado: Hito 1 según `uis/website/BRIEFING.md`, con experiencia en español, sin multiidioma por ahora, y Tailwind CSS cargado mediante CDN.
 - Estado: la fase 1 está implementada en `index.html`; la fase 2 aplica Tailwind CDN y el Design System en `index.html` y `styles.css`. `application.html` y `validation.js` permanecen fuera de estas fases y no contienen el formulario ni sus validaciones.
+- Mejora visual: especificación, plan y tareas aprobados en `uis/website/specs/001-mejora-visual-web/`; la landing ya está actualizada. Pasaron diagnósticos estáticos, comprobación de rutas/anchors y HTTP 200 de la página y recursos. La inspección visual a 320, 375, 768, 1280 y 1440 px queda pendiente: no hay navegador instalado en el contenedor.
 - Previsualización en Codespaces, desde la raíz: `npx --yes http-server ./uis/website -p 3000 -a 0.0.0.0`. El sitio y los recursos respondieron con HTTP 200 en el puerto 3001, ya que el 3000 estaba ocupado. No se pudo hacer una comprobación visual responsive porque el entorno no dispone de navegador ni automatización instalada.
 - El formulario debe simular el envío; no hay backend ni persistencia en el alcance de este hito.
 - Pendientes funcionales por aclarar: texto o URL de política de privacidad y criterio de «tipo de producto relevante» para la advertencia de bajo volumen.
-- Siguiente paso: preparar/aprobar los artefactos SDD aplicables al sitio y, cuando corresponda, implementar y verificar los requisitos descritos en su briefing.
+- Siguiente paso: implementar la mejora visual aprobada y completar las verificaciones descritas en `uis/website/specs/001-mejora-visual-web/plan.md`.
 
 ## Qué está preparado
 
@@ -34,8 +35,8 @@ Este documento separa el soporte ya preparado, las limitaciones comprobables y l
 
 La secuencia refleja el mensaje del encargo y las lagunas observadas en el repositorio; no incluye fechas ni prioridades de producto acordadas.
 
-1. Verificar operativamente que los agentes consultan los tres documentos del banco de memoria y las reglas aplicables antes de modificar el repositorio. La obligación está documentada en `AGENTS.md`, pero su cumplimiento no se ha comprobado; no asumir carga automática de `.agents/rules/`.
-2. Completar la revisión visual responsive cuando haya un navegador disponible y continuar con la fase 3 del formulario tras su aprobación.
+1. Completar la revisión visual responsive en navegador a 320, 375, 768, 1280 y 1440 px; la landing está servida en el puerto 3001, pero no hay navegador instalado en este contenedor.
+2. Continuar con la fase 3 del formulario solo tras su aprobación; `application.html` y `validation.js` permanecen fuera de alcance de esta mejora.
 3. Elegir una tarea recurrente del producto y formalizarla en `skills/` como capacidad reutilizable, con entradas, pasos y criterios de aceptación explícitos y verificables.
 4. Al crear aplicaciones, usar `uis/website` para el sitio público, `uis/backoffice` para la aplicación interna y `services/` para las APIs. Leer el README de la carpeta antes de añadir archivos; no crear un árbol paralelo.
 5. Aclarar la organización del backend: el README raíz recomienda FastAPI centralizado, mientras `services/README.md` describe un servicio por subcarpeta.
