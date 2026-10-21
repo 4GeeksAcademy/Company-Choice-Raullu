@@ -11,10 +11,10 @@ _These instructions are also available in [English](./README.md)._
 
 ## Propósito
 
-Este repositorio es la **plantilla de inicio** para los proyectos transversales. Trabajarás con escenarios de empresas reales (Brasaland, TrackFlow, Nexova) construyendo entregables que se corresponden con los hitos del curso (Web, Programación, Backend, Telemetría, RAG, Agentes, Workflows, Tiempo real).
+Este repositorio sigue la estructura transversal para proyectos de Ingeniería de IA con escenarios de empresas. Este espacio contiene el contexto de TrackFlow y las áreas de sus proyectos.
 
 - Crea una plantilla a partir de este repositorio.
-- Reemplaza el `CONTEXT.md` placeholder por el contexto de tu empresa asignada.
+- Lee `CONTEXT.md` y `BRIEFING.md` para conocer el contexto de TrackFlow, y `AGENTS.md` para las instrucciones del repositorio.
 - Usa `skills/` y los `README.md` por carpeta como guía de trabajo.
 
 ---
@@ -23,9 +23,9 @@ Este repositorio es la **plantilla de inicio** para los proyectos transversales.
 
 1. **Usa este repositorio como plantilla** y crea tu propio repo de proyecto.
 2. **Clona** tu repositorio (o ábrelo en Codespaces).
-3. **Reemplaza** `CONTEXT.md` con el contexto completo de tu empresa asignada.
-4. **Lee esta guía de carpetas** y abre el `README.md` de la carpeta en la que estés trabajando.
-5. **Empieza a implementar** en la carpeta correcta — no tires todo en la raíz.
+3. **Lee** `AGENTS.md`, el banco de memoria y el briefing del hito aplicable.
+4. **Lee esta guía de carpetas** y el README del área en la que estés trabajando.
+5. **Implementa** en la carpeta correcta — no pongas código de aplicación en la raíz.
 6. **Documenta** lo que añadas: cada app, servicio, agente o pipeline nuevo lleva subcarpeta + README.
 
 ---
@@ -51,10 +51,10 @@ Estás construyendo **una sola empresa** a lo largo de muchos hitos y proyectos.
 
 ## Estado actual de la plantilla
 
-> 💡 Actualmente el repositorio ofrece solo una **estructura base de carpetas y documentación**. Todavía no incluye aplicaciones ejecutables ni scripts globales en la raíz.
+> 💡 El repositorio ofrece una estructura base y documentación para TrackFlow. El código de cada aplicación debe ubicarse en el área de proyecto correspondiente, no en la raíz.
 >
-> - `CONTEXT.md` es un placeholder y debe sustituirse por el contexto de la empresa asignada.
-> - No existe todavía un `AGENTS.md` en la raíz.
+> - `CONTEXT.md` y `BRIEFING.md` contienen el contexto de TrackFlow; no los sustituyas por el contexto de otra empresa.
+> - `AGENTS.md` contiene las instrucciones generales para agentes del repositorio.
 > - Existe metadata del paquete compartido en `packages/shared/package.json` (`@repo/shared-types`), pero aún no hay runner de workspace en raíz.
 
 ---
@@ -65,11 +65,11 @@ Lee el `README.md` enlazado dentro de cada carpeta antes de empezar a programar 
 
 ### Archivos en la raíz
 
-| Ruta                         | Propósito                                                            | Qué haces aquí                                                                                               |
-| ---------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| [`CONTEXT.md`](./CONTEXT.md) | Fuente única de verdad de tu empresa (Brasaland, TrackFlow o Nexova) | **Primer paso:** copia aquí el briefing de tu empresa para que apps, agentes y prompts usen el mismo dominio |
-| `docker-compose.yml`         | Orquestación local de todo el stack                                  | Mantener en la raíz del repo — conecta `services/`, bases de datos y otros contenedores desde un solo lugar  |
-| `README.md` / `README.es.md` | Esta guía                                                            | Orientación — estás aquí                                                                                     |
+| Ruta                                                          | Propósito                                                | Qué haces aquí                                                                                                            |
+| ------------------------------------------------------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| [`CONTEXT.md`](./CONTEXT.md) / [`BRIEFING.md`](./BRIEFING.md) | Contexto de negocio y necesidades generales de TrackFlow | Léelos como contexto de dominio; consulta la documentación del área correspondiente para los requisitos de implementación |
+| `docker-compose.yml`                                          | Orquestación local de todo el stack                      | Mantener en la raíz del repo — conecta `services/`, bases de datos y otros contenedores desde un solo lugar               |
+| `README.md` / `README.es.md`                                  | Esta guía                                                | Orientación — estás aquí                                                                                                  |
 
 ### `uis/` — interfaces de usuario
 

@@ -2,19 +2,30 @@
 
 Este documento separa el soporte ya preparado, las limitaciones comprobables y los próximos pasos del encargo. Las aplicaciones no se consideran implementadas por el hecho de que sus objetivos estén descritos.
 
+## Hito vigente: sitio web público
+
+- Alcance confirmado: Hito 1 según `uis/website/BRIEFING.md`, con experiencia en español, sin multiidioma por ahora, y Tailwind CSS cargado mediante CDN.
+- Ubicación y archivos preparados: `uis/website/` contiene `index.html`, `application.html`, `styles.css` y `validation.js`. En la última inspección estaban vacíos; no se consideran una aplicación implementada.
+- Previsualización prevista en Codespaces, desde la raíz: `npx --yes http-server ./uis/website -p 3000 -a 0.0.0.0`. El servidor aún no se ha registrado aquí como ejecutado o validado.
+- El formulario debe simular el envío; no hay backend ni persistencia en el alcance de este hito.
+- Pendientes funcionales por aclarar: texto o URL de política de privacidad y criterio de «tipo de producto relevante» para la advertencia de bajo volumen.
+- Siguiente paso: preparar/aprobar los artefactos SDD aplicables al sitio y, cuando corresponda, implementar y verificar los requisitos descritos en su briefing.
+
 ## Qué está preparado
 
 - El banco de memoria contiene [projectBrief.md](projectBrief.md), [techContext.md](techContext.md) y este registro de progreso.
 - [AGENTS.md](../AGENTS.md) establece el contexto obligatorio y enruta hacia las reglas aplicables; `.agents/rules/development.md` contiene el flujo SDD y las aprobaciones.
-- `.agents/rules/` contiene la regla transversal `development.md` y las plantillas `frontend.md` y `backend.md`, cuyos contenidos técnicos siguen pendientes de definición y aprobación.
+- `.agents/rules/` contiene la regla transversal `development.md`, la regla frontend integrada con el Design System y la plantilla backend pendiente de definición y aprobación.
+- `uis/website/design-system.md` centraliza la identidad visual y los tokens de TrackFlow. Las decisiones visuales y cualquier excepción quedan sujetas a aprobación explícita previa.
+- Los logos horizontales, el monograma y el favicon oficiales no están presentes en el repositorio. No se generaron recursos; falta recibir y verificar los originales antes de integrarlos.
 - `.agents/skills/skill-creator/SKILL.md` guía la creación de skills para el agente de desarrollo; es distinta de las skills de producto ubicadas en `skills/`.
 - La plantilla ya separa las áreas de interfaces, servicios, datos, agentes, skills y recursos compartidos.
 - Existe metadata para `@repo/shared-types` en `packages/shared/`.
 
 ## Limitaciones actuales
 
-- El README raíz describe el repositorio como estructura base sin aplicaciones ejecutables ni runner de workspace en la raíz. `uis/` y `services/` contienen sus README de orientación, no las apps.
-- Las reglas no se cargan automáticamente; `AGENTS.md` indica a los agentes cuándo consultar cada archivo. Las plantillas de frontend y backend todavía no definen convenciones técnicas.
+- No hay runner de workspace en la raíz. El Hito 1 tiene archivos estáticos preparados en `uis/website/`; el servidor de previsualización se documenta más adelante en este registro y su ejecución debe verificarse por separado.
+- Las reglas de `.agents/rules/` no se cargan automáticamente; `AGENTS.md` indica consultar la regla frontend y el Design System. No se creó configuración adicional de Copilot por decisión del desarrollador. La regla backend continúa pendiente.
 - `skills/` contiene las capacidades de producto. La skill `.agents/skills/skill-creator/` es una herramienta de configuración del agente de desarrollo y no reemplaza la tarea pendiente de elegir/formalizar una skill de producto con criterios de aceptación comprobables.
 - Los README no están alineados sobre la organización del backend: uno recomienda FastAPI centralizado y el otro plantea una subcarpeta por servicio.
 - No hay registro verificable de funcionalidades TrackFlow implementadas ni comandos de aplicación que se hayan podido ejecutar.
@@ -24,7 +35,7 @@ Este documento separa el soporte ya preparado, las limitaciones comprobables y l
 La secuencia refleja el mensaje del encargo y las lagunas observadas en el repositorio; no incluye fechas ni prioridades de producto acordadas.
 
 1. Verificar operativamente que los agentes consultan los tres documentos del banco de memoria y las reglas aplicables antes de modificar el repositorio. La obligación está documentada en `AGENTS.md`, pero su cumplimiento no se ha comprobado; no asumir carga automática de `.agents/rules/`.
-2. Definir y aprobar las convenciones técnicas específicas de frontend y backend antes de tratar las plantillas actuales como reglas vigentes.
+2. Recibir los originales de marca y verificar sus nombres y formatos antes de colocarlos en `uis/website/assets/brand/` o referenciarlos desde las interfaces.
 3. Elegir una tarea recurrente del producto y formalizarla en `skills/` como capacidad reutilizable, con entradas, pasos y criterios de aceptación explícitos y verificables.
 4. Al crear aplicaciones, usar `uis/website` para el sitio público, `uis/backoffice` para la aplicación interna y `services/` para las APIs. Leer el README de la carpeta antes de añadir archivos; no crear un árbol paralelo.
 5. Aclarar la organización del backend: el README raíz recomienda FastAPI centralizado, mientras `services/README.md` describe un servicio por subcarpeta.

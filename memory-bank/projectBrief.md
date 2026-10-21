@@ -2,6 +2,14 @@
 
 Este documento resume el negocio, los problemas y los objetivos descritos en `BRIEFING.md`. Se centra en el contexto empresarial y no repite referencias de fuente en cada apartado.
 
+## Sitio web público
+
+Como parte de la modernización de la presencia comercial de TrackFlow, se ha decidido desarrollar un sitio público que explique sus servicios, cobertura binacional y propuesta de valor, y permita a empresas de e-commerce solicitar información mediante un formulario estructurado. Los requisitos funcionales detallados se describen en [`uis/website/BRIEFING.md`](../uis/website/BRIEFING.md).
+
+Según lo decidido hasta ahora, la experiencia se ofrecerá en español; el soporte multiidioma queda pospuesto. Tailwind CSS se incorporará mediante CDN. El formulario validará los datos solicitados y simulará el envío en el navegador, sin API, persistencia de leads, envío de correo ni integración con CRM dentro de este alcance.
+
+Quedan por definir el texto o URL de la política de privacidad y la interpretación de «tipo de producto relevante» para mostrar la advertencia de bajo volumen. No se deben inventar esos datos o criterios.
+
 ## La empresa
 
 TrackFlow presta servicios de logística de última milla y gestión de almacenes para marcas de comercio electrónico. Fundada en 2009 en Los Ángeles, opera en Estados Unidos y España, con almacenes en Los Ángeles y Zaragoza. Cuenta con unos 130 empleados y factura alrededor de 9 millones de euros anuales.

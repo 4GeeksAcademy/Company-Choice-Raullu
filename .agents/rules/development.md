@@ -7,6 +7,7 @@
 - Escribir código claro, mantenible y coherente con el proyecto; reutilizar soluciones existentes cuando corresponda y gestionar los errores relevantes.
 - Ejecutar las verificaciones disponibles y documentadas que correspondan al cambio. Informar resultados y límites de verificación.
 - Mantener actualizada la documentación afectada con información verificada, según el proceso de sincronización descrito en [AGENTS.md](../../AGENTS.md).
+- Para el Hito 1 del sitio público de TrackFlow, respetar el alcance de `uis/website/BRIEFING.md`: el formulario simula la recepción de la solicitud. No añadir backend, persistencia de leads ni integración con CRM como parte de este hito.
 
 Las reglas generales de enrutamiento, protección de archivos y entrega se centralizan en `AGENTS.md`; esta regla concreta las pautas de desarrollo y SDD.
 

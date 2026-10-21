@@ -2,14 +2,25 @@
 
 Este documento separa el entorno técnico existente de las necesidades del negocio y de las decisiones aún pendientes. No se ha seleccionado un stack de aplicación.
 
+## Decisiones técnicas para el Hito 1
+
+- El sitio público está ubicado en `uis/website/`; consultar allí su briefing antes de implementar.
+- Para este hito, la interfaz y el formulario serán en español. No se implementará el segundo idioma todavía.
+- Tailwind CSS es obligatorio y se incorporará mediante CDN por ahora. Esto requiere conectividad a Internet en el navegador. No se ha aprobado un proceso de build ni dependencias locales de frontend.
+- Para previsualizar en Codespaces desde la raíz del repositorio: `npx --yes http-server ./uis/website -p 3000 -a 0.0.0.0`. El comando sirve estáticos y no compila Tailwind ni proporciona backend.
+- El envío del formulario es simulado en el cliente. No se ha aprobado persistencia, API, correo transaccional ni integración con CRM.
+- [`uis/website/design-system.md`](../uis/website/design-system.md) es la fuente canónica de identidad visual y tokens para las interfaces de TrackFlow. Se debe consultar antes de cambios visuales; toda modificación o excepción de identidad necesita aprobación explícita previa y debe documentarse primero allí.
+- Los originales de marca deben residir en `uis/website/assets/brand/`, pero esa carpeta y los archivos oficiales todavía no existen en el repositorio. No crear ni referenciar recursos gráficos hasta recibirlos y verificar nombres y extensiones.
+- No hay configuración `.github/instructions/` en el repositorio. `.agents/rules/` no se carga automáticamente; `AGENTS.md` ordena consultar manualmente `.agents/rules/frontend.md` y el Design System. Por decisión del desarrollador, no se añadirá una instrucción Copilot paralela.
+
 ## Tecnologías por capa
 
-- **Frontend:** no hay una aplicación implementada ni tecnologías seleccionadas. La plantilla sitúa el sitio público en `uis/website` y la aplicación interna en `uis/backoffice`; antes de crear cualquiera, hay que leer [uis/README.md](../uis/README.md).
+- **Frontend:** para el Hito 1 del sitio público se han elegido HTML/CSS/JavaScript estáticos y Tailwind CSS mediante CDN; esta decisión no define el stack de futuras aplicaciones ni del backoffice. El sitio está en `uis/website`; antes de trabajar allí, leer [uis/README.md](../uis/README.md) y `.agents/rules/frontend.md`.
 - **Backend:** el briefing pide APIs de inventario y tracking, pero no elige lenguaje ni framework. El README raíz recomienda una API centralizada con FastAPI; [services/README.md](../services/README.md) describe una subcarpeta por servicio. Esta diferencia no está resuelta. Las APIs deben ubicarse en `services/`, sin crear un árbol paralelo.
 - **Bases de datos:** el entorno actual tiene bases de datos en dos proveedores cloud, sin identificar los proveedores, motores, esquemas, ni fuentes de verdad. No hay una tecnología de base de datos elegida para el proyecto.
 - **Datos e IA:** la plantilla separa datos fuente, pipelines, datos procesados y evaluación en `data/raw/`, `data/pipelines/`, `data/process/` y `data/eval/`. El briefing necesita pipelines para dashboards, RAG, agentes y clasificación asistida por IA, pero no define herramientas, modelos, vector store ni plataforma de datos.
 - **Integraciones y automatización:** existen integraciones heredadas poco documentadas. Se plantean conexiones con sistemas de almacén, transportistas, CRM y otras fuentes; no se especifican APIs, protocolos ni credenciales. Los workflows sirven para orquestar sistemas; las transformaciones de datos pertenecen a `data/pipelines/` y las APIs/workers a `services/`.
-- **Infraestructura y ejecución:** la plantilla ubica Dockerfiles, Terraform, manifiestos y CI/CD en `infra/`, mientras recomienda mantener `docker-compose.yml` en la raíz. Este archivo no existe actualmente. Tampoco hay aplicaciones ejecutables ni runner de workspace en raíz. Existe metadata para `packages/shared` (`@repo/shared-types`), pero no configuración de workspace raíz ni comandos de aplicación documentados.
+- **Infraestructura y ejecución:** la plantilla ubica Dockerfiles, Terraform, manifiestos y CI/CD en `infra/`, mientras recomienda mantener `docker-compose.yml` en la raíz. Este archivo no existe actualmente. No hay runner de workspace en raíz. Existe metadata para `packages/shared` (`@repo/shared-types`), pero no configuración de workspace raíz. Para previsualizar el sitio estático del Hito 1 se documenta el comando `http-server` de Codespaces, aún pendiente de verificación operativa.
 
 ## Sistemas y procesos actuales
 
@@ -42,13 +53,13 @@ Este documento separa el entorno técnico existente de las necesidades del negoc
 ## Pruebas y comandos
 
 - La plantilla de agentes prevé pruebas funcionales, de regresión y de calidad; recomienda documentar tipos de prueba, herramientas y criterios de aceptación en cada agente. Fuente: [agents/\_template/tests/README.md](../agents/_template/tests/README.md).
-- No se especifica un framework ni un comando de pruebas global para las aplicaciones. El README raíz indica que todavía no hay runner de workspace y no hay apps ejecutables; no hay que inventar comandos hasta que el proyecto los defina.
+- No se especifica un framework ni un comando de pruebas global para las aplicaciones. No hay runner de workspace en raíz. El comando de previsualización del sitio está documentado, pero todavía no consta como ejecutado; no hay que afirmar esa verificación hasta realizarla.
 
 ## Reglas de contexto para agentes
 
 1. Antes de modificar cualquier parte del repositorio, leer `memory-bank/projectBrief.md`, `memory-bank/techContext.md` y `memory-bank/progress.md`.
 2. Usar conjuntamente el contexto de negocio y el técnico; no implementar a partir de uno solo.
-3. Seguir `AGENTS.md` y consultar explícitamente las reglas aplicables de `.agents/rules/`. `development.md` contiene reglas transversales; `frontend.md` y `backend.md` son plantillas pendientes de definición y aprobación, no convenciones técnicas vigentes.
+3. Seguir `AGENTS.md` y consultar explícitamente las reglas aplicables de `.agents/rules/`. `development.md` contiene reglas transversales; `frontend.md` establece reglas vigentes para el sitio público del Hito 1; `backend.md` sigue pendiente de definición y aprobación.
 4. No convertir necesidades en decisiones. Si falta una tecnología, ruta, contrato o criterio, registrarlo como pendiente y no asumirlo.
 
 ## Decisiones y datos técnicos no especificados
