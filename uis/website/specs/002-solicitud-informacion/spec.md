@@ -1,11 +1,11 @@
 # Especificación — Formulario de solicitud de información de TrackFlow
 
-| Campo | Valor |
-| --- | --- |
-| **Estado** | Cambio propuesto; pendiente de aprobación |
-| **Proyecto / área** | TrackFlow · `uis/website/` |
-| **Tipo de cambio** | Completar la página de solicitud comercial del Hito 1 |
-| **Documento** | `spec.md` · requisitos y criterios de aceptación; no es un plan de implementación |
+| Campo               | Valor                                                                             |
+| ------------------- | --------------------------------------------------------------------------------- |
+| **Estado**          | Aprobada para planificación                                                       |
+| **Proyecto / área** | TrackFlow · `uis/website/`                                                        |
+| **Tipo de cambio**  | Completar la página de solicitud comercial del Hito 1                             |
+| **Documento**       | `spec.md` · requisitos y criterios de aceptación; no es un plan de implementación |
 
 ## 1. Contexto y objetivo
 
@@ -40,20 +40,20 @@ La implementación se realizará únicamente después de aprobar esta especifica
 
 Se deben incluir exactamente estos campos. Los identificadores y valores técnicos de `name`/`value` se concretarán en el plan usando el briefing y las convenciones comprobadas; no se establecen convenciones nuevas en esta especificación.
 
-| Campo | Tipo HTML | Obligatorio | Opciones o regla |
-| --- | --- | --- | --- |
-| Nombre de la empresa | `text` | Sí | Mínimo 2 caracteres |
-| Persona de contacto | `text` | Sí | Al menos dos palabras: nombre y apellido |
-| Email corporativo | `email` | Sí | Formato válido de email; no se añadirá una restricción de dominio no descrita en el briefing |
-| Teléfono | `tel` | Sí | Comenzar por `+` e incluir código de país y número |
-| Sitio web de la empresa | `url` | No | Si se proporciona, URL válida que comience con `http://` o `https://` |
-| País de operación principal | `select` | Sí | Estados Unidos / España / Ambos / Otro |
-| Tipo de producto | `select` | Sí | Moda / Electrónica / Cosmética / Alimentación / Otro |
-| Volumen mensual estimado de envíos | `select` | Sí | 0-100 / 101-500 / 501-2000 / 2000+ / No estoy seguro |
-| Servicios de interés | Grupo de `checkbox` | Sí | Almacenaje / Última milla / Logística inversa; seleccionar uno o más |
-| ¿Actualmente trabajas con otro 3PL? | Grupo de `radio` | Sí | Sí / No / Estoy evaluando opciones |
-| Comentarios o necesidades específicas | `textarea` | No | Máximo 500 caracteres |
-| Aviso provisional de privacidad | `checkbox` | Sí | Debe marcarse para poder ejecutar la simulación local; no constituye aceptación de una política vigente |
+| Campo                                 | Tipo HTML           | Obligatorio | Opciones o regla                                                                                        |
+| ------------------------------------- | ------------------- | ----------- | ------------------------------------------------------------------------------------------------------- |
+| Nombre de la empresa                  | `text`              | Sí          | Mínimo 2 caracteres                                                                                     |
+| Persona de contacto                   | `text`              | Sí          | Al menos dos palabras: nombre y apellido                                                                |
+| Email corporativo                     | `email`             | Sí          | Formato válido de email; no se añadirá una restricción de dominio no descrita en el briefing            |
+| Teléfono                              | `tel`               | Sí          | Comenzar por `+` e incluir código de país y número                                                      |
+| Sitio web de la empresa               | `url`               | No          | Si se proporciona, URL válida que comience con `http://` o `https://`                                   |
+| País de operación principal           | `select`            | Sí          | Estados Unidos / España / Ambos / Otro                                                                  |
+| Tipo de producto                      | `select`            | Sí          | Moda / Electrónica / Cosmética / Alimentación / Otro                                                    |
+| Volumen mensual estimado de envíos    | `select`            | Sí          | 0-100 / 101-500 / 501-2000 / 2000+ / No estoy seguro                                                    |
+| Servicios de interés                  | Grupo de `checkbox` | Sí          | Almacenaje / Última milla / Logística inversa; seleccionar uno o más                                    |
+| ¿Actualmente trabajas con otro 3PL?   | Grupo de `radio`    | Sí          | Sí / No / Estoy evaluando opciones                                                                      |
+| Comentarios o necesidades específicas | `textarea`          | No          | Máximo 500 caracteres                                                                                   |
+| Aviso provisional de privacidad       | `checkbox`          | Sí          | Debe marcarse para poder ejecutar la simulación local; no constituye aceptación de una política vigente |
 
 Cada control tendrá una etiqueta asociada mediante `for`/`id`. Se usará `fieldset` y `legend` para los grupos de checkbox y radio, y para otros grupos cuando ayude a entender la estructura. Los campos obligatorios se identificarán visual y programáticamente. El formulario tendrá exactamente los cuatro pasos descritos en la sección 6; no se añadirán campos ni pasos.
 
@@ -74,20 +74,20 @@ Se respetarán los límites del briefing. En particular, no se inferirá que «e
 
 Mensajes literales de error:
 
-| Campo | Mensaje |
-| --- | --- |
-| Nombre de la empresa | `El nombre de la empresa debe tener al menos 2 caracteres` |
-| Persona de contacto | `Ingresa nombre y apellido del contacto` |
-| Email corporativo | `Ingresa un email corporativo válido (ejemplo: <nombre@empresa.com>)` |
-| Teléfono | `El teléfono debe incluir código de país (ejemplo: +1 213 555 0147)` |
-| Sitio web | `Si incluyes sitio web, debe ser una URL válida` |
-| País | `Selecciona el país de operación principal` |
-| Tipo de producto | `Selecciona el tipo de producto que manejas` |
-| Volumen mensual | `Selecciona el volumen mensual estimado` |
-| Servicios de interés | `Selecciona al menos un servicio de interés` |
-| 3PL actual | `Indica si actualmente trabajas con otro proveedor logístico` |
-| Comentarios | `Los comentarios no pueden exceder 500 caracteres (quedan X)` |
-| Política de privacidad | `Debes aceptar la política de privacidad para continuar` |
+| Campo                  | Mensaje                                                               |
+| ---------------------- | --------------------------------------------------------------------- |
+| Nombre de la empresa   | `El nombre de la empresa debe tener al menos 2 caracteres`            |
+| Persona de contacto    | `Ingresa nombre y apellido del contacto`                              |
+| Email corporativo      | `Ingresa un email corporativo válido (ejemplo: <nombre@empresa.com>)` |
+| Teléfono               | `El teléfono debe incluir código de país (ejemplo: +1 213 555 0147)`  |
+| Sitio web              | `Si incluyes sitio web, debe ser una URL válida`                      |
+| País                   | `Selecciona el país de operación principal`                           |
+| Tipo de producto       | `Selecciona el tipo de producto que manejas`                          |
+| Volumen mensual        | `Selecciona el volumen mensual estimado`                              |
+| Servicios de interés   | `Selecciona al menos un servicio de interés`                          |
+| 3PL actual             | `Indica si actualmente trabajas con otro proveedor logístico`         |
+| Comentarios            | `Los comentarios no pueden exceder 500 caracteres (quedan X)`         |
+| Política de privacidad | `Debes aceptar la política de privacidad para continuar`              |
 
 Los errores aparecerán junto al control o grupo correspondiente, explicarán la corrección y no dependerán solo del color. Se actualizarán o desaparecerán al corregir el dato. Se asociarán accesiblemente con el control mediante atributos ARIA cuando corresponda.
 
@@ -135,6 +135,7 @@ Los errores aparecerán junto al control o grupo correspondiente, explicarán la
   `Si tienes alguna consulta urgente, escríbenos directamente a comercial@trackflow.com`
 
   El correo se presentará como enlace `mailto:comercial@trackflow.com`.
+
 - La notificación de éxito estará disponible para tecnologías de asistencia.
 - El envío será una simulación local. No hará solicitudes HTTP ni enviará, persistirá o expondrá los datos a servicios externos. La página y el resultado deben aclarar que Comercial no recibirá la solicitud.
 - El texto provisional del checkbox será: `He leído el aviso provisional de privacidad (solo para la demostración; no es una política vigente).` No llevará enlace.
@@ -241,6 +242,6 @@ Se documentarán resultados reales y limitaciones; no se dará por verificada un
 
 ## 13. Aprobaciones
 
-- La versión anterior de esta especificación fue aprobada para planificación. Esta revisión propone sustituir el formulario de un solo bloque por los cuatro pasos solicitados y aún requiere aprobación explícita del usuario antes de continuar con cambios en el plan, las tareas o el código.
+- El usuario aprobó explícitamente esta revisión, que sustituye el formulario de un solo bloque por los cuatro pasos solicitados, para continuar con la actualización de plan y tareas.
 - El usuario autoriza el uso del aviso ficticio de demostración, dejando pendiente la política real. La aprobación no convierte el aviso ficticio en política vigente ni autoriza su uso productivo.
 - Tras aprobar `plan.md`, se podrá elaborar `tasks.md`; se solicitará aprobación explícita de las tareas antes de implementar, siguiendo `.agents/rules/development.md`.

@@ -1,10 +1,10 @@
 # Tareas — Formulario de solicitud de información de TrackFlow
 
-| Campo | Valor |
-| --- | --- |
-| **Estado** | Aprobadas para ejecución secuencial |
-| **Especificación** | [`spec.md`](./spec.md) |
-| **Plan** | [`plan.md`](./plan.md) |
+| Campo              | Valor                                      |
+| ------------------ | ------------------------------------------ |
+| **Estado**         | Tareas revisadas; pendientes de aprobación |
+| **Especificación** | [`spec.md`](./spec.md)                     |
+| **Plan**           | [`plan.md`](./plan.md)                     |
 
 ## Secuencia de ejecución
 
@@ -26,8 +26,18 @@ Completar y verificar cada tarea antes de empezar la siguiente. No iniciar traba
 14. [x] **Revisar responsive:** comprobar anchos 320, 375, 768, 1280 y 1440 px, legibilidad, controles y ausencia de overflow horizontal. **Verificación:** el usuario confirmó visualmente que el formulario se ve correctamente en los cinco anchos requeridos; inspección estática confirma layout móvil vertical, `sm:grid-cols-2`/`sm:grid-cols-3`, controles `w-full`, botones `sm:flex-row`, contenedores acotados y navegación flexible. No se realizó prueba de navegador automatizada en este entorno; la verificación visual corresponde a la confirmación del usuario.
 15. [x] **Cierre técnico:** confirmar ausencia de backend, almacenamiento, llamadas de envío, dependencias nuevas y cambios en `index.html`/Schema.org; ejecutar diagnósticos disponibles y `git diff --check`, y documentar resultados y limitaciones. **Verificación:** búsquedas en `application.html`/`validation.js` no encontraron `fetch`, `XMLHttpRequest`, `sendBeacon`, almacenamiento web, cookies ni `action`; no existe `uis/website/package.json` ni se añadieron dependencias. `validation.js` pasa `node --check`, los diagnósticos de HTML/JS no reportan errores y `git diff --check` está limpio. No se alteró Schema.org ni el marcado de la landing como parte del formulario. El árbol de trabajo muestra un diff independiente en `uis/website/index.html` (layout y datos de contacto del footer); no lo modifiqué y lo dejo intacto. Tailwind CDN y Google Fonts son recursos de presentación existentes/autorizados y sí requieren carga de recursos externos; no existe llamada que envíe la solicitud o sus datos. La política real sigue pendiente, por lo que este formulario permanece limitado a demo local.
 
+### Tareas para la revisión aprobada del flujo por pasos
+
+Estas tareas describen el cambio pendiente; no implican que se haya implementado. Se ejecutarán una por una, solo después de la aprobación explícita de esta lista.
+
+16. [ ] **Actualizar estructura de cuatro pasos:** reorganizar los campos existentes en `application.html` como Datos de empresa y contacto, Operación logística, Relación con proveedores 3PL, y Comentarios y privacidad. Añadir indicador accesible de progreso, controles Anterior/Siguiente y encabezados enfocables. Verificar que no se agreguen ni se pierdan campos y que los pasos no visibles no sean alcanzables por teclado.
+17. [ ] **Implementar navegación validada:** en `validation.js`, validar el paso actual al avanzar, impedir avances con errores o saltos a pasos futuros, volver al paso anterior preservando valores y mover el foco al encabezado de cada paso. Probar pasos válidos e inválidos, teclado y estados del indicador.
+18. [ ] **Ajustar selector y advertencia:** mostrar la advertencia exacta de volumen `0-100` inmediatamente debajo del selector y aumentar el espacio de la flecha de cada desplegable respecto del borde derecho, preservando el comportamiento nativo. Comprobar cada opción de volumen y la presentación responsive.
+19. [ ] **Ajustar éxito y reinicio:** después de un envío válido, ocultar el formulario completo y dejar únicamente la confirmación accesible y la aclaración de que no se envió nada; al limpiar, restablecer todo y volver al primer paso. Probar envío válido, inválido y reinicio.
+20. [ ] **Verificar el flujo actualizado:** revisar navegación, validación por paso, foco, preservación de valores, indicador, advertencia, éxito, accesibilidad y viewports definidos; ejecutar diagnósticos disponibles y `git diff --check`, y documentar límites. No dar por realizadas verificaciones manuales no ejecutadas.
+
 ## Aprobación y bloqueo
 
-- El usuario aprobó explícitamente esta secuencia de tareas para ejecución estrictamente secuencial.
+- Esta revisión añade las tareas 16–20 para implementar el flujo de cuatro pasos, con base en la especificación y el plan actualizados. El usuario debe aprobar explícitamente esta lista antes de ejecutar cualquiera de ellas.
 - Ejecutar estrictamente una tarea a la vez: cerrar y verificar la tarea actual antes de comenzar la siguiente.
 - El aviso ficticio solo puede usarse para demostración local. Antes de producción, completar y aprobar la política real, sustituir el aviso y revisar el flujo de consentimiento.
