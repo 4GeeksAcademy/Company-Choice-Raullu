@@ -1,51 +1,27 @@
 # Estado del proyecto
 
-Este documento separa el soporte ya preparado, las limitaciones comprobables y los próximos pasos del encargo. Las aplicaciones no se consideran implementadas por el hecho de que sus objetivos estén descritos.
+Este documento registra el estado comprobado del proyecto, separando implementación, verificaciones y limitaciones.
 
 ## Hito vigente: sitio web público
 
-- Alcance confirmado: Hito 1 según `uis/website/BRIEFING.md`, con experiencia en español, sin multiidioma por ahora, y Tailwind CSS cargado mediante CDN.
-- Estado: la fase 1 está implementada en `index.html`; la fase 2 aplica Tailwind CDN y el Design System en `index.html` y `styles.css`. `application.html` y `validation.js` permanecen fuera de estas fases y no contienen el formulario ni sus validaciones.
-- Mejora visual: especificación, plan y tareas aprobados en `uis/website/specs/001-mejora-visual-web/`; la landing ya está actualizada. Pasaron diagnósticos estáticos, comprobación de rutas/anchors y HTTP 200 de la página y recursos. La inspección visual a 320, 375, 768, 1280 y 1440 px queda pendiente: no hay navegador instalado en el contenedor.
-- Previsualización en Codespaces, desde la raíz: `npx --yes http-server ./uis/website -p 3000 -a 0.0.0.0`. El sitio y los recursos respondieron con HTTP 200 en el puerto 3001, ya que el 3000 estaba ocupado. No se pudo hacer una comprobación visual responsive porque el entorno no dispone de navegador ni automatización instalada.
-- El formulario debe simular el envío; no hay backend ni persistencia en el alcance de este hito.
-- Pendientes funcionales por aclarar: texto o URL de política de privacidad y criterio de «tipo de producto relevante» para la advertencia de bajo volumen.
-- Siguiente paso: implementar la mejora visual aprobada y completar las verificaciones descritas en `uis/website/specs/001-mejora-visual-web/plan.md`.
+- Alcance del sitio según `uis/website/BRIEFING.md`: experiencia en español, Tailwind CSS por CDN y sin multiidioma en este hito.
+- La landing está implementada en `uis/website/index.html` con estilos y tokens del Design System.
+- La solicitud comercial está implementada en `uis/website/application.html` y `uis/website/validation.js` como formulario B2B de cuatro pasos. La estructura y navegación, validación por paso, advertencia bajo volumen, confirmación simulada y reinicio corresponden a la revisión aprobada en `uis/website/specs/002-solicitud-informacion/`.
+- El formulario simula localmente el envío. No transmite ni persiste datos y no debe usarse con datos personales o confidenciales reales.
+- La política real de privacidad y su información asociada siguen pendientes. El aviso actual es ficticio, no vigente y solo para demostración; no publicar el formulario para recopilación real hasta reemplazarlo y aprobarlo.
 
-## Qué está preparado
+## Verificaciones de la implementación del formulario por pasos
 
-- El banco de memoria contiene [projectBrief.md](projectBrief.md), [techContext.md](techContext.md) y este registro de progreso.
-- [AGENTS.md](../AGENTS.md) establece el contexto obligatorio y enruta hacia las reglas aplicables; `.agents/rules/development.md` contiene el flujo SDD y las aprobaciones.
-- `.agents/rules/` contiene la regla transversal `development.md`, la regla frontend integrada con el Design System y la plantilla backend pendiente de definición y aprobación.
-- `uis/website/design-system.md` centraliza la identidad visual y los tokens de TrackFlow. Las decisiones visuales y cualquier excepción quedan sujetas a aprobación explícita previa.
-- Los logos horizontales, el monograma y el favicon oficiales están presentes en `uis/website/assets/brand/`; sus nombres, formatos y proporciones se verificaron. No se modificaron los originales.
-- `.agents/skills/skill-creator/SKILL.md` guía la creación de skills para el agente de desarrollo; es distinta de las skills de producto ubicadas en `skills/`.
-- La plantilla ya separa las áreas de interfaces, servicios, datos, agentes, skills y recursos compartidos.
-- Existe metadata para `@repo/shared-types` en `packages/shared/`.
+- `node --check uis/website/validation.js`: correcto.
+- `git diff --check`: correcto.
+- Diagnósticos del editor para `application.html` y `validation.js`: sin errores.
+- Comprobación estática: cuatro paneles y sus controles; navegación secuencial con validación por paso y foco; los paneles no activos usan `hidden`; advertencia junto al selector de volumen; padding derecho de selectores; confirmación fuera del formulario y ocultación del formulario tras envío válido.
+- Búsqueda estática en el formulario: no se encontraron `fetch`, `XMLHttpRequest`, `sendBeacon`, `localStorage`, `sessionStorage` ni cookies.
+- No se encontró navegador instalado ni paquete DOM de pruebas (`jsdom`, `happy-dom`, `linkedom`) en el entorno. Por tanto, quedan pendientes la prueba de interacción en navegador, revisión visual responsive en 320, 375, 768, 1280 y 1440 px y prueba con lector de pantalla. No afirmar que estas comprobaciones se ejecutaron.
 
-## Limitaciones actuales
+## Contexto y limitaciones técnicas
 
-- No hay runner de workspace en la raíz. El Hito 1 tiene archivos estáticos preparados en `uis/website/`; el servidor de previsualización se documenta más adelante en este registro y su ejecución debe verificarse por separado.
-- Las reglas de `.agents/rules/` no se cargan automáticamente; `AGENTS.md` indica consultar la regla frontend y el Design System. No se creó configuración adicional de Copilot por decisión del desarrollador. La regla backend continúa pendiente.
-- `skills/` contiene las capacidades de producto. La skill `.agents/skills/skill-creator/` es una herramienta de configuración del agente de desarrollo y no reemplaza la tarea pendiente de elegir/formalizar una skill de producto con criterios de aceptación comprobables.
-- Los README no están alineados sobre la organización del backend: uno recomienda FastAPI centralizado y el otro plantea una subcarpeta por servicio.
-- La landing estática cuenta con estructura semántica y presentación responsive preparada mediante Tailwind. La validación automatizada de estructura y la entrega HTTP se ejecutaron; la comprobación visual en distintos viewports queda pendiente.
-
-## Próximos pasos sugeridos
-
-La secuencia refleja el mensaje del encargo y las lagunas observadas en el repositorio; no incluye fechas ni prioridades de producto acordadas.
-
-1. Completar la revisión visual responsive en navegador a 320, 375, 768, 1280 y 1440 px; la landing está servida en el puerto 3001, pero no hay navegador instalado en este contenedor.
-2. Continuar con la fase 3 del formulario solo tras su aprobación; `application.html` y `validation.js` permanecen fuera de alcance de esta mejora.
-3. Elegir una tarea recurrente del producto y formalizarla en `skills/` como capacidad reutilizable, con entradas, pasos y criterios de aceptación explícitos y verificables.
-4. Al crear aplicaciones, usar `uis/website` para el sitio público, `uis/backoffice` para la aplicación interna y `services/` para las APIs. Leer el README de la carpeta antes de añadir archivos; no crear un árbol paralelo.
-5. Aclarar la organización del backend: el README raíz recomienda FastAPI centralizado, mientras `services/README.md` describe un servicio por subcarpeta.
-
-## Verificaciones registradas
-
-- Los diagnósticos de Markdown no señalaron errores en los documentos del banco de memoria ni en `AGENTS.md`.
-- Verificación estática de estructura, tokens y configuración de Tailwind; `git diff --check`; diagnósticos del editor; HTTP 200 para la landing, CSS, logos y favicon. Sin verificación visual en navegador ni prueba del formulario, que sigue fuera de alcance.
-
-## Datos pendientes
-
-No se han definido prioridades de negocio, responsables de implementación, fechas, hitos o criterios de aceptación de producto. Tampoco se ha elegido la tarea que cubrirá la skill ni se ha establecido el contenido detallado de los controles previos al commit.
+- No hay runner global en la raíz del repositorio. El sitio usa HTML/CSS/JavaScript estáticos y Tailwind CDN; no se añadió dependencia ni build.
+- Previsualización documentada en Codespaces: `npx --yes http-server ./uis/website -p 3000 -a 0.0.0.0`.
+- La política de privacidad real permanece pendiente y debe aprobarse antes de recopilar solicitudes reales.
+- Las decisiones de arquitectura del backend y otras cuestiones del proyecto permanecen como están descritas en `techContext.md`.
