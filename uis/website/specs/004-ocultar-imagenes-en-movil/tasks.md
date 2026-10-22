@@ -1,11 +1,11 @@
 # Tareas — Ocultar cuatro imágenes en viewport móvil
 
-| Campo               | Valor                                                                   |
-| ------------------- | ----------------------------------------------------------------------- |
+| Campo               | Valor                                                                                  |
+| ------------------- | -------------------------------------------------------------------------------------- |
 | **Estado**          | Implementación aplicada y revisada por el usuario; viewports concretos no documentados |
-| **Especificación**  | [`spec.md`](./spec.md) (aprobada)                                       |
-| **Plan**            | [`plan.md`](./plan.md) (aprobado)                                       |
-| **Proyecto / área** | TrackFlow · `uis/website/`                                              |
+| **Especificación**  | [`spec.md`](./spec.md) (aprobada)                                                      |
+| **Plan**            | [`plan.md`](./plan.md) (aprobado)                                                      |
+| **Proyecto / área** | TrackFlow · `uis/website/`                                                             |
 
 > Las tareas fueron aprobadas antes de implementar. El usuario confirma que ya revisó la iniciativa en navegador y no identifica trabajo adicional pendiente. No se detallaron las anchuras revisadas; por tanto, no se atribuyen a esa revisión resultados concretos para 767/768 px ni para otros viewports. Las casillas de abajo conservan el registro de verificaciones específicas efectivamente documentadas.
 
