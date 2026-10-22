@@ -119,6 +119,10 @@ Tarjetas coherentes para los tres servicios de la empresa:
 
 Como norma general, las tarjetas son **blancas**, con borde `#D8E3E8` y radio consistente. El verde agua `#E9F8F5` se reserva para destacados.
 
+### Interacción sutil de tarjetas informativas
+
+Las tarjetas informativas estáticas pueden cambiar sutilmente el color del borde al pasar un puntero capaz de hover. La transición debe ser breve y respetar movimiento reducido. No añadir cursor de enlace, elevación, escala, sombra nueva ni otros indicios de que la tarjeta completa sea clicable; los enlaces o controles interiores conservan sus propios estados interactivos.
+
 **Regla:** un CTA principal por bloque. **No usar lima como color estándar de botones.**
 
 ---
@@ -188,6 +192,7 @@ La marca debe sentirse técnica y organizada, sin perder el vínculo con almacen
 - **Estilo:** conservar los trazados oficiales, `viewBox` 24 × 24, relleno vacío, trazo de 2 px y terminaciones/uniones redondeadas.
 - **Tamaño:** 24 × 24 px en tarjetas y elementos de contacto; 20 × 20 px solo en espacios compactos. Mantener dimensiones estables.
 - **Color:** turquesa `#007B76` sobre superficies claras y menta `#6EE7D2` sobre azul petróleo, siguiendo los roles existentes.
+- **Menta sobre petróleo:** los SVG de `assets/icons/` traen `stroke="#007B76"` fijo, por lo que no pueden recolorarse con `text-*` ni `currentColor`. Para iconos sobre azul petróleo (p. ej., indicadores del hero) se usa el mismo trazado Lucide v1.61.0 **inline con `stroke="#6EE7D2"`**, sin modificar ni duplicar los archivos de `assets/icons/`. Si el icono requiere reutilizarse en varios puntos del hero, puede crearse un archivo en `assets/icons/` con licencia ISC conservada y documentarlo aquí.
 - **Accesibilidad:** los iconos junto a texto son decorativos y se ocultan a tecnologías de asistencia. Un control representado solo por un icono debe tener nombre accesible.
 - **Licencia:** conservar la licencia ISC distribuida con la fuente en `assets/icons/LICENSE` y registrar la versión utilizada junto a los recursos.
 
@@ -195,6 +200,7 @@ La marca debe sentirse técnica y organizada, sin perder el vínculo con almacen
 
 - `assets/brand/`: logotipos, monograma y favicon oficiales. Son originales inmutables; no recrear, recolorear, recortar ni deformar.
 - `assets/icons/`: SVG Lucide para iconografía de interfaz y el aviso de licencia/versionado. No almacenar aquí logotipos o ilustraciones.
+- `assets/icons/flag-us.svg` y `assets/icons/flag-es.svg`: **banderas simplificadas de país** para badges/claims de país en las tarjetas de cobertura de la landing (iniciativa `specs/003-adaptacion-visual-mockup/`). Son recursos de apoyo al claim visual del país, **no** iconos Lucide ni logotipos; no recrearlos ni matizarlos para representar otros países ni como iconografía de interfaz general. Uso recomendado: 16–20 px, dentro de `bg-surface-accent` con `rounded-card`, junto al texto del país. No emplearlas para afirmar cobertura operativa real; son decorativas junto a texto (`alt=""` + `aria-hidden="true"`).
 - `assets/illustrations/`: ilustraciones conceptuales o explicativas. Preservar transparencia, colores y proporción; no recortar partes relevantes ni sustituirlas por recursos externos.
 - `assets/images/`: imágenes fotográficas para cabeceras y tarjetas. No presentar una imagen como fotografía real de operaciones de TrackFlow hasta que su procedencia y correspondencia con la empresa hayan sido verificadas.
 - Toda imagen debe tener atributo `alt`: las informativas reciben descripción breve y contextual; las estrictamente decorativas usan `alt=""`; los logotipos identifican a TrackFlow. No repetir en el `alt` el texto adyacente ni usar descripciones genéricas.

@@ -32,6 +32,16 @@ body {
 	outline-offset: 4px;
 }
 
+.info-card {
+	transition: border-color 180ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.info-card:hover {
+		border-color: color-mix(in srgb, var(--color-border) 55%, var(--color-secondary));
+	}
+}
+
 /* Keep the HTML hidden state authoritative over Tailwind display utilities. */
 [hidden] {
 	display: none !important;
@@ -40,5 +50,9 @@ body {
 @media (prefers-reduced-motion: reduce) {
 	html {
 		scroll-behavior: auto;
+	}
+
+	.info-card {
+		transition: none;
 	}
 }
