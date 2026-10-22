@@ -9,6 +9,20 @@ _These instructions are also available in [English](./README.md)._
 
 ---
 
+## Cómo levantar el proyecto
+
+El proyecto actual incluye el sitio web estático de TrackFlow. Para verlo en local, desde la raíz del repositorio ejecuta:
+
+```bash
+npx --yes http-server ./uis/website -p 3000 -a 0.0.0.0
+```
+
+Después abre `http://localhost:3000/` para la landing o `http://localhost:3000/application.html` para el formulario. En Codespaces, también puedes abrir el puerto 3000 desde la vista **Ports**.
+
+Este comando sirve los archivos existentes; no compila ni inicia un backend. Tailwind CSS se carga por CDN, así que el navegador necesita conexión a Internet. Para detener el servidor, pulsa `Ctrl+C` en la terminal donde está ejecutándose.
+
+---
+
 ## Propósito
 
 Este repositorio sigue la estructura transversal para proyectos de Ingeniería de IA con escenarios de empresas. Este espacio contiene el contexto de TrackFlow y las áreas de sus proyectos.

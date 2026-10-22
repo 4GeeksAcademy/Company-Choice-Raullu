@@ -1,10 +1,10 @@
 # Tareas — Formulario de solicitud de información de TrackFlow
 
-| Campo              | Valor                               |
-| ------------------ | ----------------------------------- |
+| Campo              | Valor                                                       |
+| ------------------ | ----------------------------------------------------------- |
 | **Estado**         | Implementación completada; verificación estática registrada |
-| **Especificación** | [`spec.md`](./spec.md)              |
-| **Plan**           | [`plan.md`](./plan.md)              |
+| **Especificación** | [`spec.md`](./spec.md)                                      |
+| **Plan**           | [`plan.md`](./plan.md)                                      |
 
 ## Secuencia de ejecución
 

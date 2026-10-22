@@ -8,7 +8,7 @@ Al iniciar una tarea, leer:
 
 - [memory-bank/projectBrief.md](memory-bank/projectBrief.md): contexto de negocio y objetivos.
 - [memory-bank/techContext.md](memory-bank/techContext.md): estructura y contexto técnico.
-- [memory-bank/progress.md](memory-bank/progress.md): estado y próximos pasos registrados.
+- [memory-bank/progress.md](memory-bank/progress.md): bitácora acumulativa del trabajo implementado, el estado en curso, el roadmap y los próximos pasos, organizada por áreas del proyecto.
 - [README.md](README.md): guía general y mapa del monorepo.
 
 Después, identificar el área afectada y consultar su README y documentación específica antes de planificar cambios.
@@ -41,7 +41,7 @@ No crear un árbol paralelo para aplicaciones: respetar las ubicaciones de la pl
 
 1. Analizar la solicitud, el estado del repositorio y las convenciones del área antes de editar; conservar los cambios existentes y mantener el alcance solicitado.
 2. No inventar tecnologías, comandos, requisitos o decisiones. Si falta información necesaria, dejarla como pendiente y pedir aclaración.
-3. Realizar cambios acotados y mantener el banco de memoria alineado con el estado del proyecto. Al terminar cada tarea, evaluar si algún hecho comprobado afecta a `memory-bank/projectBrief.md` (negocio y objetivos), `memory-bank/techContext.md` (stack, arquitectura o restricciones) o `memory-bank/progress.md` (avance, verificaciones o próximos pasos). Actualizar en la misma entrega cada documento afectado, usando información verificada y sin modificar los que no hayan cambiado.
+3. Realizar cambios acotados y mantener el banco de memoria alineado con el estado del proyecto. Al terminar cada tarea, evaluar si algún hecho comprobado afecta a `memory-bank/projectBrief.md` (negocio y objetivos), `memory-bank/techContext.md` (stack, arquitectura o restricciones) o `memory-bank/progress.md` (avance, verificaciones, estado o próximos pasos). Actualizar en la misma entrega cada documento afectado, usando información verificada y sin modificar los que no hayan cambiado. Mantener `progress.md` como una bitácora acumulativa: cuando un elemento del roadmap avance, actualizar su estado y conservarlo en la sección de implementados/historial al completarlo; no eliminar los registros ya cerrados. Distinguir lo implementado de lo pendiente o propuesto, y registrar el estado actual y los requisitos para continuar cuando haya trabajo en curso.
 4. Ejecutar las verificaciones disponibles y pertinentes documentadas para el componente. Informar qué se ejecutó y qué quedó sin verificar; no afirmar resultados no comprobados.
 
 No ampliar el alcance ni iniciar trabajo en otra funcionalidad sin aprobación.

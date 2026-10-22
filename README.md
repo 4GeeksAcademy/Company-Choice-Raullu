@@ -9,6 +9,20 @@ _Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
 
 ---
 
+## How to run the project
+
+The current project includes TrackFlow's static website. To preview it locally, run this command from the repository root:
+
+```bash
+npx --yes http-server ./uis/website -p 3000 -a 0.0.0.0
+```
+
+Then open `http://localhost:3000/` for the landing page or `http://localhost:3000/application.html` for the form. In Codespaces, you can also open port 3000 from the **Ports** view.
+
+This command serves the existing files; it does not build the site or start a backend. Tailwind CSS loads from a CDN, so the browser needs an Internet connection. Stop the server with `Ctrl+C` in the terminal where it is running.
+
+---
+
 ## Purpose
 
 This repository follows the transversal project structure for AI Engineering company scenarios. This workspace contains the TrackFlow company context and its project areas.
