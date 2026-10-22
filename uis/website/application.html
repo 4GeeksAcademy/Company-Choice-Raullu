@@ -87,27 +87,27 @@
 							<div class="grid gap-5 sm:grid-cols-2">
 								<div class="sm:col-span-2">
 									<label class="mb-2 block font-semibold text-heading" for="company-name">Nombre de la empresa <span aria-hidden="true">*</span></label>
-									<input class="min-h-12 w-full rounded-card border border-input-border bg-white px-3 py-2 text-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="company-name" name="companyName" type="text" autocomplete="organization" minlength="2" required aria-describedby="required-note company-name-error" />
+									<input class="min-h-12 w-full rounded-card border border-input-border bg-white px-3 py-2 text-text aria-[invalid=true]:border-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="company-name" name="companyName" type="text" autocomplete="organization" minlength="2" required aria-describedby="required-note company-name-error" />
 									<p class="mt-1 text-sm font-semibold text-error" id="company-name-error" hidden></p>
 								</div>
 								<div class="sm:col-span-2">
 									<label class="mb-2 block font-semibold text-heading" for="contact-name">Persona de contacto <span aria-hidden="true">*</span></label>
-									<input class="min-h-12 w-full rounded-card border border-input-border bg-white px-3 py-2 text-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="contact-name" name="contactName" type="text" autocomplete="name" required aria-describedby="required-note contact-name-error" />
+									<input class="min-h-12 w-full rounded-card border border-input-border bg-white px-3 py-2 text-text aria-[invalid=true]:border-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="contact-name" name="contactName" type="text" autocomplete="name" required aria-describedby="required-note contact-name-error" />
 									<p class="mt-1 text-sm font-semibold text-error" id="contact-name-error" hidden></p>
 								</div>
 								<div>
 									<label class="mb-2 block font-semibold text-heading" for="contact-email">Email corporativo <span aria-hidden="true">*</span></label>
-									<input class="min-h-12 w-full rounded-card border border-input-border bg-white px-3 py-2 text-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="contact-email" name="email" type="email" autocomplete="email" placeholder="contacto@empresa.com" required aria-describedby="required-note contact-email-error" />
+									<input class="min-h-12 w-full rounded-card border border-input-border bg-white px-3 py-2 text-text aria-[invalid=true]:border-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="contact-email" name="email" type="email" autocomplete="email" placeholder="contacto@empresa.com" required aria-describedby="required-note contact-email-error" />
 									<p class="mt-1 text-sm font-semibold text-error" id="contact-email-error" hidden></p>
 								</div>
 								<div>
 									<label class="mb-2 block font-semibold text-heading" for="contact-phone">Teléfono <span aria-hidden="true">*</span></label>
-									<input class="min-h-12 w-full rounded-card border border-input-border bg-white px-3 py-2 text-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="contact-phone" name="phone" type="tel" autocomplete="tel" placeholder="+1 213 555 0147" required aria-describedby="required-note contact-phone-error" />
+									<input class="min-h-12 w-full rounded-card border border-input-border bg-white px-3 py-2 text-text aria-[invalid=true]:border-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="contact-phone" name="phone" type="tel" autocomplete="tel" placeholder="+1 213 555 0147" required aria-describedby="required-note contact-phone-error" />
 									<p class="mt-1 text-sm font-semibold text-error" id="contact-phone-error" hidden></p>
 								</div>
 								<div class="sm:col-span-2">
 									<label class="mb-2 block font-semibold text-heading" for="company-website">Sitio web de la empresa <span class="font-normal text-text-muted">(opcional)</span></label>
-									<input class="min-h-12 w-full rounded-card border border-input-border bg-white px-3 py-2 text-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="company-website" name="website" type="url" autocomplete="url" placeholder="https://empresa.com" aria-describedby="company-website-error" />
+									<input class="min-h-12 w-full rounded-card border border-input-border bg-white px-3 py-2 text-text aria-[invalid=true]:border-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="company-website" name="website" type="url" autocomplete="url" placeholder="https://empresa.com" aria-describedby="company-website-error" />
 									<p class="mt-1 text-sm font-semibold text-error" id="company-website-error" hidden></p>
 								</div>
 							</div>
@@ -121,7 +121,7 @@
 							<div class="grid gap-5 sm:grid-cols-2">
 								<div>
 									<label class="mb-2 block font-semibold text-heading" for="operating-country">País de operación principal <span aria-hidden="true">*</span></label>
-									<select class="min-h-12 w-full rounded-card border border-input-border bg-white px-3 py-2 pr-10 text-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="operating-country" name="operatingCountry" required aria-describedby="required-note operating-country-error">
+									<select class="min-h-12 w-full rounded-card border border-input-border bg-white px-3 py-2 pr-10 text-text aria-[invalid=true]:border-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="operating-country" name="operatingCountry" required aria-describedby="required-note operating-country-error">
 										<option value="" selected disabled>Selecciona una opción</option>
 										<option value="united-states">Estados Unidos</option>
 										<option value="spain">España</option>
@@ -132,7 +132,7 @@
 								</div>
 								<div>
 									<label class="mb-2 block font-semibold text-heading" for="product-type">Tipo de producto <span aria-hidden="true">*</span></label>
-									<select class="min-h-12 w-full rounded-card border border-input-border bg-white px-3 py-2 pr-10 text-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="product-type" name="productType" required aria-describedby="required-note product-type-error">
+									<select class="min-h-12 w-full rounded-card border border-input-border bg-white px-3 py-2 pr-10 text-text aria-[invalid=true]:border-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="product-type" name="productType" required aria-describedby="required-note product-type-error">
 										<option value="" selected disabled>Selecciona una opción</option>
 										<option value="fashion">Moda</option>
 										<option value="electronics">Electrónica</option>
@@ -144,7 +144,7 @@
 								</div>
 								<div class="sm:col-span-2">
 									<label class="mb-2 block font-semibold text-heading" for="monthly-volume">Volumen mensual estimado de envíos <span aria-hidden="true">*</span></label>
-									<select class="min-h-12 w-full rounded-card border border-input-border bg-white px-3 py-2 pr-10 text-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="monthly-volume" name="monthlyVolume" required aria-describedby="required-note low-volume-warning monthly-volume-error">
+									<select class="min-h-12 w-full rounded-card border border-input-border bg-white px-3 py-2 pr-10 text-text aria-[invalid=true]:border-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="monthly-volume" name="monthlyVolume" required aria-describedby="required-note low-volume-warning monthly-volume-error">
 										<option value="" selected disabled>Selecciona una opción</option>
 										<option value="0-100">0-100</option>
 										<option value="101-500">101-500</option>
@@ -189,7 +189,7 @@
 							<legend class="sr-only">Comentarios y privacidad</legend>
 							<div>
 								<label class="mb-2 block font-semibold text-heading" for="comments">Comentarios o necesidades específicas <span class="font-normal text-text-muted">(opcional)</span></label>
-								<textarea class="min-h-32 w-full rounded-card border border-input-border bg-white px-3 py-2 text-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="comments" name="comments" maxlength="500" aria-describedby="comments-counter comments-error"></textarea>
+								<textarea class="min-h-32 w-full rounded-card border border-input-border bg-white px-3 py-2 text-text aria-[invalid=true]:border-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="comments" name="comments" maxlength="500" aria-describedby="comments-counter comments-error"></textarea>
 								<div class="mt-2 flex flex-wrap justify-between gap-2 text-sm text-text-muted"><p>Máximo 500 caracteres.</p><output id="comments-counter" for="comments" aria-live="polite">0 / 500 caracteres; quedan 500</output></div>
 								<p class="mt-1 text-sm font-semibold text-error" id="comments-error" hidden></p>
 							</div>

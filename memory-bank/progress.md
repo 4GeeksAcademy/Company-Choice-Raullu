@@ -4,6 +4,16 @@ Este archivo es una bitácora acumulativa: los elementos implementados se conser
 
 **Última actualización:** 2026-10-22
 
+### Remediación de auditoría web — iniciativa 005 (en curso)
+
+- Especificación, plan y tareas aprobados. El alcance cubre validaciones, estados accesibles, revisión técnica responsive, medición de rendimiento si es viable y documentación; excluye aclarar reglas de negocio (fase 1) y completar contenido de landing (fase 5). Se exige Tailwind para estilos nuevos/modificados; no se añadieron dependencias ni CSS personalizado.
+- En `application.html`, los nueve controles individuales (texto/select/textarea) con mensajes de error asociados recibieron `aria-[invalid=true]:border-error`, de modo que el borde identifica visualmente el estado `aria-invalid` ya actualizado por `validation.js`; los mensajes textuales permanecen. Sin cambios al JS, al comportamiento de negocio, a la landing ni a `styles.css`.
+- Inspección estática: 16/16 controles etiquetados, IDs únicos (47), 12/12 errores asociados por `aria-describedby`, errores ocultos inicialmente, paneles inactivos con `hidden`, flujo JS de invalidación/foco presente. Contraste calculado contra blanco: texto 9.24:1, CTA/secundario 5.13:1, advertencia 5.24:1, error 6.57:1, éxito 6.50:1, borde 3.59:1.
+- Revisión responsive estática encontró contenedores acotados, controles `w-full`, grids fluidos y cambios de layout `sm:`; no encontró anchos mínimos/fijos de pantalla ni reglas CSS de layout. No se dispuso de navegador, así que no se verificó visualmente overflow en los viewports de la tarea.
+- La expresión telefónica actual rechaza `+1` y acepta `+12`; las fuentes aprobadas exigen `+`/código país/número, pero no definen longitud mínima. No se inventó un umbral. Sin cambios de validación.
+- No se ejecutó Lighthouse/PageSpeed: herramienta/CLI, paquete local y clave PageSpeed ausentes en el entorno remoto; no se estimaron puntuaciones. Auditoría externa y pruebas de navegador/lector de pantalla siguen pendientes.
+- Verificaciones ejecutadas: `node --check uis/website/validation.js`, `git diff --check`, análisis estático de clases y ausencia de API/persistencia, `get_errors` sin errores para HTML/JS. No hay commit. El diff propio actual toca `application.html`, `tasks.md` de 005 y esta bitácora; se preservan cambios preexistentes ajenos.
+
 **Fuentes de alcance y estructura:** [`projectBrief.md`](projectBrief.md), [`techContext.md`](techContext.md) y briefings de cada iniciativa.
 
 ## Cómo leer y mantener este registro
