@@ -1,11 +1,11 @@
 # Plan — Formulario de solicitud de información de TrackFlow
 
-| Campo               | Valor                                                                    |
-| ------------------- | ------------------------------------------------------------------------ |
-| **Estado**          | Aprobado para actualizar tareas                                          |
-| **Especificación**  | [`spec.md`](./spec.md)                                                   |
-| **Proyecto / área** | TrackFlow · `uis/website/`                                               |
-| **Alcance**         | Página de solicitud B2B, validación en navegador y confirmación simulada |
+| Campo               | Valor                                                                                  |
+| ------------------- | -------------------------------------------------------------------------------------- |
+| **Estado**          | Plan base y enmienda aprobados; implementación aplicada, verificación manual pendiente |
+| **Especificación**  | [`spec.md`](./spec.md)                                                                 |
+| **Proyecto / área** | TrackFlow · `uis/website/`                                                             |
+| **Alcance**         | Página de solicitud B2B, validación en navegador y confirmación simulada               |
 
 ## Objetivo
 
@@ -63,3 +63,30 @@ No se prevén dependencias, nuevos assets ni cambios a `index.html`, `design-sys
 - El usuario aprobó explícitamente la actualización conjunta de este plan y `tasks.md` conforme a la especificación revisada.
 - La aprobación del plan no autoriza implementar hasta que `tasks.md` reciba aprobación explícita.
 - La aprobación del plan autoriza el uso del aviso ficticio solo para demostración local, no el uso productivo. La política real debe aprobarse antes de publicar el formulario o recopilar solicitudes reales.
+
+## Enmienda propuesta: revalidación final y distribución visual
+
+**Estado: aprobada por el usuario e implementada.** Esta enmienda complementa el plan base ya aprobado. La aprobación explícita precedió a la implementación; la verificación manual de interacción sigue pendiente.
+
+### Alcance técnico propuesto
+
+1. **`uis/website/validation.js` — validación:** conservar la validación reactiva y la validación del paso activo al pulsar **Siguiente**. En el submit del último paso, ejecutar primero la validación de ese paso y después revalidar todos los campos del formulario usando los validadores, reglas, orden y mensajes ya existentes. No duplicar ni ampliar reglas.
+2. **Errores globales en pasos ocultos:** si la comprobación completa encuentra errores fuera del paso actual, identificar el primer paso inválido según el orden del formulario; actualizar los errores asociados, mostrar ese paso y solo entonces enfocar su primer control inválido. Mantener el envío bloqueado y no mostrar la confirmación. Para errores del último paso, conservar el manejo accesible de errores del paso actual.
+3. **Navegación de retroceso:** mantener **Anterior** libre de validación bloqueante y preservar los valores. La implementación no debe alterar el bloqueo de **Siguiente** cuando el paso actual sea inválido.
+4. **`uis/website/application.html` — acciones:** separar visualmente el botón **Limpiar formulario** de la navegación, ubicándolo abajo a la izquierda; agrupar **Anterior** y **Siguiente** abajo a la derecha, en ese orden. En el último paso, **Enviar solicitud** ocupa el lugar de **Siguiente**; en el primero se oculta **Anterior**. Mantener orden DOM/foco coherente con el orden de lectura y teclado.
+5. **`uis/website/application.html` — alineación:** ajustar los contenedores del encabezado y la tarjeta para que sus bordes izquierdos y anchos máximos se alineen, conservando el padding interior, el sistema visual y el comportamiento responsive. Priorizar Tailwind y no cambiar tokens ni `styles.css` sin una necesidad justificada y aprobada.
+
+### Verificación propuesta
+
+- Al avanzar, un paso inválido muestra sus errores y no avanza; uno válido avanza. La validación reactiva se mantiene.
+- **Anterior** permite regresar incluso si el paso actual tiene errores y conserva todos los valores.
+- Simular errores de validación en un paso anterior al envío final: el éxito no aparece, el primer paso inválido se vuelve visible y el foco acaba en su primer control inválido visible. En un formulario completo válido aparece la confirmación simulada.
+- Comprobar con las reglas y mensajes literales del briefing que no hay validadores nuevos o cambios de comportamiento ajenos a esta propuesta.
+- Revisar disposición, orden de teclado, visibilidad de botones y alineación en 320, 375, 768, 1280 y 1440 px, además de overflow horizontal.
+- Ejecutar las comprobaciones estáticas disponibles y `git diff --check`; describir explícitamente toda verificación manual o de navegador que no pueda realizarse.
+
+### Archivos y límites
+
+- Archivos de implementación previstos: `uis/website/application.html` y `uis/website/validation.js` únicamente.
+- No modificar `index.html`, `styles.css`, Design System, briefing, assets, dependencias, backend ni la privacidad.
+- La especificación enmendada y las tareas correspondientes recibieron aprobación explícita antes de comenzar la implementación; los resultados reales y las limitaciones de verificación están registrados en `tasks.md`.

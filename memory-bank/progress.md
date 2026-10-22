@@ -2,7 +2,7 @@
 
 Este archivo es una bitácora acumulativa: los elementos implementados se conservan como historial, aunque el trabajo ya esté cerrado. El estado describe lo comprobado en el repositorio y no convierte los objetivos del `projectBrief.md` en funcionalidades existentes. Las decisiones técnicas no tomadas y las limitaciones se anotan como tales.
 
-**Última actualización:** 2026-10-22
+**Última actualización:** 2026-10-23
 
 **Fuentes de alcance y estructura:** [`projectBrief.md`](projectBrief.md), [`techContext.md`](techContext.md) y briefings de cada iniciativa.
 
@@ -15,7 +15,7 @@ Este archivo es una bitácora acumulativa: los elementos implementados se conser
 
 ## Resumen actual
 
-- **En curso:** no consta una iniciativa de producto en implementación. La última iniciativa cerrada es la actualización del formulario B2B por pasos.
+- **En curso:** no consta una iniciativa de producto en implementación. La enmienda aprobada del formulario B2B está implementada y cerrada documentalmente; su prueba manual de navegador queda pendiente.
 - **Implementado:** sitio público estático del Hito 1 y formulario demostrativo; documentación para previsualizarlo localmente; reglas, contexto y estructura base del repositorio.
 - **Bloqueos destacados:** reemplazar y aprobar la política de privacidad antes de recopilar datos reales; cerrar decisiones de backend/datos antes de iniciar esas capas; realizar las verificaciones manuales pendientes del sitio y del formulario.
 - **No implementado:** APIs, persistencia, CRM, pipelines de datos, dashboards operativos, agentes de producto, automatizaciones e infraestructura de despliegue descritos como objetivos empresariales.
@@ -30,10 +30,11 @@ Este archivo es una bitácora acumulativa: los elementos implementados se conser
 - **Límite de privacidad del formulario:** el submit solo simula el resultado en el navegador. No envía ni persiste la solicitud, no hay integración con API/correo/CRM y no se deben introducir datos personales o confidenciales reales. El aviso de privacidad actual es ficticio y no vigente.
 - **Previsualización:** los README raíz, en español e inglés, documentan `npx --yes http-server ./uis/website -p 3000 -a 0.0.0.0`, las URLs de landing/formulario, Codespaces, Tailwind CDN y cómo detener el servidor. En una sesión anterior se comprobó respuesta HTTP 200 para landing y formulario en el servidor local; servir estáticos no equivale a probar sus interacciones.
 - **Verificaciones del formulario registradas:** `node --check uis/website/validation.js`, `git diff --check` y diagnósticos del editor sin errores; revisión estática de estructura, labels/ARIA, contraste, selectores y ausencia de envío/persistencia. Una prueba con DOM simulado cubrió submit válido/inválido y reset. El usuario confirmó visualmente el formulario en 320, 375, 768, 1280 y 1440 px.
+- **Enmienda de acciones y validación global (implementada):** en `uis/website/application.html`, Limpiar queda separado a la izquierda; Anterior precede a Siguiente/Enviar en el orden DOM; encabezado y tarjeta alinean su contenedor exterior. `validation.js` conserva la validación por paso y, al enviar desde el cuarto, vuelve a validar formulario completo; si detecta errores, muestra el primer paso inválido según el orden de pasos antes de enfocar su primer control. Tareas 21–24 están cerradas en `uis/website/specs/002-solicitud-informacion/tasks.md`. El usuario reportó que la visibilidad real de botones no coincidía con el atributo `hidden`: las clases Tailwind `inline-flex` prevalecían sobre el estilo UA de `[hidden]`. Se añadió `[hidden] { display: none !important; }` en `styles.css` para hacer autoritativo ese atributo en toda la página. No se dispone de navegador para confirmar visualmente este arreglo; interacción/tabulación, envío válido e inválido y viewports siguen pendientes de verificación manual.
 
 ### En curso y pendiente para cerrar
 
-- **Prueba interactiva del flujo por pasos:** no consta una prueba de navegador del flujo completo actualizado (navegación, teclado/foco, errores y retención de valores). Se necesita una sesión manual en navegador y registrar los resultados en las tareas SDD.
+- **Prueba interactiva del flujo por pasos:** no consta una prueba de navegador del flujo completo actualizado (navegación, teclado/foco, errores y retención de valores, visibilidad de acciones ni revalidación final). En la enmienda vigente tampoco se ejecutó navegador; se necesita una sesión manual y registrar los resultados en las tareas SDD.
 - **Accesibilidad práctica:** la inspección de markup y contraste fue estática; no consta prueba con lector de pantalla ni auditoría WCAG automatizada. Hace falta ejecutar esas comprobaciones antes de declarar cobertura completa.
 - **Landing responsive:** en el registro anterior quedó pendiente la inspección visual de la landing en 320, 375, 768, 1280 y 1440 px; la confirmación visual de esos anchos se refiere al formulario y no debe atribuirse a la landing sin repetirla.
 - **Privacidad/producción:** antes de recopilar solicitudes reales, se necesita el texto o URL aprobados, revisión del consentimiento y decisión sobre backend, retención, acceso y tratamiento de datos. El formulario permanece limitado a demostración local.
@@ -139,7 +140,7 @@ Este archivo es una bitácora acumulativa: los elementos implementados se conser
 
 ### Pendiente
 
-- Mantener enlazados los nuevos artefactos SDD y anotar sus resultados de verificación en la sección de dominio correspondiente y en `tasks.md`, sin borrar los cierres anteriores.
+- Mantener enlazados los artefactos SDD y anotar resultados verificados en esta bitácora y `tasks.md`, sin borrar cierres anteriores.
 - No hay prioridades de negocio, responsables, fechas ni hitos futuros acordados. Las propuestas de este documento son sugerencias, no compromisos.
 
 ## Próximos pasos sugeridos

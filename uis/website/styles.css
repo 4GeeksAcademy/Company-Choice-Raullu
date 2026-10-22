@@ -32,6 +32,11 @@ body {
 	outline-offset: 4px;
 }
 
+/* Keep the HTML hidden state authoritative over Tailwind display utilities. */
+[hidden] {
+	display: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
 	html {
 		scroll-behavior: auto;

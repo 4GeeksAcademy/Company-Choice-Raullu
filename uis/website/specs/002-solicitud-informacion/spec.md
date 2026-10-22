@@ -2,7 +2,7 @@
 
 | Campo               | Valor                                                                             |
 | ------------------- | --------------------------------------------------------------------------------- |
-| **Estado**          | Aprobada para planificación                                                       |
+| **Estado**          | Base y enmienda aprobadas; implementación aplicada, verificación manual pendiente |
 | **Proyecto / área** | TrackFlow · `uis/website/`                                                        |
 | **Tipo de cambio**  | Completar la página de solicitud comercial del Hito 1                             |
 | **Documento**       | `spec.md` · requisitos y criterios de aceptación; no es un plan de implementación |
@@ -32,7 +32,8 @@ La iniciativa comprende:
 3. Implementar en `uis/website/validation.js` la validación, los estados de interacción, el contador, la advertencia aprobada y la simulación de envío.
 4. Conservar Tailwind CDN, los tokens existentes, los recursos oficiales y la navegación de vuelta a la landing.
 5. Organizar el formulario en cuatro pasos consecutivos con validación por paso y navegación accesible.
-6. Verificar el flujo completo, accesibilidad aplicable, responsive y metadatos de la página.
+6. **Propuesta de enmienda pendiente:** distribuir «Limpiar formulario» a la izquierda y la navegación a la derecha; alinear el encabezado introductorio con la tarjeta.
+7. Verificar el flujo completo, accesibilidad aplicable, responsive y metadatos de la página.
 
 La implementación se realizará únicamente después de aprobar esta especificación, el plan y las tareas en sus respectivas etapas.
 
@@ -97,8 +98,12 @@ Los errores aparecerán junto al control o grupo correspondiente, explicarán la
 - Validar al perder el foco cuando sea apropiado.
 - Al corregir un campo que ya mostró error, actualizar su estado sin esperar un nuevo envío.
 - Validar `select`, checkbox y radio al cambiar su selección.
-- Al avanzar a otro paso, validar los campos del paso actual, impedir el avance mientras existan errores y facilitar el foco o identificación del primer error de ese paso.
-- Al intentar el envío final, validar todos los campos del paso actual; los pasos anteriores ya deben haber superado la validación para poder llegar al último. No mostrar éxito si hay errores.
+- **Propuesta de enmienda (pendiente de aprobación):** al pulsar **Siguiente**, validar todos los campos del paso actual. Si hay errores, mostrarlos junto a sus campos e impedir avanzar. Si todos los campos del paso son válidos, permitir avanzar.
+- Mantener la validación en tiempo real existente.
+- Al pulsar **Anterior**, permitir regresar sin bloquear la navegación por errores y conservar los datos introducidos.
+- **Propuesta de enmienda (pendiente de aprobación):** al pulsar **Enviar solicitud** en el último paso, validar ese paso y comprobar nuevamente el formulario completo antes de simular el envío. No mostrar éxito si hay errores en ningún paso.
+- **Propuesta de enmienda (pendiente de aprobación):** si la comprobación completa detecta errores en un paso anterior, mostrarlos de forma accesible, navegar al primer paso con errores y enfocar el primer control inválido de ese paso. No intentar enfocar controles dentro de pasos ocultos.
+- Conservar todas las reglas y mensajes literales especificados en `uis/website/BRIEFING.md`; la comprobación completa reutilizará esas mismas reglas y mensajes, sin introducir restricciones nuevas.
 - Los datos introducidos se conservarán al volver a pasos anteriores y al navegar entre pasos.
 
 ### 5.3. Contador y advertencia
@@ -123,6 +128,7 @@ Los errores aparecerán junto al control o grupo correspondiente, explicarán la
 ### 5.5. Botones, reinicio y envío simulado
 
 - Incluir el botón principal **Enviar solicitud**, que valida antes de mostrar éxito.
+- **Propuesta de enmienda (pendiente de aprobación):** en la zona de acciones, ubicar **Limpiar formulario** en el extremo inferior izquierdo y agrupar la navegación en el extremo inferior derecho. Cuando estén disponibles ambos controles de navegación, su orden visual y de teclado será **Anterior** y después **Siguiente**; en el último paso, **Enviar solicitud** ocupará el lugar de **Siguiente**. En el primer paso no se mostrará **Anterior**.
 - Incluir el botón secundario **Limpiar formulario**, que restablece valores, errores, contador, advertencias, paso actual y confirmación, y vuelve al primer paso.
 - Si hay errores, impedir el éxito y llevar la atención al primer error.
 - Si el envío es válido, ocultar el formulario completo y mostrar únicamente la confirmación de éxito y su aclaración de demostración/no envío. La confirmación debe ocupar el área principal de la experiencia, estar disponible para tecnologías de asistencia y no dejar controles del formulario visibles o alcanzables por teclado.
@@ -152,6 +158,7 @@ Los errores aparecerán junto al control o grupo correspondiente, explicarán la
 - Dar espacio suficiente entre la flecha de cada selector desplegable y el borde derecho del control, de acuerdo con el sistema visual y sin comprometer la indicación nativa de apertura.
 - Mostrar la advertencia de volumen `0-100` inmediatamente debajo del selector correspondiente.
 - Adaptar progresivamente el formulario a móvil, tablet y escritorio; en móvil, usar disposición vertical, controles legibles y botones cómodos de accionar. No debe haber desbordamiento horizontal.
+- **Propuesta de enmienda (pendiente de aprobación):** el encabezado introductorio y la tarjeta del formulario compartirán la misma alineación izquierda y un ancho máximo coherente; los ajustes conservarán el espaciado interior de la tarjeta y el comportamiento responsive.
 
 ## 7. Accesibilidad y SEO
 
@@ -183,6 +190,8 @@ El plan posterior confirmará el alcance exacto por archivo. La propuesta inicia
 - `uis/website/validation.js`: validación interactiva, contador, advertencia y simulación local del envío.
 - `uis/website/styles.css`: solo si el plan demuestra una necesidad no resuelta razonablemente con Tailwind.
 
+La propuesta de enmienda se limita a `application.html` y `validation.js`; no propone modificar `styles.css` salvo que el plan aprobado justifique una necesidad concreta.
+
 No se prevén cambios en `index.html`, `design-system.md`, assets ni configuración de dependencias.
 
 ## 10. Criterios de aceptación
@@ -193,8 +202,8 @@ No se prevén cambios en `index.html`, `design-system.md`, assets ni configuraci
 4. Las doce reglas de validación y sus mensajes literales de la sección 5.1 se aplican correctamente, sin restricciones extra no documentadas.
 5. Los errores se muestran junto al control, son accesibles, se actualizan al interactuar y no aparecen prematuramente en campos no visitados.
 6. La experiencia muestra cuatro pasos consecutivos con títulos claros, indicador accesible del paso actual y los restantes, botones **Siguiente**/**Anterior** y foco en el encabezado al cambiar de paso.
-7. **Siguiente** valida el paso actual y bloquea el avance ante errores; **Anterior** conserva los datos y no permite saltar validaciones de pasos anteriores.
-8. El envío final valida y, si hay errores, no muestra éxito y facilita la identificación del primer error.
+7. **Propuesta de enmienda pendiente:** **Siguiente** valida el paso actual y bloquea el avance ante errores; **Anterior** permite regresar sin bloquearse por errores y conserva los datos.
+8. **Propuesta de enmienda pendiente:** el envío valida el último paso y vuelve a comprobar el formulario completo; si encuentra errores, no muestra éxito y navega al primer paso inválido para enfocar su primer control inválido visible.
 9. El contador se actualiza en vivo, bloquea la entrada al alcanzar 500 caracteres y muestra los caracteres disponibles; la validación defensiva conserva el mensaje del briefing e informa cuántos caracteres exceden el máximo.
 10. La advertencia se muestra inmediatamente debajo del selector, con el texto exacto al elegir `0-100 envíos/mes`, independientemente del producto; no bloquea ni pausa el envío.
 11. El envío válido oculta todos los controles del formulario y muestra únicamente el título, cuerpo y contacto del mensaje de éxito definidos en la sección 5.5, de forma accesible, junto con una aclaración de que la solicitud no se envió al equipo comercial y sin llamadas HTTP ni persistencia.
@@ -207,6 +216,8 @@ No se prevén cambios en `index.html`, `design-system.md`, assets ni configuraci
 18. El marcado Organization de `index.html` permanece intacto y no se duplica sin una necesidad aprobada.
 19. No hay backend, persistencia, envío de correo, integración externa ni envío de datos fuera del navegador; la experiencia advierte que no se recibió ninguna solicitud.
 20. El aviso ficticio de privacidad está identificado como no vigente, no tiene enlace, advierte contra el uso de datos reales y no se presenta como consentimiento legal ni como listo para producción.
+21. **Propuesta de enmienda pendiente:** **Limpiar formulario** queda a la izquierda y la navegación a la derecha en el orden **Anterior**, **Siguiente**; en el último paso, **Enviar solicitud** sustituye a **Siguiente**. La visibilidad corresponde al paso activo.
+22. **Propuesta de enmienda pendiente:** el encabezado y la tarjeta del formulario quedan alineados por el borde izquierdo, con ancho máximo coherente, sin perder adaptación responsive ni el espacio interior de la tarjeta.
 
 ## 11. Decisiones pendientes para aprobación
 
@@ -222,7 +233,7 @@ Decisiones ya confirmadas por el usuario:
 - El mensaje defensivo de comentarios se conserva para valores inválidos excepcionales; `X` es el número de caracteres por encima del límite.
 - Se utiliza temporalmente el aviso ficticio y el texto de checkbox especificados arriba; ambos dejan claro que no existe una política vigente.
 - La página debe advertir que la simulación no envía la solicitud al equipo comercial.
-- El usuario autorizó modificar esta especificación con una propuesta de cuatro pasos. Esta revisión describe el cambio solicitado, pero queda pendiente de aprobación explícita antes de actualizar el plan, las tareas o el código.
+- El usuario aprobó previamente la propuesta de cuatro pasos. La presente enmienda de validación y presentación permanece pendiente de aprobación; no se implementarán cambios de código antes de aprobar la especificación, el plan y las tareas actualizados.
 
 ## 12. Verificación prevista
 
@@ -245,3 +256,15 @@ Se documentarán resultados reales y limitaciones; no se dará por verificada un
 - El usuario aprobó explícitamente esta revisión, que sustituye el formulario de un solo bloque por los cuatro pasos solicitados, para continuar con la actualización de plan y tareas.
 - El usuario autoriza el uso del aviso ficticio de demostración, dejando pendiente la política real. La aprobación no convierte el aviso ficticio en política vigente ni autoriza su uso productivo.
 - Tras aprobar `plan.md`, se podrá elaborar `tasks.md`; se solicitará aprobación explícita de las tareas antes de implementar, siguiendo `.agents/rules/development.md`.
+
+## 14. Enmienda propuesta: validación final, acciones y alineación
+
+**Estado de esta enmienda: aprobada por el usuario e implementada.** La aprobación se recibió explícitamente antes de comenzar la implementación. La verificación de interacción real en navegador permanece pendiente.
+
+- Al pulsar **Siguiente**, validar todos los campos del paso activo; mostrar errores y bloquear el avance cuando el paso sea inválido, o avanzar cuando sea válido.
+- Mantener la validación reactiva existente. **Anterior** regresa sin bloqueo por errores y conserva los valores.
+- Al pulsar **Enviar solicitud** en el último paso, validar el paso activo y volver a validar el formulario completo antes del éxito simulado. Si se detectan errores en pasos anteriores, mostrar el primer paso inválido y enfocar el primer control inválido visible. Reutilizar sin cambios las reglas y los mensajes del briefing.
+- Colocar **Limpiar formulario** en el extremo inferior izquierdo; agrupar la navegación en el extremo inferior derecho y ordenar **Anterior** antes de **Siguiente**. En el último paso, **Enviar solicitud** ocupa el lugar de **Siguiente**.
+- Alinear por la izquierda el encabezado introductorio y la tarjeta del formulario, conservando un ancho máximo coherente, el padding interior de la tarjeta y el comportamiento responsive.
+- La propuesta no cambia el contenido ni los pasos del formulario, el Design System, la landing, ni los campos, reglas y mensajes existentes. Se limita al comportamiento y presentación de `application.html` y `validation.js`.
+- Esta enmienda se implementó tras la aprobación explícita del usuario y la aprobación de las tareas correspondientes; las verificaciones y limitaciones están registradas en `tasks.md`.

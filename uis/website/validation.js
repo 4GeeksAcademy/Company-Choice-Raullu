@@ -91,6 +91,7 @@ function buildValidationItems(form) {
 function renderValidation(form, keys) {
 	let firstInvalid = null;
 	let invalidCount = 0;
+	const invalidKeys = [];
 
 	for (const item of buildValidationItems(form)) {
 		if (keys && !keys.includes(item.key)) continue;
@@ -108,10 +109,13 @@ function renderValidation(form, keys) {
 			}
 		}
 
-		if (message) invalidCount += 1;
+		if (message) {
+			invalidCount += 1;
+			invalidKeys.push(item.key);
+		}
 	}
 
-	return { firstInvalid, invalidCount };
+	return { firstInvalid, invalidCount, invalidKeys };
 }
 
 if (typeof document !== "undefined") {
@@ -240,15 +244,32 @@ if (typeof document !== "undefined") {
 		form.addEventListener("submit", (event) => {
 			event.preventDefault();
 			attemptedSteps.add(currentStep);
-			const result = renderValidation(form, keysForCurrentStep());
-			if (result.invalidCount) {
-				showStepErrors(result);
-				return;
-			}
 			if (currentStep < steps.length - 1) {
+				const result = renderValidation(form, keysForCurrentStep());
+				if (result.invalidCount) {
+					showStepErrors(result);
+					return;
+				}
 				showStep(currentStep + 1);
 				return;
 			}
+
+			const currentStepResult = renderValidation(form, keysForCurrentStep());
+			if (currentStepResult.invalidCount) {
+				showStepErrors(currentStepResult);
+				return;
+			}
+
+			const completeFormResult = renderValidation(form);
+			if (completeFormResult.invalidCount) {
+				const firstInvalidStep = stepKeys.findIndex((keys) => keys.some((key) => completeFormResult.invalidKeys.includes(key)));
+				attemptedSteps.add(firstInvalidStep);
+				showStep(firstInvalidStep, false);
+				const firstStepResult = renderValidation(form, stepKeys[firstInvalidStep]);
+				showStepErrors(firstStepResult);
+				return;
+			}
+
 			form.hidden = true;
 			successMessage.hidden = false;
 			successMessage.focus();
