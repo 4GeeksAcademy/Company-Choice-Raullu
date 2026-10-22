@@ -67,7 +67,7 @@ Esta decisión afecta solo a los tres iconos del hero y su licencia se conserva 
 | Contacto          | `section#contacto` → `h2#titulo-contacto` + `p` intro; `address` con `ul.grid.gap-4.md:grid-cols-3` (3 tarjetas: mail, tel LA, tel Zaragoza) + `p` con CTA secondary → `application.html`.                                                                                                                                                                                                                                                                    |
 | Footer            | `footer.site-footer.bg-primary` con logo oscuro, info corporativa, contacto y LinkedIn.                                                                                                                                                                                                                                                                                                                                                                       |
 
-Los tokens de `styles.css` comprenden `primary #102838`, `secondary #007B76`, `secondary-hover #006963`, `mint #6EE7D2`, `accent #D4F27A`, `background #FFF`, `surface #F4F8FA`, `surface-accent #E9F8F5`, `heading #102838`, `text #344A5A`, `text-muted #556978`, `border #D8E3E8`, más `[hidden]{display:none!important}` (añadido por la enmienda 002) y reducción de movimiento. El `tailwind.config` incluye esos tokens y tipografía Manrope.
+Los tokens semánticos (`primary #102838`, `secondary #007B76`, `secondary-hover #006963`, `mint #6EE7D2`, `accent #D4F27A`, `background #FFF`, `surface #F4F8FA`, `surface-accent #E9F8F5`, `heading #102838`, `text #344A5A`, `text-muted #556978`, `border #D8E3E8`) y la tipografía Manrope se definen en `uis/website/tailwind.config.js`, compartido por ambas páginas mediante Tailwind CDN. `styles.css` conserva la excepción funcional `[hidden] { display: none !important; }`; el hover de tarjetas ya no se implementa allí, sino con utilidades Tailwind conforme a la iniciativa 006.
 
 ### 2.4. Composición vertical del mockup (muestreo técnico aproximado)
 
@@ -97,7 +97,7 @@ Este muestreo es **aproximado** (no decodifica los filtros PNG de forma exacta) 
 12. **Header y footer:** solo ajustes de espaciado/alineación si la comparación visual los justifica; sin cambios de enlaces, logos oficiales ni funcionalidad. Si no se justifican, permanecen intactos.
 13. **Accesibilidad:** navegación por teclado, foco visible, jerarquía de encabezados (una sola `h1`), contraste WCAG AA aplicable y `alt` se verifican como parte del cierre. No se eliminan ARIA, roles, etiquetas semánticas ni soluciones existentes.
 
-14. **Hover aprobado para tarjetas informativas (ya implementado):** el pulido visual incluye el cambio sutil de borde definido en `design-system.md`, aplicado mediante `.info-card` solo dentro de `@media (hover: hover) and (pointer: fine)`. La transición es de 180 ms, con mezcla del borde existente (55 %) y el turquesa secundario; `prefers-reduced-motion: reduce` elimina la transición. No añade elevación, escala ni sombra, ni cursor de enlace. Abarca tarjetas informativas estáticas de servicios, cobertura, beneficios y contacto, pero no controles, indicadores ni estados del formulario. Esta decisión se incorpora aquí como parte de la adaptación documentada de 003; su implementación consta ya en `styles.css` y no se propone como trabajo pendiente.
+14. **Hover aprobado para tarjetas informativas (ya implementado; mecanismo supersedido por la iniciativa 006):** la decisión visual original es un cambio sutil de borde, sin elevación, escala, sombra ni cursor de enlace, limitado a tarjetas estáticas de servicios, cobertura, beneficios y contacto, y excluye controles, indicadores y estados del formulario. La implementación original mediante `.info-card`/CSS se conserva aquí como historial; la iniciativa 006 la sustituyó por utilidades Tailwind declarativas (`transition-colors duration-[180ms] motion-reduce:transition-none hover:border-border-hover`) y el token semántico `border-hover: #A2C9CB`, con configuración compartida en `tailwind.config.js`. La implementación vigente no usa `.info-card` ni reglas de hover en `styles.css`.
 
 ---
 
@@ -162,7 +162,7 @@ En `index.html`, dentro de la sección existente:
 
 **Verificación:** ninguna regresión funcional/visual en las secciones no modificadas; navegación y enlaces funcionales.
 
-**Estado comprobado del hover:** ya aplicado en `styles.css` y descrito en `design-system.md`; el alcance incluye tarjetas `.info-card` de Servicios, Cobertura, beneficios y Contacto. La revisión anterior registró `git diff --check` limpio y diagnósticos del editor sin errores para los archivos web revisados. No se afirma una validación visual independiente del hover.
+**Estado comprobado del hover:** la implementación original con `.info-card` en `styles.css` fue reemplazada por las utilidades Tailwind documentadas en la iniciativa 006 y en `design-system.md`. Su verificación estática quedó registrada en las tareas de 006; la validación visual independiente del hover sigue pendiente.
 
 ### 4.8. Tarea 7 — Verificación y cierre SDD
 

@@ -1,52 +1,17 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" class="scroll-smooth motion-reduce:scroll-auto">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content="Solicita información comercial sobre los servicios logísticos de TrackFlow para empresas de e-commerce en Estados Unidos y España." />
 		<link rel="icon" href="assets/brand/favicon.ico" sizes="any" />
 		<link rel="stylesheet" href="styles.css" />
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="tailwind.config.js"></script>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 		<title>Solicitar información logística | TrackFlow</title>
-		<script src="https://cdn.tailwindcss.com"></script>
-		<script>
-			tailwind.config = {
-				theme: {
-					extend: {
-						colors: {
-							primary: "var(--color-primary)",
-							secondary: "var(--color-secondary)",
-							"secondary-hover": "var(--color-secondary-hover)",
-							mint: "var(--color-mint)",
-							accent: "var(--color-accent)",
-							background: "var(--color-background)",
-							surface: "var(--color-surface)",
-							"surface-accent": "var(--color-surface-accent)",
-							heading: "var(--color-heading)",
-							text: "var(--color-text)",
-							"text-muted": "var(--color-text-muted)",
-							"input-border": "var(--color-input-border)",
-							border: "var(--color-border)",
-							success: "var(--color-success)",
-							warning: "var(--color-warning)",
-							error: "var(--color-error)",
-							info: "var(--color-info)"
-						},
-						fontFamily: {
-							sans: ["Manrope", "ui-sans-serif", "system-ui", "sans-serif"]
-						},
-						fontSize: {
-							display: ["40px", { lineHeight: "1.15" }],
-							section: ["32px", { lineHeight: "1.25" }],
-							card: ["22px", { lineHeight: "1.35" }]
-						},
-						borderRadius: { card: "8px" }
-					}
-				}
-			};
-		</script>
 		<script src="validation.js" defer></script>
 	</head>
 	<body class="min-h-screen bg-surface font-sans text-text">

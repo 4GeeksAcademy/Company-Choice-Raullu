@@ -1,10 +1,10 @@
 # Especificación — Remediación de auditoría web de TrackFlow
 
-| Campo | Valor |
-| --- | --- |
-| **Estado** | Aprobada (incluida la enmienda Tailwind) |
-| **Proyecto / área** | TrackFlow · `uis/website/` |
-| **Alcance solicitado** | Fases 2, 3, 4, 6 y 7 de la remediación |
+| Campo                  | Valor                                    |
+| ---------------------- | ---------------------------------------- |
+| **Estado**             | Aprobada (incluida la enmienda Tailwind) |
+| **Proyecto / área**    | TrackFlow · `uis/website/`               |
+| **Alcance solicitado** | Fases 2, 3, 4, 6 y 7 de la remediación   |
 
 ## 1. Objetivo
 

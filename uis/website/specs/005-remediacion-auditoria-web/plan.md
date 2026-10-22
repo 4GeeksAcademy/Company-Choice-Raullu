@@ -1,10 +1,10 @@
 # Plan — Remediación de auditoría web de TrackFlow
 
-| Campo | Valor |
-| --- | --- |
-| **Estado** | Borrador pendiente de aprobación |
-| **Especificación** | [`spec.md`](./spec.md) (aprobada, incluida la enmienda Tailwind) |
-| **Proyecto / área** | TrackFlow · `uis/website/` |
+| Campo               | Valor                                                            |
+| ------------------- | ---------------------------------------------------------------- |
+| **Estado**          | Aprobado; implementación cerrada con limitaciones documentadas   |
+| **Especificación**  | [`spec.md`](./spec.md) (aprobada, incluida la enmienda Tailwind) |
+| **Proyecto / área** | TrackFlow · `uis/website/`                                       |
 
 ## Propósito
 
@@ -39,7 +39,7 @@ Fuera de estos límites: no dependencias/build, assets, Design System, reglas de
 - Comprobar que los cambios de diseño usan utilidades Tailwind y variantes `sm:`, `md:`, `lg:` adecuadas a los breakpoints configurados; cualquier excepción de CSS debe tener justificación y aprobación documentadas antes de implementarse.
 - Medir con Lighthouse/PageSpeed en forma reproducible o anotar exactamente el bloqueo.
 - Ejecutar `node --check`, diagnósticos disponibles, `git diff --check` y pruebas existentes aplicables; no afirmar verificaciones no realizadas.
-- No crear commit. Cualquier commit requiere autorización separada.
+- Regla del cierre original: no crear commit como parte de la iniciativa; cualquier commit requería autorización separada. La autorización de commit concedida posteriormente por el usuario para la auditoría documental actual es independiente de ese cierre.
 
 ## Exclusiones operativas
 

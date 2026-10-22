@@ -64,13 +64,14 @@ La marca se apoya en tres tonos principales y una familia de neutros. Cada color
 
 ### Variantes y estados
 
-| Nombre         | HEX       | Uso                                    |
-| -------------- | --------- | -------------------------------------- |
-| Turquesa hover | `#006963` | Estado hover del CTA turquesa.         |
-| Éxito          | `#176B48` | Confirmaciones y resultados correctos. |
-| Advertencia    | `#986000` | Advertencias que requieren revisión.   |
-| Error          | `#B42318` | Validaciones erróneas.                 |
-| Información    | `#215F9A` | Contexto informativo adicional.        |
+| Nombre         | HEX       | Uso                                                       |
+| -------------- | --------- | --------------------------------------------------------- |
+| Turquesa hover | `#006963` | Estado hover del CTA turquesa.                            |
+| Éxito          | `#176B48` | Confirmaciones y resultados correctos.                    |
+| Advertencia    | `#986000` | Advertencias que requieren revisión.                      |
+| Error          | `#B42318` | Validaciones erróneas.                                    |
+| Información    | `#215F9A` | Contexto informativo adicional.                           |
+| Borde hover    | `#A2C9CB` | Cambio de borde sutil en tarjetas informativas estáticas. |
 
 **Criterio:** los colores son roles de interfaz, no decisiones decorativas que se reinventan en cada sección.
 
@@ -121,7 +122,7 @@ Como norma general, las tarjetas son **blancas**, con borde `#D8E3E8` y radio co
 
 ### Interacción sutil de tarjetas informativas
 
-Las tarjetas informativas estáticas pueden cambiar sutilmente el color del borde al pasar un puntero capaz de hover. La transición debe ser breve y respetar movimiento reducido. No añadir cursor de enlace, elevación, escala, sombra nueva ni otros indicios de que la tarjeta completa sea clicable; los enlaces o controles interiores conservan sus propios estados interactivos.
+Las tarjetas informativas estáticas pueden cambiar sutilmente el color del borde a `#A2C9CB` al pasar un puntero capaz de hover. La transición debe ser breve y respetar movimiento reducido. No añadir cursor de enlace, elevación, escala, sombra nueva ni otros indicios de que la tarjeta completa sea clicable; los enlaces o controles interiores conservan sus propios estados interactivos.
 
 **Regla:** un CTA principal por bloque. **No usar lima como color estándar de botones.**
 
@@ -283,35 +284,36 @@ La paleta se ha elegido para sostener buenas relaciones de contraste en sus comb
 
 Usar **variables semánticas** y **componentes reutilizables**. No introducir colores arbitrarios en cada sección o formulario.
 
-### Tokens CSS base para Tailwind
+### Tokens semánticos Tailwind
 
-```css
-:root {
-  /* Identidad */
-  --color-primary: #102838;
-  --color-secondary: #007b76;
-  --color-secondary-hover: #006963;
-  --color-mint: #6ee7d2;
-  --color-accent: #d4f27a;
+El archivo compartido `tailwind.config.js`, cargado después del runtime CDN en las páginas, es la fuente de configuración Tailwind para los colores semánticos, Manrope, las escalas tipográficas display/section/card y el radio `card`. Sus valores deben corresponder a los roles y hexadecimales de esta guía; no mantener configuraciones inline divergentes por página. El color `border-hover` (`#A2C9CB`) se reserva al cambio sutil de borde indicado en la sección 4. No se requieren variables CSS `:root` para esos tokens cuando la configuración compartida contiene sus valores directamente.
 
-  /* Superficies */
-  --color-background: #ffffff;
-  --color-surface: #f4f8fa;
-  --color-surface-accent: #e9f8f5;
+La única excepción CSS manual del sitio es `[hidden] { display: none !important; }` en `styles.css`: los atributos `hidden` gobiernan pasos, controles, errores y mensajes que JavaScript muestra/oculta, y esta regla impide que utilidades Tailwind de `display` revelen accidentalmente regiones ocultas.
 
-  /* Textos y campos */
-  --color-heading: #102838;
-  --color-text: #344a5a;
-  --color-text-muted: #556978;
-  --color-input-border: #708b99;
-  --color-border: #d8e3e8;
-
-  /* Estados */
-  --color-success: #176b48;
-  --color-warning: #986000;
-  --color-error: #b42318;
-  --color-info: #215f9a;
+```js
+// Extracto de theme.extend en uis/website/tailwind.config.js
+colors: {
+  primary: "#102838",
+  secondary: "#007B76",
+  "secondary-hover": "#006963",
+  mint: "#6EE7D2",
+  accent: "#D4F27A",
+  background: "#FFFFFF",
+  surface: "#F4F8FA",
+  "surface-accent": "#E9F8F5",
+  heading: "#102838",
+  text: "#344A5A",
+  "text-muted": "#556978",
+  "input-border": "#708B99",
+  border: "#D8E3E8",
+  "border-hover": "#A2C9CB",
+  success: "#176B48",
+  warning: "#986000",
+  error: "#B42318",
+  info: "#215F9A"
 }
+```
+
 ```
 
 ### Reglas para componentes
@@ -343,3 +345,4 @@ Usar **variables semánticas** y **componentes reutilizables**. No introducir co
 **TrackFlow debe ser una web clara por defecto**: blancos y grises suaves en la mayoría de secciones; azul petróleo en los momentos corporativos más relevantes; turquesa para orientar acciones; lima solo como acento excepcional.
 
 Esta guía funciona como referencia de identidad visual para las interfaces de TrackFlow. El mapa de secciones y los componentes descritos se aplican al sitio público. Los valores deben centralizarse en el proyecto y mantenerse constantes al crear o modificar componentes. Toda modificación visual de esta guía requiere aprobación explícita previa.
+```

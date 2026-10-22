@@ -1,15 +1,15 @@
 # Tareas — Remediación de auditoría web de TrackFlow
 
-| Campo | Valor |
-| --- | --- |
-| **Estado** | Aprobada; implementación secuencial en curso |
-| **Especificación** | [`spec.md`](./spec.md), aprobada (incluida enmienda Tailwind) |
-| **Plan** | [`plan.md`](./plan.md), aprobado |
+| Campo              | Valor                                                                                        |
+| ------------------ | -------------------------------------------------------------------------------------------- |
+| **Estado**         | Aprobada; implementación cerrada con limitaciones documentadas                                |
+| **Especificación** | [`spec.md`](./spec.md), aprobada (incluida enmienda Tailwind)                                |
+| **Plan**           | [`plan.md`](./plan.md), aprobado                                                             |
 | **Implementación** | Cerrada con limitaciones documentadas; navegador y auditoría Lighthouse/PageSpeed pendientes |
 
 ## Reglas de ejecución
 
-- Mantener el alcance limitado a las fases 2, 3, 4, 6 y 7. No aclarar reglas de negocio (fase 1), no completar contenido comercial de landing (fase 5), no desplegar y no crear commit.
+- Alcance de la implementación original: fases 2, 3, 4, 6 y 7. No se aclararon reglas de negocio (fase 1), no se completó contenido comercial de landing (fase 5), no se desplegó y no se creó commit durante ese cierre. La autorización posterior de commit para esta auditoría documental no amplía el alcance de implementación de 005.
 - Preservar todas las modificaciones preexistentes en el árbol de trabajo; inspeccionar el estado Git antes de tocar archivos y no revertir cambios ajenos.
 - Usar clases utilitarias Tailwind CSS para todos los estilos nuevos o modificados. Aplicar `sm:`, `md:` y `lg:` conforme a los breakpoints configurados. No añadir ni modificar CSS personalizado, salvo que una necesidad técnica o de accesibilidad demostrable no pueda resolverse razonablemente con Tailwind; en ese caso, detenerse, justificar y solicitar aprobación explícita antes de escribirlo.
 - No añadir dependencias, proceso de build, envío o persistencia de datos, integración, cambios de marca/tokens ni copy comercial.
@@ -28,7 +28,7 @@
 9. [x] **Evaluar optimizaciones permitidas.** No se aplican optimizaciones de rendimiento: no hay una medición reproducible que justifique un cambio técnico seguro y acotado. Se preservan contenido, identidad, dependencias y configuración; decisión basada en la ausencia documentada de herramienta/API e informe.
 10. [x] **Ejecutar verificaciones finales.** `node --check uis/website/validation.js` y `git diff --check` finalizaron sin errores; `get_errors` no informa problemas para `application.html` y `validation.js`. Scripts estáticos confirmaron la utilidad Tailwind en los nueve controles, y ausencia de `fetch`, `XMLHttpRequest`, `sendBeacon`, almacenamiento web, cookies y atributo `action`. No había pruebas dedicadas, navegador, lector de pantalla ni Lighthouse/PageSpeed disponibles; no se afirman verificaciones visuales o de tecnologías de asistencia.
 11. [x] **Reauditar criterios y actualizar bitácora.** Actualizados este registro y `memory-bank/progress.md` con alcance, cambios, evidencia y límites. Comprobado que no se modificó `validation.js`, landing, reglas de negocio, contenido comercial, iniciativa 004, estilos CSS ni configuración; el único estilo añadido usa Tailwind. Las fases excluidas permanecen intactas.
-12. [x] **Revisar diff final sin crear commit.** Revisado el estado/diff final: cambios propios limitados a `uis/website/application.html` (nueve variantes Tailwind), tareas de iniciativa 005 y bitácora de progreso. Se preservaron cambios previos fuera del alcance. `git diff --check` limpio; no se creó commit.
+12. [x] **Revisar diff final y estado de commit de la iniciativa.** En el cierre original se revisó el diff sin crear commit; posteriormente, el commit `9508bb6` (`Modificacion para cumplir 100% requisito Tailwind CSS`, 2026-10-22) incluyó `application.html`, esta bitácora y este registro de tareas. Ese commit precede a la auditoría actual y no incluye los cambios de la iniciativa 006. La revisión original registró `git diff --check` limpio y preservó cambios preexistentes fuera de alcance.
 
 ## Aprobación
 

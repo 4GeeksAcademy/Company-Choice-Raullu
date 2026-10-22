@@ -171,7 +171,9 @@ Tercera pasada solicitada por el usuario: «TrackFlow — Corrección del layout
 
 ## 1d. Hover sutil de tarjetas informativas — incorporado a la adaptación 003
 
-El hover aprobado por el usuario queda registrado como parte del alcance visual de esta adaptación, no como una tarea funcional separada. Ya está implementado en `styles.css` y su regla visual está documentada en `design-system.md`.
+> **Nota de evolución:** las tareas siguientes registran la implementación original en CSS y se conservan como historial. La iniciativa 006 sustituyó ese mecanismo por utilidades Tailwind; para el estado vigente y sus verificaciones, consultar `uis/website/specs/006-tailwind-first-estilos-web/`.
+
+El hover aprobado por el usuario queda registrado como parte del alcance visual de esta adaptación, no como una tarea funcional separada. La implementación histórica en `styles.css` fue sustituida por utilidades Tailwind en la iniciativa 006; la regla visual vigente se documenta en `design-system.md`.
 
 - [x] Aplicar transición de borde de 180 ms a `.info-card` y, únicamente en `@media (hover: hover) and (pointer: fine)`, mezclar el borde base (55 %) con el turquesa secundario al pasar el puntero.
 - [x] Desactivar la transición bajo `prefers-reduced-motion: reduce`.

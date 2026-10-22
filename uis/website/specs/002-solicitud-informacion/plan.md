@@ -21,7 +21,7 @@ Completar el formulario comercial de TrackFlow descrito en el spec aprobado, con
 - El último paso ofrecerá el envío simulado; tras un envío válido se ocultará el formulario completo y quedará visible únicamente la confirmación y la aclaración de demostración/no envío.
 - La advertencia de volumen `0-100` aparecerá inmediatamente debajo del selector.
 - Los selectores mantendrán su indicador nativo de apertura con espacio suficiente entre la flecha y el borde derecho.
-- Tailwind CDN, los tokens de `styles.css`, el favicon y el logo oficial se reutilizarán; Lucide se usará solo si aporta comprensión y mediante los SVG locales existentes.
+- Tailwind CDN, los tokens semánticos del Design System compartidos mediante `uis/website/tailwind.config.js`, el favicon y el logo oficial se reutilizarán; Lucide se usará solo si aporta comprensión y mediante los SVG locales existentes.
 - La advertencia se muestra para `0-100 envíos/mes` con cualquier tipo de producto y no requiere confirmación.
 - Comentarios bloquea entrada adicional en 500 caracteres; conserva el mensaje de error del briefing como validación defensiva excepcional y `X` representa caracteres excedidos.
 - La simulación de envío no hará solicitudes de red ni guardará los datos.

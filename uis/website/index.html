@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" class="scroll-smooth motion-reduce:scroll-auto">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,6 +9,8 @@
 		/>
 		<link rel="icon" href="assets/brand/favicon.ico" sizes="any" />
 		<link rel="stylesheet" href="styles.css" />
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="tailwind.config.js"></script>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
@@ -16,45 +18,6 @@
 			rel="stylesheet"
 		/>
 		<title>Logística para e-commerce en Estados Unidos y España | TrackFlow</title>
-		<script src="https://cdn.tailwindcss.com"></script>
-		<script>
-			tailwind.config = {
-				theme: {
-					extend: {
-						colors: {
-							primary: "var(--color-primary)",
-							secondary: "var(--color-secondary)",
-							"secondary-hover": "var(--color-secondary-hover)",
-							mint: "var(--color-mint)",
-							accent: "var(--color-accent)",
-							background: "var(--color-background)",
-							surface: "var(--color-surface)",
-							"surface-accent": "var(--color-surface-accent)",
-							heading: "var(--color-heading)",
-							text: "var(--color-text)",
-							"text-muted": "var(--color-text-muted)",
-							"input-border": "var(--color-input-border)",
-							border: "var(--color-border)",
-							success: "var(--color-success)",
-							warning: "var(--color-warning)",
-							error: "var(--color-error)",
-							info: "var(--color-info)"
-						},
-						fontFamily: {
-							sans: ["Manrope", "ui-sans-serif", "system-ui", "sans-serif"]
-						},
-						fontSize: {
-							display: ["40px", { lineHeight: "1.15" }],
-							section: ["32px", { lineHeight: "1.25" }],
-							card: ["22px", { lineHeight: "1.35" }]
-						},
-						borderRadius: {
-							card: "8px"
-						}
-					}
-				}
-			};
-		</script>
 		<script type="application/ld+json">
 			{
 				"@context": "https://schema.org",
@@ -97,7 +60,7 @@
 			}
 		</script>
 	</head>
-	<body>
+	<body class="bg-background font-sans text-text">
 		<header class="site-header border-b border-border bg-background">
 			<div class="mx-auto flex max-w-[1600px] flex-col items-center gap-3 px-5 py-4 lg:px-10 md:flex-row md:justify-between xl:px-12">
 				<a class="brand-link block shrink-0 rounded-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary" href="#inicio" aria-label="TrackFlow, inicio">
@@ -160,7 +123,7 @@
 				</div>
 				<div class="mx-auto max-w-[1600px] px-5 lg:px-10 xl:px-12">
 					<div class="mt-4 grid gap-6 md:grid-cols-2 lg:mt-6 xl:grid-cols-3">
-						<article class="service-item info-card flex h-full flex-col rounded-card border border-border bg-white p-6 md:p-8">
+						<article class="service-item transition-colors duration-[180ms] motion-reduce:transition-none hover:border-border-hover flex h-full flex-col rounded-card border border-border bg-white p-6 md:p-8">
 							<div class="mb-5 flex h-12 w-12 items-center justify-center rounded-card bg-surface-accent">
 								<img class="h-6 w-6" src="assets/icons/warehouse.svg" alt="" aria-hidden="true" width="24" height="24" />
 							</div>
@@ -171,7 +134,7 @@
 								<li class="list-disc">Operaciones en Estados Unidos y España.</li>
 							</ul>
 						</article>
-						<article class="service-item info-card flex h-full flex-col rounded-card border border-border bg-white p-6 md:p-8">
+						<article class="service-item transition-colors duration-[180ms] motion-reduce:transition-none hover:border-border-hover flex h-full flex-col rounded-card border border-border bg-white p-6 md:p-8">
 							<div class="mb-5 flex h-12 w-12 items-center justify-center rounded-card bg-surface-accent">
 								<img class="h-6 w-6" src="assets/icons/truck.svg" alt="" aria-hidden="true" width="24" height="24" />
 							</div>
@@ -182,7 +145,7 @@
 								<li class="list-disc">Seguimiento de envíos y gestión de incidencias.</li>
 							</ul>
 						</article>
-						<article class="service-item info-card flex h-full flex-col rounded-card border border-border bg-white p-6 md:p-8">
+						<article class="service-item transition-colors duration-[180ms] motion-reduce:transition-none hover:border-border-hover flex h-full flex-col rounded-card border border-border bg-white p-6 md:p-8">
 							<div class="mb-5 flex h-12 w-12 items-center justify-center rounded-card bg-surface-accent">
 								<img class="h-6 w-6" src="assets/icons/package-check.svg" alt="" aria-hidden="true" width="24" height="24" />
 							</div>
@@ -210,7 +173,7 @@
 				</div>
 				<div class="mx-auto max-w-[1600px] px-5 lg:px-10 xl:px-12">
 					<div class="mt-4 grid gap-6 md:grid-cols-2 lg:mt-6">
-						<article class="coverage-location info-card rounded-card border border-border bg-white p-6 md:p-8">
+						<article class="coverage-location transition-colors duration-[180ms] motion-reduce:transition-none hover:border-border-hover rounded-card border border-border bg-white p-6 md:p-8">
 							<div class="flex flex-col lg:flex-row lg:items-stretch">
 								<div class="flex-1 lg:pr-8">
 									<div class="flex items-center gap-3">
@@ -237,7 +200,7 @@
 								</figure>
 							</div>
 						</article>
-						<article class="coverage-location info-card rounded-card border border-border bg-white p-6 md:p-8">
+						<article class="coverage-location transition-colors duration-[180ms] motion-reduce:transition-none hover:border-border-hover rounded-card border border-border bg-white p-6 md:p-8">
 							<div class="flex flex-col lg:flex-row lg:items-stretch">
 								<div class="flex-1 lg:pr-8">
 									<div class="flex items-center gap-3">
@@ -281,7 +244,7 @@
 				</div>
 				<div class="mx-auto max-w-[1600px] px-5 lg:px-10 xl:px-12">
 				<ul class="mt-4 grid gap-6 md:grid-cols-2 lg:mt-6 xl:grid-cols-4">
-						<li class="info-card h-full rounded-card border border-border bg-white p-6">
+						<li class="transition-colors duration-[180ms] motion-reduce:transition-none hover:border-border-hover h-full rounded-card border border-border bg-white p-6">
 							<div class="flex h-12 w-12 items-center justify-center rounded-card bg-surface-accent">
 								<img class="h-6 w-6" src="assets/icons/globe.svg" alt="" aria-hidden="true" width="24" height="24" />
 							</div>
@@ -289,7 +252,7 @@
 							<h3 class="mt-2 font-sans text-lg font-bold text-heading">Presencia en dos países</h3>
 							<p class="mt-2 leading-7 text-text">Operamos con almacenes en Los Ángeles y Zaragoza, atendiendo a Estados Unidos y España.</p>
 						</li>
-						<li class="info-card h-full rounded-card border border-border bg-white p-6">
+						<li class="transition-colors duration-[180ms] motion-reduce:transition-none hover:border-border-hover h-full rounded-card border border-border bg-white p-6">
 							<div class="flex h-12 w-12 items-center justify-center rounded-card bg-surface-accent">
 								<img class="h-6 w-6" src="assets/icons/users-round.svg" alt="" aria-hidden="true" width="24" height="24" />
 							</div>
@@ -297,14 +260,14 @@
 							<h3 class="mt-2 font-sans text-lg font-bold text-heading">Un equipo dedicado</h3>
 							<p class="mt-2 leading-7 text-text">Alrededor de 130 profesionales forman parte de la operación de TrackFlow.</p>
 						</li>
-						<li class="info-card h-full rounded-card border border-border bg-white p-6">
+						<li class="transition-colors duration-[180ms] motion-reduce:transition-none hover:border-border-hover h-full rounded-card border border-border bg-white p-6">
 							<div class="flex h-12 w-12 items-center justify-center rounded-card bg-surface-accent">
 								<img class="h-6 w-6" src="assets/icons/route.svg" alt="" aria-hidden="true" width="24" height="24" />
 							</div>
 							<h3 class="mt-5 font-sans text-lg font-bold text-heading">Tecnología al servicio de la operación</h3>
 							<p class="mt-2 leading-7 text-text">Un equipo tecnológico dedicado a mejorar los sistemas y procesos que respaldan la operación.</p>
 						</li>
-						<li class="info-card h-full rounded-card border border-border bg-white p-6">
+						<li class="transition-colors duration-[180ms] motion-reduce:transition-none hover:border-border-hover h-full rounded-card border border-border bg-white p-6">
 							<div class="flex h-12 w-12 items-center justify-center rounded-card bg-surface-accent">
 								<img class="h-6 w-6" src="assets/icons/package.svg" alt="" aria-hidden="true" width="24" height="24" />
 							</div>
@@ -332,7 +295,7 @@
 				<div class="mx-auto max-w-[1600px] px-5 lg:px-10 xl:px-12">
 				<address class="mt-4 not-italic md:mt-6">
 						<ul class="grid gap-6 md:grid-cols-3">
-							<li class="info-card rounded-card border border-border bg-white p-5">
+							<li class="transition-colors duration-[180ms] motion-reduce:transition-none hover:border-border-hover rounded-card border border-border bg-white p-5">
 								<div class="flex items-start gap-4">
 									<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-card bg-surface-accent">
 										<img class="h-5 w-5" src="assets/icons/mail.svg" alt="" aria-hidden="true" width="20" height="20" />
@@ -343,7 +306,7 @@
 									</div>
 								</div>
 							</li>
-							<li class="info-card rounded-card border border-border bg-white p-5">
+							<li class="transition-colors duration-[180ms] motion-reduce:transition-none hover:border-border-hover rounded-card border border-border bg-white p-5">
 								<div class="flex items-start gap-4">
 									<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-card bg-surface-accent">
 										<img class="h-5 w-5" src="assets/icons/phone.svg" alt="" aria-hidden="true" width="20" height="20" />
@@ -354,7 +317,7 @@
 									</div>
 								</div>
 							</li>
-							<li class="info-card rounded-card border border-border bg-white p-5">
+							<li class="transition-colors duration-[180ms] motion-reduce:transition-none hover:border-border-hover rounded-card border border-border bg-white p-5">
 								<div class="flex items-start gap-4">
 									<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-card bg-surface-accent">
 										<img class="h-5 w-5" src="assets/icons/map-pin.svg" alt="" aria-hidden="true" width="20" height="20" />

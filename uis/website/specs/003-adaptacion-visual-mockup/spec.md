@@ -10,6 +10,8 @@
 
 > Este documento conserva el estado de borrador de la iniciativa y documenta también iteraciones visuales y el hover ya aprobados e implementados en la landing. La revisión visual final sigue pendiente según las limitaciones registradas en las tareas. La aprobación de esta especificación no autoriza por sí sola cambios adicionales ni aprueba el plan, las tareas o nuevas implementaciones.
 
+> **Nota de evolución:** la descripción histórica del hover en este documento y sus tareas refleja la implementación inicial mediante CSS. La iniciativa 006 la sustituyó por utilidades Tailwind y configuración compartida; véase `uis/website/specs/006-tailwind-first-estilos-web/`. Se conserva el historial y la decisión visual, no la técnica anterior como estado vigente.
+
 ## 1. Contexto y objetivo
 
 La landing actual ya contiene las siete secciones requeridas y utiliza HTML semántico, Tailwind CSS mediante CDN, tokens del Design System y recursos locales. El objetivo es acercar gradualmente su presentación al mockup aprobado mediante los cambios visuales mínimos necesarios, reutilizando los recursos disponibles y sin rehacer la web ni alterar su comportamiento.

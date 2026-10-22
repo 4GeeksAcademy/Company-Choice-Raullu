@@ -4,7 +4,13 @@ Este archivo es una bitácora acumulativa: los elementos implementados se conser
 
 **Última actualización:** 2026-10-22
 
-### Remediación de auditoría web — iniciativa 005 (en curso)
+### Auditoría documental global — registro de reconciliación (2026-10-22)
+
+- Se reconciliaron estados/aprobaciones y la trazabilidad de commit en SDD 002, 005 y 006; se actualizó `techContext.md` para reflejar `tailwind.config.js` compartido y la excepción `[hidden]`.
+- En SDD 003 se preservó como historial la implementación inicial del hover en CSS y se documentó que 006 la sustituyó por utilidades Tailwind. No se modificó `uis/website/index.html` como parte de esta reconciliación.
+- Historia confirmada: `9508bb6` contiene `application.html`, esta bitácora y tareas de 005; no contiene la configuración, el Design System ni los artefactos SDD de 006. La comprobación del árbol de trabajo y el alcance del commit actual se documentan en el resultado de esta auditoría antes de confirmar cambios.
+
+### Remediación de auditoría web — iniciativa 005 (cerrada con limitaciones documentadas)
 
 - Especificación, plan y tareas aprobados. El alcance cubre validaciones, estados accesibles, revisión técnica responsive, medición de rendimiento si es viable y documentación; excluye aclarar reglas de negocio (fase 1) y completar contenido de landing (fase 5). Se exige Tailwind para estilos nuevos/modificados; no se añadieron dependencias ni CSS personalizado.
 - En `application.html`, los nueve controles individuales (texto/select/textarea) con mensajes de error asociados recibieron `aria-[invalid=true]:border-error`, de modo que el borde identifica visualmente el estado `aria-invalid` ya actualizado por `validation.js`; los mensajes textuales permanecen. Sin cambios al JS, al comportamiento de negocio, a la landing ni a `styles.css`.
@@ -12,7 +18,15 @@ Este archivo es una bitácora acumulativa: los elementos implementados se conser
 - Revisión responsive estática encontró contenedores acotados, controles `w-full`, grids fluidos y cambios de layout `sm:`; no encontró anchos mínimos/fijos de pantalla ni reglas CSS de layout. No se dispuso de navegador, así que no se verificó visualmente overflow en los viewports de la tarea.
 - La expresión telefónica actual rechaza `+1` y acepta `+12`; las fuentes aprobadas exigen `+`/código país/número, pero no definen longitud mínima. No se inventó un umbral. Sin cambios de validación.
 - No se ejecutó Lighthouse/PageSpeed: herramienta/CLI, paquete local y clave PageSpeed ausentes en el entorno remoto; no se estimaron puntuaciones. Auditoría externa y pruebas de navegador/lector de pantalla siguen pendientes.
-- Verificaciones ejecutadas: `node --check uis/website/validation.js`, `git diff --check`, análisis estático de clases y ausencia de API/persistencia, `get_errors` sin errores para HTML/JS. No hay commit. El diff propio actual toca `application.html`, `tasks.md` de 005 y esta bitácora; se preservan cambios preexistentes ajenos.
+- Verificaciones ejecutadas: `node --check uis/website/validation.js`, `git diff --check`, análisis estático de clases y ausencia de API/persistencia, `get_errors` sin errores para HTML/JS. En el cierre de la iniciativa no se creó commit; posteriormente, el commit `9508bb6` (`Modificacion para cumplir 100% requisito Tailwind CSS`, 2026-10-22) incluyó `application.html`, esta bitácora y `tasks.md` de 005. La revisión visual/navegador y Lighthouse/PageSpeed siguen pendientes.
+
+### Migración Tailwind-first de estilos web — iniciativa 006 (implementada; revisión visual pendiente, 2026-10-22)
+
+- Spec, plan y tareas aprobados explícitamente por el usuario. Se documentó primero en `uis/website/design-system.md` la configuración semántica compartida, el token de borde hover `#A2C9CB` y la excepción `[hidden]`. Los encabezados de los artefactos SDD reflejan sus aprobaciones; el plan/tareas precisan el orden compatible del CDN y preservan `bg-surface` del formulario.
+- Se creó `uis/website/tailwind.config.js` con los colores, Manrope, escalas display/section/card, radio `card` y `border-hover`. `index.html` y `application.html` cargan Tailwind CDN y luego la configuración común, sin bloques inline duplicados. Se consultó el runtime oficial CDN: expone `window.tailwind.config` por un proxy y recompila al asignar configuración.
+- En ambas páginas, `html` usa `scroll-smooth motion-reduce:scroll-auto`; la landing declara `bg-background font-sans text-text`, y el formulario conserva `bg-surface font-sans text-text` para mantener su diseño actual. Las 12 tarjetas informativas de la landing sustituyen el gancho `.info-card` por `transition-colors duration-[180ms] motion-reduce:transition-none hover:border-border-hover`; no se añadieron estados de fondo/sombra/transform/cursor. Los offsets de foco existentes son explícitos en las clases aplicables.
+- `styles.css` conserva únicamente `[hidden] { display: none !important; }`, protección necesaria porque el formulario usa el atributo `hidden` para pasos, acciones, errores y mensajes y utilidades Tailwind de display pueden prevalecer sobre el estilo UA.
+- Verificación ejecutada: `node --check uis/website/validation.js` y `node --check uis/website/tailwind.config.js` con código 0; `git diff --check` con código 0; `get_errors` sin errores en landing, formulario, JS y config; comprobación estática de orden de scripts, fondos, scroll, 12 tarjetas y regla CSS. No hay navegador ni automatización de navegador disponibles, por lo que **no** se verificaron renderizado real del CDN, hover, movimiento reducido, foco visual ni flujo dinámico en navegador; siguen pendientes de revisión visual/manual. En el cierre original no se creó commit; el commit posterior `9508bb6` no incluye `tailwind.config.js`, `design-system.md` ni los artefactos SDD 006, por lo que no corresponde a un commit de esa iniciativa.
 
 **Fuentes de alcance y estructura:** [`projectBrief.md`](projectBrief.md), [`techContext.md`](techContext.md) y briefings de cada iniciativa.
 
