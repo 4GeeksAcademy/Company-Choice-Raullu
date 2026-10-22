@@ -194,9 +194,44 @@ La marca debe sentirse técnica y organizada, sin perder el vínculo con almacen
 ### Organización y conservación de recursos
 
 - `assets/brand/`: logotipos, monograma y favicon oficiales. Son originales inmutables; no recrear, recolorear, recortar ni deformar.
-- `assets/illustrations/`: ilustraciones aprobadas originales. Preservar transparencia, colores y proporción; no recortar partes relevantes ni sustituirlas por recursos externos.
-- `assets/icons/`: SVG Lucide usados por la interfaz y el aviso de licencia/versionado. No almacenar aquí logotipos o ilustraciones.
-- Toda imagen debe tener atributo `alt`: las informativas reciben descripción breve y contextual; las estrictamente decorativas usan `alt=""`; los logotipos identifican a TrackFlow.
+- `assets/icons/`: SVG Lucide para iconografía de interfaz y el aviso de licencia/versionado. No almacenar aquí logotipos o ilustraciones.
+- `assets/illustrations/`: ilustraciones conceptuales o explicativas. Preservar transparencia, colores y proporción; no recortar partes relevantes ni sustituirlas por recursos externos.
+- `assets/images/`: imágenes fotográficas para cabeceras y tarjetas. No presentar una imagen como fotografía real de operaciones de TrackFlow hasta que su procedencia y correspondencia con la empresa hayan sido verificadas.
+- Toda imagen debe tener atributo `alt`: las informativas reciben descripción breve y contextual; las estrictamente decorativas usan `alt=""`; los logotipos identifican a TrackFlow. No repetir en el `alt` el texto adyacente ni usar descripciones genéricas.
+
+### Catálogo de recursos gráficos
+
+Las rutas de esta tabla son relativas a `uis/website/`. El contexto de uso es el previsto para futuras interfaces; su inclusión en el catálogo no autoriza cambios visuales ni modifica el alcance aprobado de una iniciativa existente.
+
+| Recurso                                            | Finalidad y contexto previsto                    | Estado y reglas de uso                                                                                                                                                                                       |
+| -------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `assets/illustrations/hero-flujo-logistico.png`    | Ilustración del hero de la landing actual.       | Recurso que ya referencia `index.html` y la especificación aprobada `specs/001-mejora-visual-web/`. Mantener el original, proporción y transparencia; no sustituirlo sin aprobación.                         |
+| `assets/illustrations/hero-flujo-logistico(2).png` | Ilustración principal alternativa del hero.      | Archivo presente además del recurso que usa actualmente la landing. No asumir que es un reemplazo ni cambiar referencias existentes sin aprobación y confirmación visual.                                    |
+| `assets/illustrations/mapa-general-almacenes.png`  | Mapa conceptual para la sección Cobertura.       | Tratar como ilustración conceptual, no como mapa operativo o prueba de cobertura verificada. La especificación actual excluye añadir mapas a la mejora vigente; cualquier incorporación requiere aprobación. |
+| `assets/images/servicios-logisticos.png`           | Imagen de cabecera de Servicios.                 | Uso previsto; verificar contenido y procedencia antes de presentarla como fotografía real de TrackFlow.                                                                                                      |
+| `assets/images/almacen-los-angeles.png`            | Imagen de la tarjeta del almacén de Los Ángeles. | Uso previsto; no afirmar que representa las instalaciones reales hasta verificarlo.                                                                                                                          |
+| `assets/images/almacen-zaragoza.png`               | Imagen de la tarjeta del almacén de Zaragoza.    | Uso previsto; no afirmar que representa las instalaciones reales hasta verificarlo.                                                                                                                          |
+| `assets/images/centro-operaciones-trackflow.png`   | Imagen de cabecera de Por qué TrackFlow.         | Uso previsto; verificar contenido y procedencia antes de presentarla como fotografía real de TrackFlow.                                                                                                      |
+| `assets/images/despacho-trackflow.png`             | Imagen de cabecera de Contacto.                  | Uso previsto; verificar contenido y procedencia antes de presentarla como fotografía real de TrackFlow.                                                                                                      |
+
+Los recursos de `assets/images/` y las ilustraciones nuevas constan como archivos presentes, pero su contenido y procedencia no se han validado visualmente en esta revisión. Hasta verificarlo, describirlos en la interfaz solo según lo que efectivamente muestran y no atribuirlos a instalaciones, personal o procesos reales de la empresa. Diferenciar explícitamente imágenes generadas o conceptuales de fotografías reales verificadas; no inferir su categoría solo por el nombre del archivo.
+
+#### Aplicación, accesibilidad y responsive
+
+- Antes de referenciar un archivo, confirmar su ruta y nombre exactos en el repositorio. Añadir `width` y `height` correspondientes al original cuando se conozcan para reservar espacio y reducir saltos de diseño.
+- Mantener la relación de aspecto y mostrar ilustraciones completas, preferentemente con dimensionamiento fluido y `object-fit: contain`; no recortar elementos significativos, estirar ni deformar. Usar `cover` en fotografía solo si el recorte es intencional, aprobado y conserva el sujeto y contexto relevantes en todos los tamaños.
+- En layouts responsive, limitar el ancho al contenedor, usar altura automática y revisar encuadre, legibilidad y ausencia de desbordamiento en móvil, tablet y escritorio. No imponer un tamaño fijo que provoque recortes o distorsión.
+- No eliminar ni añadir transparencia, aplicar fundidos/degradados, filtros, recoloreado o superposiciones al original. Si la composición necesita un fundido o tratamiento para contraste, debe resolverse mediante capas/estilos de interfaz aprobados, sin alterar el archivo, y comprobarse en tamaños y fondos reales.
+- Para imágenes informativas, redactar un `alt` breve que exprese la información visual relevante para su sección. Si el contenido ya se comunica íntegramente junto a la imagen y esta no añade información, usar `alt=""`. Los iconos decorativos junto a texto también llevan `alt=""` y `aria-hidden="true"`; los controles solo con icono necesitan un nombre accesible.
+
+#### Mantenimiento y aprobación
+
+1. Reutilizar primero los recursos existentes; no proponer o añadir otro recurso si uno catalogado satisface la necesidad.
+2. Documentar cada recurso nuevo aquí, con ruta exacta, finalidad/contexto, categoría (conceptual, generada o fotografía real verificada, cuando corresponda) y normas de uso antes de referenciarlo desde una interfaz.
+3. Todo cambio visual, incorporación, reemplazo o excepción de uso requiere aprobación explícita previa, de acuerdo con el alcance y flujo de aprobación del repositorio.
+4. No editar, optimizar destructivamente, recortar, renombrar, mover, reemplazar ni eliminar originales sin autorización expresa. Conservar el original sin cambios.
+5. Las reglas de frontend remiten a este Design System para el catálogo y sus normas; no duplicar el inventario en reglas u otros documentos.
+6. `assets/references/landing-de-logistica-trackflow.png` es un mockup de referencia visual para análisis. No es un asset de producción: no incrustarlo ni mostrarlo en la web.
 
 ---
 

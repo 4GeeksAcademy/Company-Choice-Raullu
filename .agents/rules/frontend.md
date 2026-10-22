@@ -4,9 +4,9 @@
 
 ## Identidad visual y aprobaciones
 
-- Antes de cualquier cambio visual o de experiencia de usuario, consulta la versión actual de [`uis/website/design-system.md`](../../uis/website/design-system.md). Es la única fuente de verdad para la identidad visual y sus tokens; no copies sus valores a esta regla ni a otros documentos.
+- Antes de crear o modificar cualquier interfaz, consulta [`uis/website/design-system.md`](../../uis/website/design-system.md), incluyendo su catálogo de recursos gráficos y normas de uso. Es la única fuente de verdad para la identidad visual y sus tokens; no copies el inventario ni sus valores a esta regla u otros documentos.
 - Reutiliza los tokens y patrones del Design System. No introduzcas colores, tipografías, estilos de componentes, iconografía o recursos gráficos arbitrarios.
-- Utiliza exclusivamente los originales oficiales disponibles en `uis/website/assets/brand/`. Comprueba sus nombres y extensiones reales antes de referenciarlos. No generes, redibujes ni sustituyas logotipos o favicon.
+- Para logotipos y favicon, utiliza exclusivamente los originales oficiales disponibles en `uis/website/assets/brand/`. Comprueba sus nombres y extensiones reales antes de referenciarlos. No generes, redibujes ni sustituyas logotipos o favicon. Para ilustraciones, iconos e imágenes, aplica el catálogo y las reglas del Design System.
 - Cualquier modificación o excepción visual —incluidos tokens, paleta, tipografía, componentes de marca, logotipos o favicon— requiere aprobación explícita previa. Una vez aprobada, documenta primero la decisión en `design-system.md` y después aplícala a las interfaces afectadas.
 - El Design System gobierna la identidad visual; no anula requisitos técnicos, funcionales, de accesibilidad o seguridad. Si existe conflicto, conserva esos requisitos y solicita aclaración sobre la decisión visual.
 
