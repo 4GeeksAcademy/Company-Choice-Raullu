@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="es" class="scroll-smooth motion-reduce:scroll-auto">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="Solicita información comercial sobre los servicios logísticos de TrackFlow para empresas de e-commerce en Estados Unidos y España." />
+		<link rel="icon" href="assets/brand/favicon.ico" sizes="any" />
+		<link rel="stylesheet" href="styles.css" />
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="tailwind.config.js"></script>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+		<title>Solicitar información logística | TrackFlow</title>
+		<script src="validation.js" defer></script>
+	</head>
+	<body class="min-h-screen bg-surface font-sans text-text">
+		<header class="border-b border-border bg-background">
+			<div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-4 lg:px-8">
+				<a class="brand-link block shrink-0 rounded-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary" href="index.html" aria-label="TrackFlow, volver al inicio">
+					<img class="brand-logo h-auto w-40" src="assets/brand/logo-trackflow.png" alt="TrackFlow" width="180" height="60" />
+				</a>
+				<a class="inline-flex min-h-11 items-center rounded-card px-2 font-semibold text-primary underline-offset-4 hover:text-secondary hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary" href="index.html">Volver al sitio principal</a>
+			</div>
+		</header>
+		<main id="contenido-principal">
+			<section class="py-12 sm:py-16" aria-labelledby="titulo-solicitud">
+				<div class="mx-auto max-w-3xl px-5 lg:px-8">
+					<p class="text-sm font-bold uppercase text-secondary">Contacto comercial B2B</p>
+					<h1 class="mt-3 text-display font-extrabold text-heading" id="titulo-solicitud">Solicita información logística</h1>
+					<p class="mt-4 max-w-2xl text-lg leading-8">Cuéntanos sobre tu empresa y sus necesidades de e-commerce. Nuestro equipo comercial podrá conocer mejor la operación que buscas externalizar.</p>
+				</div>
+			</section>
+			<div class="mx-auto max-w-3xl px-5 pb-16 lg:px-8">
+				<form class="space-y-8 rounded-card border border-border bg-background p-5 shadow-sm sm:p-8" id="application-form" novalidate>
+					<p class="text-sm text-text-muted" id="required-note">Los campos marcados con * son obligatorios.</p>
+					<nav aria-label="Progreso del formulario" class="space-y-3">
+						<p class="font-semibold text-heading" id="step-count" aria-live="polite">Paso 1 de 4</p>
+						<ol class="grid grid-cols-2 gap-2 sm:grid-cols-4" id="step-indicator">
+							<li class="rounded-card border border-secondary bg-surface-accent px-3 py-2 text-sm font-semibold text-heading" data-step-indicator="0" aria-current="step"><span class="sr-only">Paso 1: </span>Empresa y contacto</li>
+							<li class="rounded-card border border-border bg-white px-3 py-2 text-sm text-text-muted" data-step-indicator="1"><span class="sr-only">Paso 2: </span>Operación logística</li>
+							<li class="rounded-card border border-border bg-white px-3 py-2 text-sm text-text-muted" data-step-indicator="2"><span class="sr-only">Paso 3: </span>Relación 3PL</li>
+							<li class="rounded-card border border-border bg-white px-3 py-2 text-sm text-text-muted" data-step-indicator="3"><span class="sr-only">Paso 4: </span>Comentarios y privacidad</li>
+						</ol>
+					</nav>
+					<div class="rounded-card border border-error bg-white p-4 text-error" id="form-error-summary" tabindex="-1" role="alert" hidden></div>
+
+					<section class="space-y-6" data-step="0" aria-labelledby="step-heading-0">
+						<h2 class="text-xl font-bold text-heading" id="step-heading-0" tabindex="-1">Datos de empresa y contacto</h2>
+						<fieldset class="space-y-6">
+							<legend class="sr-only">Datos de empresa y contacto</legend>
+							<div class="grid gap-5 sm:grid-cols-2">
+								<div class="sm:col-span-2">
+									<label class="mb-2 block font-semibold text-heading" for="company-name">Nombre de la empresa <span aria-hidden="true">*</span></label>
+									<input class="min-h-12 w-full rounded-card border border-input-border bg-white px-3 py-2 text-text aria-[invalid=true]:border-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="company-name" name="companyName" type="text" autocomplete="organization" minlength="2" required aria-describedby="required-note company-name-error" />
+									<p class="mt-1 text-sm font-semibold text-error" id="company-name-error" hidden></p>
+								</div>
+								<div class="sm:col-span-2">
+									<label class="mb-2 block font-semibold text-heading" for="contact-name">Persona de contacto <span aria-hidden="true">*</span></label>
+									<input class="min-h-12 w-full rounded-card border border-input-border bg-white px-3 py-2 text-text aria-[invalid=true]:border-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="contact-name" name="contactName" type="text" autocomplete="name" required aria-describedby="required-note contact-name-error" />
+									<p class="mt-1 text-sm font-semibold text-error" id="contact-name-error" hidden></p>
+								</div>
+								<div>
+									<label class="mb-2 block font-semibold text-heading" for="contact-email">Email corporativo <span aria-hidden="true">*</span></label>
+									<input class="min-h-12 w-full rounded-card border border-input-border bg-white px-3 py-2 text-text aria-[invalid=true]:border-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="contact-email" name="email" type="email" autocomplete="email" placeholder="contacto@empresa.com" required aria-describedby="required-note contact-email-error" />
+									<p class="mt-1 text-sm font-semibold text-error" id="contact-email-error" hidden></p>
+								</div>
+								<div>
+									<label class="mb-2 block font-semibold text-heading" for="contact-phone">Teléfono <span aria-hidden="true">*</span></label>
+									<input class="min-h-12 w-full rounded-card border border-input-border bg-white px-3 py-2 text-text aria-[invalid=true]:border-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="contact-phone" name="phone" type="tel" autocomplete="tel" placeholder="+1 213 555 0147" required aria-describedby="required-note contact-phone-error" />
+									<p class="mt-1 text-sm font-semibold text-error" id="contact-phone-error" hidden></p>
+								</div>
+								<div class="sm:col-span-2">
+									<label class="mb-2 block font-semibold text-heading" for="company-website">Sitio web de la empresa <span class="font-normal text-text-muted">(opcional)</span></label>
+									<input class="min-h-12 w-full rounded-card border border-input-border bg-white px-3 py-2 text-text aria-[invalid=true]:border-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="company-website" name="website" type="url" autocomplete="url" placeholder="https://empresa.com" aria-describedby="company-website-error" />
+									<p class="mt-1 text-sm font-semibold text-error" id="company-website-error" hidden></p>
+								</div>
+							</div>
+						</fieldset>
+					</section>
+
+					<section class="space-y-6" data-step="1" aria-labelledby="step-heading-1" hidden>
+						<h2 class="text-xl font-bold text-heading" id="step-heading-1" tabindex="-1">Operación logística</h2>
+						<fieldset class="space-y-6">
+							<legend class="sr-only">Operación logística</legend>
+							<div class="grid gap-5 sm:grid-cols-2">
+								<div>
+									<label class="mb-2 block font-semibold text-heading" for="operating-country">País de operación principal <span aria-hidden="true">*</span></label>
+									<select class="min-h-12 w-full rounded-card border border-input-border bg-white px-3 py-2 pr-10 text-text aria-[invalid=true]:border-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="operating-country" name="operatingCountry" required aria-describedby="required-note operating-country-error">
+										<option value="" selected disabled>Selecciona una opción</option>
+										<option value="united-states">Estados Unidos</option>
+										<option value="spain">España</option>
+										<option value="both">Ambos</option>
+										<option value="other">Otro</option>
+									</select>
+									<p class="mt-1 text-sm font-semibold text-error" id="operating-country-error" hidden></p>
+								</div>
+								<div>
+									<label class="mb-2 block font-semibold text-heading" for="product-type">Tipo de producto <span aria-hidden="true">*</span></label>
+									<select class="min-h-12 w-full rounded-card border border-input-border bg-white px-3 py-2 pr-10 text-text aria-[invalid=true]:border-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="product-type" name="productType" required aria-describedby="required-note product-type-error">
+										<option value="" selected disabled>Selecciona una opción</option>
+										<option value="fashion">Moda</option>
+										<option value="electronics">Electrónica</option>
+										<option value="cosmetics">Cosmética</option>
+										<option value="food">Alimentación</option>
+										<option value="other">Otro</option>
+									</select>
+									<p class="mt-1 text-sm font-semibold text-error" id="product-type-error" hidden></p>
+								</div>
+								<div class="sm:col-span-2">
+									<label class="mb-2 block font-semibold text-heading" for="monthly-volume">Volumen mensual estimado de envíos <span aria-hidden="true">*</span></label>
+									<select class="min-h-12 w-full rounded-card border border-input-border bg-white px-3 py-2 pr-10 text-text aria-[invalid=true]:border-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="monthly-volume" name="monthlyVolume" required aria-describedby="required-note low-volume-warning monthly-volume-error">
+										<option value="" selected disabled>Selecciona una opción</option>
+										<option value="0-100">0-100</option>
+										<option value="101-500">101-500</option>
+										<option value="501-2000">501-2000</option>
+										<option value="2000+">2000+</option>
+										<option value="unsure">No estoy seguro</option>
+									</select>
+									<aside class="mt-2 rounded-card border border-warning bg-white p-4 text-warning" id="low-volume-warning" role="status" hidden>
+										<p class="font-semibold"><span aria-hidden="true">⚠</span> Para volúmenes menores a 100 envíos mensuales, nuestros servicios podrían no ser la solución más eficiente. ¿Seguro que quieres continuar?</p>
+									</aside>
+									<p class="mt-1 text-sm font-semibold text-error" id="monthly-volume-error" hidden></p>
+								</div>
+							</div>
+						</fieldset>
+						<fieldset class="space-y-4 border-t border-border pt-6" aria-describedby="required-note services-error">
+							<legend class="text-lg font-bold text-heading">Servicios de interés <span aria-hidden="true">*</span></legend>
+							<div class="grid gap-3 sm:grid-cols-3">
+								<label class="flex min-h-12 items-center gap-3 rounded-card border border-border bg-white px-4 py-3 font-medium text-text focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-secondary" for="service-storage"><input class="h-5 w-5 accent-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="service-storage" name="services" type="checkbox" value="storage" /><span>Almacenaje</span></label>
+								<label class="flex min-h-12 items-center gap-3 rounded-card border border-border bg-white px-4 py-3 font-medium text-text focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-secondary" for="service-last-mile"><input class="h-5 w-5 accent-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="service-last-mile" name="services" type="checkbox" value="last-mile" /><span>Última milla</span></label>
+								<label class="flex min-h-12 items-center gap-3 rounded-card border border-border bg-white px-4 py-3 font-medium text-text focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-secondary" for="service-reverse-logistics"><input class="h-5 w-5 accent-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="service-reverse-logistics" name="services" type="checkbox" value="reverse-logistics" /><span>Logística inversa</span></label>
+							</div>
+							<p class="text-sm font-semibold text-error" id="services-error" hidden></p>
+						</fieldset>
+					</section>
+
+					<section class="space-y-6" data-step="2" aria-labelledby="step-heading-2" hidden>
+						<h2 class="text-xl font-bold text-heading" id="step-heading-2" tabindex="-1">Relación con proveedores 3PL</h2>
+						<fieldset class="space-y-4" aria-describedby="required-note current-3pl-error">
+							<legend class="text-lg font-bold text-heading">¿Actualmente trabajas con otro 3PL? <span aria-hidden="true">*</span></legend>
+							<div class="flex flex-wrap gap-x-6 gap-y-3">
+								<label class="inline-flex min-h-11 items-center gap-3" for="current-3pl-yes"><input class="h-5 w-5 accent-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="current-3pl-yes" name="current3pl" type="radio" value="yes" required /><span>Sí</span></label>
+								<label class="inline-flex min-h-11 items-center gap-3" for="current-3pl-no"><input class="h-5 w-5 accent-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="current-3pl-no" name="current3pl" type="radio" value="no" required /><span>No</span></label>
+								<label class="inline-flex min-h-11 items-center gap-3" for="current-3pl-evaluating"><input class="h-5 w-5 accent-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="current-3pl-evaluating" name="current3pl" type="radio" value="evaluating" required /><span>Estoy evaluando opciones</span></label>
+							</div>
+							<p class="text-sm font-semibold text-error" id="current-3pl-error" hidden></p>
+						</fieldset>
+					</section>
+
+					<section class="space-y-6" data-step="3" aria-labelledby="step-heading-3" hidden>
+						<h2 class="text-xl font-bold text-heading" id="step-heading-3" tabindex="-1">Comentarios y privacidad</h2>
+						<fieldset class="space-y-6">
+							<legend class="sr-only">Comentarios y privacidad</legend>
+							<div>
+								<label class="mb-2 block font-semibold text-heading" for="comments">Comentarios o necesidades específicas <span class="font-normal text-text-muted">(opcional)</span></label>
+								<textarea class="min-h-32 w-full rounded-card border border-input-border bg-white px-3 py-2 text-text aria-[invalid=true]:border-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="comments" name="comments" maxlength="500" aria-describedby="comments-counter comments-error"></textarea>
+								<div class="mt-2 flex flex-wrap justify-between gap-2 text-sm text-text-muted"><p>Máximo 500 caracteres.</p><output id="comments-counter" for="comments" aria-live="polite">0 / 500 caracteres; quedan 500</output></div>
+								<p class="mt-1 text-sm font-semibold text-error" id="comments-error" hidden></p>
+							</div>
+							<aside class="space-y-2 rounded-card border border-warning bg-white p-4" aria-labelledby="privacy-notice-title">
+								<h3 class="font-bold text-warning" id="privacy-notice-title">Aviso provisional de privacidad para demostración (ficticio; no vigente)</h3>
+								<p class="leading-7">Este formulario es una demostración local. La información que escribas se utiliza solo en tu navegador para mostrar las validaciones y el flujo; no se envía ni almacena. <strong>No introduzcas datos personales o confidenciales reales.</strong></p>
+								<p class="text-sm leading-6 text-text-muted">Esta nota no constituye una política de privacidad ni describe un tratamiento real. La política aplicable y los datos de responsable, finalidades, base jurídica, conservación, destinatarios, derechos y contacto están pendientes de definición y aprobación. Este aviso debe sustituirse antes de publicar el formulario para uso real.</p>
+							</aside>
+							<div>
+								<label class="flex min-h-12 items-start gap-3 rounded-card py-2 font-medium text-text" for="privacy-acknowledgement"><input class="mt-1 h-5 w-5 shrink-0 accent-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" id="privacy-acknowledgement" name="privacyAcknowledgement" type="checkbox" required aria-describedby="privacy-notice-title privacy-error" /><span>He leído el aviso provisional de privacidad (solo para la demostración; no es una política vigente). <span aria-hidden="true">*</span></span></label>
+								<p class="text-sm font-semibold text-error" id="privacy-error" hidden></p>
+							</div>
+						</fieldset>
+					</section>
+
+					<div class="flex flex-col gap-3 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+						<button class="inline-flex min-h-12 items-center justify-center rounded-card border border-secondary px-6 py-3 font-bold text-secondary transition-colors hover:bg-surface-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary motion-reduce:transition-none" type="reset">Limpiar formulario</button>
+						<div class="flex flex-col gap-3 sm:flex-row">
+							<button class="inline-flex min-h-12 items-center justify-center rounded-card border border-secondary px-6 py-3 font-bold text-secondary transition-colors hover:bg-surface-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary motion-reduce:transition-none" id="previous-step" type="button" hidden>Anterior</button>
+							<button class="inline-flex min-h-12 items-center justify-center rounded-card bg-secondary px-6 py-3 font-bold text-white transition-colors hover:bg-secondary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary motion-reduce:transition-none" id="next-step" type="button">Siguiente</button>
+							<button class="inline-flex min-h-12 items-center justify-center rounded-card bg-secondary px-6 py-3 font-bold text-white transition-colors hover:bg-secondary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary motion-reduce:transition-none" id="submit-application" type="submit" hidden>Enviar solicitud</button>
+						</div>
+					</div>
+				</form>
+				<section class="rounded-card border border-success bg-background p-5 text-success shadow-sm sm:p-8" id="form-success" tabindex="-1" role="status" aria-labelledby="form-success-title" hidden>
+					<h2 class="text-xl font-bold" id="form-success-title">¡Gracias por tu interés en TrackFlow!</h2>
+					<p class="mt-2 leading-7">Hemos recibido tu solicitud. Nuestro equipo comercial revisará tu información y te contactará en las próximas 24-48 horas para agendar una llamada y conocer tus necesidades logísticas en detalle.</p>
+					<p class="mt-2 leading-7">Si tienes alguna consulta urgente, escríbenos directamente a <a class="font-semibold underline underline-offset-4" href="mailto:comercial@trackflow.com">comercial@trackflow.com</a>.</p>
+					<p class="mt-3 rounded-card border border-warning p-3 text-sm font-semibold text-warning">Demostración local: esta solicitud no se envió al equipo comercial y no se guardó.</p>
+				</section>
+			</div>
+		</main>
+	</body>
+</html>
